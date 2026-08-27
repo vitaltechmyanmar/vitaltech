@@ -1,0 +1,29 @@
+---
+import ContactActions from '../components/ContactActions.astro';
+import PageHero from '../components/PageHero.astro';
+import { pageMetadata } from '../content/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const hero = {
+  eyebrow: 'Contact',
+  outline: 'LET\'S',
+  title: 'CONNECT',
+  summary: 'Start a direct conversation about the technology opportunity, challenge, or next move that matters to your organization.',
+};
+---
+
+<BaseLayout metadata={pageMetadata['/contact']} pathname="/contact">
+  <PageHero hero={hero} compact />
+
+  <section class="section-frame grid gap-12 pb-24 md:pb-32 lg:grid-cols-[0.85fr_1.15fr]">
+    <div>
+      <p class="eyebrow">Direct contact</p>
+      <h2 class="mt-4 text-4xl font-black tracking-[-0.05em] text-white">Choose the channel that works best for you.</h2>
+      <p class="mt-5 max-w-xl text-base leading-8 text-white/65">This first release uses direct contact rather than a form. Official contact details will appear here once they are supplied and approved.</p>
+    </div>
+    <div class="border border-lime/45 bg-panel p-7 md:p-10">
+      <ContactActions context="contact-page" variant="stacked" />
+      <p class="mt-8 border-t border-white/10 pt-6 text-xs leading-6 text-white/45">No personal information is collected or transmitted by this website in the first release.</p>
+    </div>
+  </section>
+</BaseLayout>

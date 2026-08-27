@@ -1,0 +1,36 @@
+---
+import { getContactChannels } from '../lib/site';
+
+interface Props {
+  context?: string;
+  variant?: 'inline' | 'stacked' | 'footer';
+}
+
+const { context = 'global', variant = 'inline' } = Astro.props;
+const channels = getContactChannels();
+const layoutClass = variant === 'stacked' ? 'flex flex-col items-start gap-3' : 'flex flex-wrap gap-3';
+---
+
+<div class={layoutClass} aria-label="Direct contact options">
+  {
+    channels.map((channel) =>
+      channel.href ? (
+        <a
+          class="outline-button"
+          href={channel.href}
+          data-testid={`${context}-contact-${channel.id}-link`}
+        >
+          {channel.label}
+        </a>
+      ) : (
+        <span
+          class="border border-white/15 px-4 py-3 text-xs font-semibold tracking-[0.08em] text-white/55 uppercase"
+          data-testid={`${context}-contact-${channel.id}-placeholder`}
+          title={channel.placeholder}
+        >
+          {channel.label}: details coming soon
+        </span>
+      ),
+    )
+  }
+</div>

@@ -1,0 +1,50 @@
+---
+import CallToAction from '../components/CallToAction.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { homeHero, industries, pageMetadata, services } from '../content/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featuredServices = services.filter((service) => service.featured);
+---
+
+<BaseLayout metadata={pageMetadata['/']} pathname="/">
+  <PageHero hero={homeHero} />
+
+  <section class="section-frame py-24 md:py-32">
+    <SectionHeading
+      eyebrow="What we do"
+      title="Technology capability, built around business progress."
+      summary="We help organizations connect strategy to practical delivery across the capabilities that matter most to modern growth."
+    />
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      {featuredServices.map((service, index) => <ServiceCard service={service} index={index} />)}
+    </div>
+    <a href="/services" class="outline-button mt-8" data-testid="home-all-services-link">View all services</a>
+  </section>
+
+  <section class="border-y border-white/10 bg-panel-soft py-24 md:py-32">
+    <div class="section-frame grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <SectionHeading
+        eyebrow="A better-connected business"
+        title="Complexity becomes useful when systems start working together."
+        summary="Vital Tech Myanmar combines product thinking, engineering discipline, and practical technology guidance to create progress that teams can use."
+      />
+      <div class="grid gap-4 sm:grid-cols-2">
+        {industries.map((industry) => (
+          <article class="border border-white/10 p-5">
+            <h3 class="text-lg font-black tracking-[-0.03em] text-white">{industry.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-white/60">{industry.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    context="home"
+    title="Ready to make technology work harder for your business?"
+    summary="Start with a direct conversation. We will help you frame the opportunity and identify a practical next move."
+  />
+</BaseLayout>

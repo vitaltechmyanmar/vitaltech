@@ -1,0 +1,29 @@
+---
+import { navigation, siteName, services } from '../content/site';
+import ContactActions from './ContactActions.astro';
+---
+
+<footer class="border-t border-white/10 bg-[#020202] py-14">
+  <div class="section-frame grid gap-12 lg:grid-cols-[1.1fr_1fr_1fr]">
+    <div>
+      <p class="eyebrow">Vital Tech Myanmar</p>
+      <h2 class="mt-4 max-w-sm text-3xl font-black tracking-[-0.05em] text-white">Technology that creates practical momentum.</h2>
+      <p class="mt-5 max-w-md text-sm leading-7 text-white/60">
+        Software, cloud, DevOps, system integration, and managed IT solutions for ambitious organizations.
+      </p>
+    </div>
+    <div>
+      <p class="text-xs font-black tracking-[0.12em] text-lime uppercase">Explore</p>
+      <ul class="mt-5 grid grid-cols-2 gap-x-5 gap-y-3">
+        {navigation.map((item) => <li><a href={item.href} class="nav-link" data-testid={`footer-nav-${item.label.toLowerCase()}-link`}>{item.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs font-black tracking-[0.12em] text-lime uppercase">Direct contact</p>
+      <div class="mt-5"><ContactActions context="footer" variant="footer" /></div>
+    </div>
+  </div>
+  <div class="section-frame mt-12 border-t border-white/10 pt-6 text-xs text-white/40">
+    © {new Date().getFullYear()} {siteName}. Built for the next stage of growth.
+  </div>
+</footer>

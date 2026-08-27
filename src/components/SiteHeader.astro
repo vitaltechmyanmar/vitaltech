@@ -1,0 +1,99 @@
+---
+import { navigation, siteName } from '../content/site';
+import type { RoutePath } from '../types/site';
+
+interface Props {
+  pathname: RoutePath;
+}
+
+const { pathname } = Astro.props;
+---
+
+<header class="border-b border-white/10 bg-ink/90 backdrop-blur-sm">
+  <div class="section-frame flex min-h-20 items-center justify-between gap-6 py-4">
+    <a href="/" class="group flex items-center gap-3" aria-label={`${siteName} home`} data-testid="site-logo-link">
+      <span class="grid size-8 place-items-center border border-lime text-sm font-black text-lime">V</span>
+      <span class="text-sm font-black tracking-[0.12em] text-lime uppercase">Vital Tech</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link"
+            data-active={pathname === item.href ? 'true' : 'false'}
+            data-testid={`desktop-nav-${item.label.toLowerCase()}-link`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden lg:block">
+      <a href="/contact" class="outline-button" data-testid="header-contact-link">Start a conversation</a>
+    </div>
+
+    <button
+      type="button"
+      class="grid size-11 place-items-center border border-lime text-lime lg:hidden"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+      data-testid="mobile-navigation-toggle"
+      data-mobile-menu-toggle
+    >
+      <span aria-hidden="true" class="text-lg">+</span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-navigation"
+    class="border-t border-white/10 bg-panel px-4 py-5 lg:hidden"
+    aria-label="Mobile navigation"
+    data-mobile-menu
+  >
+    <div class="section-frame flex flex-col gap-5">
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link py-1 text-base"
+            data-active={pathname === item.href ? 'true' : 'false'}
+            data-testid={`mobile-nav-${item.label.toLowerCase()}-link`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact" class="lime-button w-full" data-testid="mobile-nav-contact-link">Start a conversation</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-mobile-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+
+  if (toggle && menu) {
+    document.documentElement.dataset.js = 'true';
+    menu.hidden = true;
+
+    const setMenuState = (isOpen: boolean) => {
+      menu.hidden = !isOpen;
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      toggle.querySelector('span')?.replaceChildren(document.createTextNode(isOpen ? '−' : '+'));
+    };
+
+    toggle.addEventListener('click', () => setMenuState(menu.hidden));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        setMenuState(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

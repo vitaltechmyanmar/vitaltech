@@ -1,0 +1,53 @@
+---
+import CallToAction from '../components/CallToAction.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { industries, pageMetadata } from '../content/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const hero = {
+  eyebrow: 'Industries',
+  outline: 'RELEVANT',
+  title: 'EXPERIENCE',
+  summary: 'Technology is most valuable when it fits the real operational context of the organization using it.',
+};
+---
+
+<BaseLayout metadata={pageMetadata['/industries']} pathname="/industries">
+  <PageHero hero={hero} compact />
+
+  <section class="section-frame py-24 md:py-32">
+    <SectionHeading
+      eyebrow="Where capability meets context"
+      title="Designed for organizations that are ready to move with more clarity."
+      summary="We bring a practical lens to the technologies and delivery practices that support stronger connected operations."
+    />
+    <div class="mt-12 grid gap-4 md:grid-cols-2">
+      {
+        industries.map((industry) => (
+          <article class="border border-white/10 bg-panel p-7">
+            <h2 class="text-2xl font-black tracking-[-0.04em] text-white">{industry.title}</h2>
+            <p class="mt-4 text-sm leading-7 text-white/65">{industry.summary}</p>
+            <ul class="mt-7 flex flex-wrap gap-2">
+              {industry.capabilities.map((capability) => <li class="border border-lime/40 px-3 py-2 text-xs font-bold tracking-[0.08em] text-lime uppercase">{capability}</li>)}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-frame pb-24 md:pb-32">
+    <div class="border border-dashed border-white/20 p-8 md:p-12">
+      <p class="eyebrow">Approved evidence</p>
+      <h2 class="mt-4 text-3xl font-black tracking-[-0.05em] text-white">Case studies will appear here as customer-safe evidence becomes available.</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-7 text-white/60">We do not publish customer claims or outcomes until they have been approved for public use.</p>
+    </div>
+  </section>
+
+  <CallToAction
+    context="industries"
+    title="Find a technology path that fits your context."
+    summary="Use a direct conversation to explore the systems, delivery practices, and priorities that matter to your organization."
+  />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import ContactActions from './ContactActions.astro';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  summary: string;
+  context?: string;
+}
+
+const { eyebrow = 'Start a conversation', title, summary, context = 'cta' } = Astro.props;
+---
+
+<section class="border-y border-lime/45 bg-lime px-5 py-14 text-ink md:px-10 md:py-18">
+  <div class="section-frame grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+    <div class="max-w-3xl">
+      <p class="text-xs font-black tracking-[0.14em] uppercase">{eyebrow}</p>
+      <h2 class="mt-4 text-4xl font-black tracking-[-0.06em] md:text-6xl">{title}</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-7 text-ink/75 md:text-base">{summary}</p>
+    </div>
+    <div class="[&_.outline-button]:border-ink [&_.outline-button]:text-ink [&_.outline-button:hover]:bg-ink [&_.outline-button:hover]:text-lime [&_.lime-button]:border-ink [&_.lime-button]:bg-ink [&_.lime-button]:text-lime">
+      <ContactActions context={context} variant="stacked" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import { siteName, siteUrl } from '../content/site';
+import { getCanonicalUrl } from '../lib/site';
+import type { PageMetadata, RoutePath } from '../types/site';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/global.css';
+
+interface Props {
+  metadata: PageMetadata;
+  pathname: RoutePath;
+}
+
+const { metadata, pathname } = Astro.props;
+const canonicalUrl = getCanonicalUrl(pathname);
+const pageTitle = metadata.ogTitle ?? metadata.title;
+const pageDescription = metadata.ogDescription ?? metadata.description;
+const ogImage = new URL('/og-preview.svg', siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="description" content={metadata.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Vital Tech Myanmar — technology that creates growth" />
+    <title>{metadata.title}</title>
+  </head>
+  <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-lime focus:px-4 focus:py-3 focus:text-ink">
+      Skip to main content
+    </a>
+    <div class="page-shell min-h-screen bg-ink">
+      <SiteHeader pathname={pathname} />
+      <main id="main-content">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>
