@@ -33,7 +33,7 @@ npm run build
 ### 4. Verify build success
 - **Expected result**: Astro completes without errors and reports generation of the static site.
 - **Build artifact location**: `dist/`.
-- **Expected output**: static HTML for Home, Services, Industries, About, Insights, Careers, and Contact, alongside `robots.txt`, sitemap files, and compiled assets under `dist/_astro/`.
+- **Expected output**: static HTML for Home, Services, Industries, About, Insights, and Contact, alongside `robots.txt`, sitemap files, and compiled assets under `dist/_astro/`. No Careers page is generated.
 - **Previously verified result**: `npm run build` completed successfully on 2026-08-27 during Code Generation validation.
 - **Acceptable warning to investigate**: npm may report that an `esbuild` post-install script was blocked by an allow-list policy. Do not bypass local security controls automatically. Confirm the Astro CLI and `npm run build` work; they did during the recorded validation.
 

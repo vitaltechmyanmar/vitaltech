@@ -14,20 +14,23 @@ const layoutClass = variant === 'stacked' ? 'flex flex-col items-start gap-3' : 
 <div class={layoutClass} aria-label="Direct contact options">
   {
     channels.map((channel) =>
-      channel.href ? (
-        <a
-          class="outline-button"
-          href={channel.href}
-          data-testid={`${context}-contact-${channel.id}-link`}
-        >
-          {channel.label}
-        </a>
+      channel.links?.length ? (
+        <div class="flex flex-wrap items-center gap-2" role="group" aria-label={`${channel.label} contact options`}>
+          <span class="text-xs font-black tracking-[0.1em] text-ink uppercase">{channel.label}</span>
+          {
+            channel.links.map((link, index) => (
+              <a
+                class="outline-button"
+                href={link.href}
+                data-testid={index === 0 ? `${context}-contact-${channel.id}-link` : `${context}-contact-${channel.id}-link-${index + 1}`}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
       ) : (
-        <span
-          class="border border-white/15 px-4 py-3 text-xs font-semibold tracking-[0.08em] text-white/55 uppercase"
-          data-testid={`${context}-contact-${channel.id}-placeholder`}
-          title={channel.placeholder}
-        >
+        <span class="border border-line bg-white px-4 py-3 text-xs font-semibold tracking-[0.08em] text-muted uppercase" data-testid={`${context}-contact-${channel.id}-placeholder`} title={channel.placeholder}>
           {channel.label}: details coming soon
         </span>
       ),

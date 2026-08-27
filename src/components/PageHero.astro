@@ -14,12 +14,12 @@ const spacing = compact ? 'py-20 md:py-28' : 'py-24 md:py-36 lg:py-44';
   <div class="ambient-orb -top-52 left-[18%] md:left-[26%]"></div>
   <div class="section-frame relative">
     <p class="eyebrow">{hero.eyebrow}</p>
-    <h1 class="display-title mt-8 max-w-5xl text-[clamp(3.25rem,11vw,9.75rem)]">
+    <h1 class="display-title mt-8 max-w-5xl text-[clamp(3.25rem,11vw,9.75rem)] text-ink">
       <span aria-hidden="true" class="text-outline block">{hero.outline}</span>
-      <span aria-hidden="true" class="block text-lime">{hero.title}</span>
+      <span aria-hidden="true" class="block text-cobalt">{hero.title}</span>
       <span class="sr-only">{hero.outline} {hero.title}</span>
     </h1>
-    <p class="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-lg">{hero.summary}</p>
+    <p class="mt-8 max-w-2xl text-base leading-8 text-muted md:text-lg">{hero.summary}</p>
     <div class="mt-9 flex flex-wrap gap-3">
       <a href="/contact" class="lime-button" data-testid="hero-contact-link">Talk to Vital Tech</a>
       <a href="/services" class="outline-button" data-testid="hero-services-link">Explore services</a>

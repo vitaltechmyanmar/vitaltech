@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>Vital Tech Myanmar</title>
-  <rect width="64" height="64" rx="12" fill="#050505"/>
-  <path d="M14 16h10l8 25 8-25h10L35 50h-6L14 16Z" fill="#d8ff38"/>
+  <title id="title">Vital Tech Myanmar temporary visual</title>
+  <rect width="64" height="64" rx="12" fill="#ffffff"/>
+  <path d="M14 16h17v10H24v12h17v10H14V16Z" fill="#102a4c"/>
+  <path d="M35 16h15v32H35V38h5V26h-5V16Z" fill="#2454d8"/>
 </svg>

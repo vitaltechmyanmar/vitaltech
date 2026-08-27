@@ -1,7 +1,8 @@
 # Vital Tech Myanmar Website - User Stories
 
 ## Story Structure
-Stories are organized by visitor-outcome epics and prioritize the Strategic Technology Leader journey. Every story uses the approved standard Given/When/Then acceptance-criteria depth.
+
+Stories are organized by visitor-outcome epics and prioritize the Strategic Technology Leader journey. Each story uses the approved Given/When/Then acceptance-criteria depth and reflects the six active public routes.
 
 ## Epic 1 - Discover Services and Business Value
 
@@ -33,7 +34,7 @@ Stories are organized by visitor-outcome epics and prioritize the Strategic Tech
 **Story**: As a Strategic Technology Leader, I want to review industries served, solution capabilities, and approved proof points, so that I can assess whether Vital Tech Myanmar has relevant experience before I contact the team.
 
 **Acceptance Criteria**
-1. **Given** I open the Industries or Case Studies page, **when** I review its content, **then** I can identify the industries served and the associated solution capabilities.
+1. **Given** I open the Industries page, **when** I review its content, **then** I can identify the industries served and the associated solution capabilities.
 2. **Given** approved case-study evidence is available, **when** I select a case study, **then** I can review its delivery context and outcomes without unsubstantiated claims.
 3. **Given** a case study has not been approved or supplied, **when** I view the page, **then** the site presents industry and capability information without implying a customer endorsement.
 
@@ -62,49 +63,37 @@ Stories are organized by visitor-outcome epics and prioritize the Strategic Tech
 ### US-06 - Reach the Right Team Directly
 **Persona**: Strategic Technology Leader
 
-**Story**: As a Strategic Technology Leader, I want prominent direct phone, email, and WhatsApp contact options, so that I can start a conversation through my preferred channel without completing a form.
+**Story**: As a Strategic Technology Leader, I want prominent direct phone and email contact options, so that I can start a conversation through my preferred channel without completing a form.
 
 **Acceptance Criteria**
-1. **Given** I am on the Home, Services, About, Industries or Case Studies, Insights, Careers, or Contact page, **when** I seek an action to contact Vital Tech Myanmar, **then** I can access at least one visible direct-contact route.
-2. **Given** official phone, email, and WhatsApp endpoints have been configured, **when** I choose one, **then** its link uses the appropriate destination format for that channel.
-3. **Given** I open the Contact page, **when** I review the available actions, **then** I can clearly distinguish phone, email, and WhatsApp routes and am not presented with a non-functioning submission form.
+1. **Given** I am on the Home, Services, Industries, About, Insights, or Contact page, **when** I seek an action to contact Vital Tech Myanmar, **then** I can access at least one visible direct-contact route.
+2. **Given** official phone and email endpoints have been configured, **when** I choose one, **then** its link uses the appropriate destination format for that channel.
+3. **Given** I open the Contact page, **when** I review the available actions, **then** I can clearly distinguish phone and email routes and am not presented with a non-functioning submission form.
 
-## Epic 4 - Consider a Career
+## Epic 4 - Navigate a Premium, Accessible Experience
 
-### US-07 - Discover Career Opportunities
-**Persona**: Prospective Candidate
-
-**Story**: As a Prospective Candidate, I want to understand Vital Tech Myanmar’s work and discover an official application route, so that I can decide whether and how to pursue a role.
-
-**Acceptance Criteria**
-1. **Given** I open the Careers page, **when** I review it, **then** I can understand the company’s technology environment, work context, or candidate value proposition using approved content.
-2. **Given** current openings or an application route are available, **when** I choose to continue, **then** I can access the appropriate role details or official direct contact route.
-3. **Given** I access the Careers page on a mobile device, **when** I review opportunities and actions, **then** the content and application-discovery action remain readable and operable.
-
-## Epic 5 - Navigate a Premium, Accessible Experience
-
-### US-08 - Navigate Confidently Across the Site
+### US-07 - Navigate Confidently Across the Site
 **Persona**: All Personas
 
 **Story**: As a website visitor, I want clear navigation and an accessible premium visual experience, so that I can reach relevant information and contact paths with confidence on any device.
 
 **Acceptance Criteria**
-1. **Given** I visit any public page, **when** I use primary or footer navigation, **then** I can reach Home, Services, Industries or Case Studies, About, Insights, Careers, and Contact.
-2. **Given** I use a keyboard or assistive technology, **when** I move through navigation and interactive controls, **then** the content uses meaningful landmarks, visible focus states, and accessible labels.
-3. **Given** I view the dark and lime visual system, **when** I read core copy or identify a call to action, **then** text and interaction states remain visually discernible.
-4. **Given** I use a smaller screen, **when** navigation condenses, **then** I can reveal, use, and dismiss it without losing access to page links or direct contact options.
+1. **Given** I visit any public page, **when** I use primary or footer navigation, **then** I can reach Home, Services, Industries, About, Insights, and Contact, and I am not presented with a Careers destination.
+2. **Given** I request the retired legacy `/careers` URL, **when** the static site host resolves the request, **then** no replacement or redirect is provided and the host returns its normal 404 response.
+3. **Given** I use a keyboard or assistive technology, **when** I move through navigation and interactive controls, **then** the content uses meaningful landmarks, visible focus states, and accessible labels.
+4. **Given** I use a smaller screen, **when** navigation condenses, **then** I can reveal, use, and dismiss it without losing access to the six active page links or direct contact options.
 
 ## Coverage Map
 | Requirement or page | Stories |
 |---|---|
-| Home | US-01, US-06, US-08 |
-| Services | US-02, US-06, US-08 |
-| Industries or Case Studies | US-03, US-06, US-08 |
-| About | US-04, US-06, US-08 |
-| Insights | US-05, US-06, US-08 |
-| Careers | US-07, US-06, US-08 |
-| Contact | US-06, US-08 |
-| Direct contact | US-06, US-08 |
+| Home | US-01, US-06, US-07 |
+| Services | US-02, US-06, US-07 |
+| Industries | US-03, US-06, US-07 |
+| About | US-04, US-06, US-07 |
+| Insights | US-05, US-06, US-07 |
+| Contact | US-06, US-07 |
+| Retired legacy `/careers` URL | US-07 |
+| Direct contact | US-06, US-07 |
 
 ## INVEST Review
 | Story | Independent | Negotiable | Valuable | Estimable | Small | Testable |
@@ -116,11 +105,9 @@ Stories are organized by visitor-outcome epics and prioritize the Strategic Tech
 | US-05 | Yes | Yes | Yes | Yes | Yes | Yes |
 | US-06 | Yes | Yes | Yes | Yes | Yes | Yes |
 | US-07 | Yes | Yes | Yes | Yes | Yes | Yes |
-| US-08 | Yes | Yes | Yes | Yes | Yes | Yes |
 
 ## Persona Mapping
 | Persona | Relevant stories |
 |---|---|
-| Strategic Technology Leader | US-01, US-02, US-03, US-04, US-06, US-08 |
-| Technical Solution Evaluator | US-02, US-03, US-04, US-05, US-08 |
-| Prospective Candidate | US-04, US-07, US-08 |
+| Strategic Technology Leader | US-01, US-03, US-04, US-06, US-07 |
+| Technical Solution Evaluator | US-02, US-05, US-07 |

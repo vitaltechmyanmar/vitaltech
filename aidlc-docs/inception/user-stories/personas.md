@@ -17,7 +17,7 @@
 - Clear value proposition and immediate service orientation on the Home page.
 - Service detail that connects technical capabilities to business outcomes.
 - Industry and approved case-study evidence.
-- Credible About content, technical perspective through Insights, and easily found phone, email, and WhatsApp links.
+- Credible About content, technical perspective through Insights, and easily found phone and email links.
 
 ### Success Signal
 The leader can articulate Vital Tech Myanmar’s relevant capability and start a direct conversation without having to search for contact details.
@@ -43,29 +43,8 @@ The leader can articulate Vital Tech Myanmar’s relevant capability and start a
 ### Success Signal
 The evaluator can identify a viable service combination and provide an evidence-backed recommendation to the technology leader.
 
-## Persona 3 - Prospective Candidate
-
-### Profile
-- **Representative role**: Software engineer, cloud or DevOps professional, systems engineer, project manager, or early-career technology candidate.
-- **Context**: Explores whether Vital Tech Myanmar offers meaningful work, a credible technology environment, and a clear way to discover open opportunities.
-- **Digital behavior**: Visits from a mobile device or social link, scans culture and opportunity information, then decides whether to proceed to an application route.
-
-### Goals
-- Understand the company’s work, values, and technology focus.
-- Discover available roles or a clear application-discovery route.
-- Find an official direct contact or application channel when a suitable opportunity is identified.
-
-### Needs from the Website
-- A dedicated Careers page with a clear value proposition and role or application-discovery content.
-- Supporting company and service context that demonstrates meaningful work.
-- Accessible, responsive content and unambiguous contact or application links.
-
-### Success Signal
-The candidate can determine whether the company is relevant and reach the appropriate application-discovery or contact route without ambiguity.
-
 ## Persona-to-Story Map
 | Persona | Primary stories |
 |---|---|
-| Strategic Technology Leader | US-01, US-02, US-03, US-04, US-06, US-08 |
-| Technical Solution Evaluator | US-02, US-03, US-04, US-05, US-08 |
-| Prospective Candidate | US-04, US-07, US-08 |
+| Strategic Technology Leader | US-01, US-03, US-04, US-06, US-07 |
+| Technical Solution Evaluator | US-02, US-05, US-07 |

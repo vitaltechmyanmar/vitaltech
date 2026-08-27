@@ -4,7 +4,6 @@ export type RoutePath =
   | '/industries'
   | '/about'
   | '/insights'
-  | '/careers'
   | '/contact';
 
 export interface PageMetadata {
@@ -19,11 +18,21 @@ export interface NavigationItem {
   href: RoutePath;
 }
 
+export interface ContactLink {
+  label: string;
+  href: string;
+}
+
 export interface ContactChannel {
   id: 'phone' | 'email' | 'whatsapp';
   label: string;
-  href?: string;
-  placeholder: string;
+  links?: ContactLink[];
+  placeholder?: string;
+}
+
+export interface TechnologyIcon {
+  label: string;
+  iconPath: string;
 }
 
 export interface Service {
@@ -47,12 +56,6 @@ export interface Insight {
   category: string;
   summary: string;
   href?: string;
-}
-
-export interface CareerOpportunity {
-  title: string;
-  location: string;
-  summary: string;
 }
 
 export interface HeroContent {

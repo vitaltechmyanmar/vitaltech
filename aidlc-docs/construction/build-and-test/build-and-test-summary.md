@@ -1,56 +1,65 @@
-# Build and Test Summary
+# Build and Test Summary - Careers Route Retirement
 
 ## Scope
-This stage documents the reproducible validation process for the approved static Astro website. No application source was changed during this stage.
+
+This stage validates retirement of the public Careers route while preserving the six active Vital Tech Myanmar static pages and approved direct-contact channels. The retired `/careers` URL has no repository-level redirect and is left to the static host's normal 404 behavior.
 
 ## Build Status
+
 - **Build tool**: npm with Astro 7.2.8.
 - **Build command**: `npm run build`.
-- **Build status**: Success (re-verified during this Build and Test stage on 2026-08-27).
-- **Build artifacts**: `dist/index.html`; static route directories for Services, Industries, About, Insights, Careers, and Contact; `dist/robots.txt`; sitemap files; and compiled assets in `dist/_astro/`.
-- **Build duration**: 2.00 seconds, as reported by Astro.
-- **Known installation note**: npm reported a blocked `esbuild` install script under its allow-list policy; the Astro CLI and production build still completed successfully. Do not bypass the policy without approval.
+- **Build status**: Success.
+- **Build duration**: 2.31 seconds, as reported by Astro on 2026-08-27.
+- **Build artifacts**: Home at `dist/index.html`; static route directories for About, Contact, Industries, Insights, and Services; `robots.txt`; `sitemap-index.xml`; `sitemap-0.xml`; technology icon assets; and compiled output under `dist/_astro/`.
+- **Route count**: 6 pages built. No Careers route was generated.
 
 ## Test Execution Summary
 
+### Route Retirement and Integration Checks
+
+- **Active route generation**: Pass. The final build generated Home, About, Contact, Industries, Insights, and Services only.
+- **Retired route output**: Pass. `dist/careers/` is absent.
+- **Navigation output**: Pass. Generated HTML contains no `desktop-nav-careers-link`, `mobile-nav-careers-link`, `footer-nav-careers-link`, or `/careers` reference.
+- **Sitemap output**: Pass. `dist/sitemap-0.xml` lists the six active URLs and has no `/careers/` entry.
+- **Source cleanup**: Pass. Application source contains no `CareerOpportunity`, `/careers`, or Careers navigation item.
+- **Phone and email links**: Pass. Generated HTML includes `tel:+959443167419`, `tel:+959964444882`, and `mailto:info@vitaltechmyanmar.com`.
+- **Public WhatsApp output**: Pass. Generated HTML contains no WhatsApp action. The generic internal `ContactChannel` type still permits the value, but no configured public channel uses it.
+- **Whitespace check**: Pass. `git diff --check` exited successfully; only existing LF-to-CRLF conversion warnings were reported.
+
 ### Unit Tests
-- **Total tests**: N/A.
-- **Passed**: N/A.
-- **Failed**: N/A.
-- **Coverage**: N/A.
-- **Status**: N/A; no test runner, test script, or unit-test suite was selected for this release.
-- **Supporting evidence**: representative Astro and TypeScript files had no diagnostics during Code Generation validation.
 
-### Integration Checks
-- **Test scenarios**: 3 documented manual static-site scenarios: shared navigation, centralized contact rendering, and discoverability artifacts.
-- **Passed**: Source and static-output checks passed during Code Generation validation.
-- **Failed**: None reported.
-- **Status**: Pass for the selected source/static-output baseline; a live browser execution remains a manual release check because no browser-preview tool was available.
+- **Status**: N/A.
+- **Reason**: The approved static-site scope has no configured unit-test runner, test script, or coverage tool. The Astro production build is the available deterministic automated validation baseline.
 
-### Performance Checks
-- **Response time**: N/A; no numeric target selected.
-- **Throughput**: N/A; no API or runtime service exists.
-- **Error rate**: N/A; no transactional workload exists.
-- **Status**: N/A; static-first architecture and build success were verified, but no browser benchmark or load test was selected.
+### Performance Tests
+
+- **Status**: N/A.
+- **Reason**: No backend, API, database, runtime service, or measurable performance target is in scope. The static build completed successfully.
 
 ### Additional Tests
-- **Contract tests**: N/A; no external services or APIs.
-- **Security tests**: N/A; the optional Security Baseline extension and security-scanning gate were disabled for this scope.
-- **End-to-end tests**: N/A; no automated E2E suite was selected. A manual browser route review is recommended before public launch.
-- **Accessibility scanner**: N/A; no scanner was selected. Semantic structure, focus styling, and mobile-navigation markup received source-level review; a manual assistive-technology and browser check remains recommended before release.
 
-## Generated Instruction Files
+- **Contract tests**: N/A; no service boundaries or APIs exist.
+- **Security suite**: N/A; no security test tool is configured and the Security Baseline extension is disabled.
+- **End-to-end suite**: N/A; no browser automation tool is configured.
+- **Manual browser/device checks**: Pending. Before public release, use `npm run preview` manually to verify narrow-screen menu interaction, keyboard navigation, and device-specific phone/email handoff.
+
+## Active Instruction Files
+
 - `build-instructions.md`
 - `unit-test-instructions.md`
 - `integration-test-instructions.md`
 - `performance-test-instructions.md`
 - `build-and-test-summary.md`
 
-## Overall Status
-- **Build**: Success.
-- **All selected automated checks**: Pass; the production build completed successfully and diagnostics were clean in representative files.
-- **Unselected automated test categories**: N/A.
-- **Ready for Operations**: Pending explicit approval of this Build and Test stage. Operations remains a placeholder and deployment is out of scope.
+## Extension Compliance
 
-## Deferred Release Checks
-Before publishing the site, provide official contact endpoints and a production domain, then rebuild and manually review the generated site in target browsers. Verify final branding, imagery, case studies, insights, careers data, placeholder removal, and accessibility against the approved production content.
+- **Resiliency Baseline**: N/A — disabled in `aidlc-docs/aidlc-state.md`.
+- **Security Baseline**: N/A — disabled in `aidlc-docs/aidlc-state.md`.
+- **Property-Based Testing**: N/A — disabled in `aidlc-docs/aidlc-state.md`.
+
+## Overall Status
+
+- **Build**: Success.
+- **Automated static-route and generated-output checks**: Pass.
+- **Manual browser/device checks**: Pending before public release.
+- **Ready for Operations**: Pending approval of this Build and Test result. Operations remains a placeholder; no deployment work is in scope.

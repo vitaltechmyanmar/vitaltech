@@ -1,0 +1,27 @@
+---
+import { technologyStack } from '../content/site';
+---
+
+<section class="border-y border-line bg-panel-soft py-20 md:py-28" aria-labelledby="technology-ecosystem-heading">
+  <div class="section-frame">
+    <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+      <div class="max-w-xl">
+        <p class="eyebrow">Technology ecosystem</p>
+        <h2 id="technology-ecosystem-heading" class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink md:text-5xl">Built on trusted technology foundations.</h2>
+        <p class="mt-5 text-base leading-8 text-muted">We combine cloud, infrastructure, automation, and delivery tools to create practical technology environments that teams can evolve with confidence.</p>
+      </div>
+      <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3" role="list">
+        {
+          technologyStack.map((technology) => (
+            <li class="editorial-card flex min-h-36 flex-col justify-between p-4 sm:p-5">
+              <div class="flex size-12 items-center justify-center rounded-md bg-page p-2.5">
+                <img src={technology.iconPath} alt="" width="32" height="32" loading="lazy" decoding="async" class="max-h-8 max-w-8 object-contain" />
+              </div>
+              <span class="mt-6 text-sm font-black tracking-[-0.02em] text-ink">{technology.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

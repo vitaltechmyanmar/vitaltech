@@ -1,5 +1,4 @@
 import type {
-  CareerOpportunity,
   ContactChannel,
   HeroContent,
   Industry,
@@ -8,6 +7,7 @@ import type {
   PageMetadata,
   RoutePath,
   Service,
+  TechnologyIcon,
 } from '../types/site';
 
 export const siteName = 'Vital Tech Myanmar';
@@ -19,7 +19,6 @@ export const navigation: NavigationItem[] = [
   { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
   { label: 'Insights', href: '/insights' },
-  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -27,17 +26,15 @@ export const contactChannels: ContactChannel[] = [
   {
     id: 'phone',
     label: 'Phone',
-    placeholder: 'Official phone details coming soon',
+    links: [
+      { label: '+959 443 167 419', href: 'tel:+959443167419' },
+      { label: '+959 964444882', href: 'tel:+959964444882' },
+    ],
   },
   {
     id: 'email',
     label: 'Email',
-    placeholder: 'Official email details coming soon',
-  },
-  {
-    id: 'whatsapp',
-    label: 'WhatsApp',
-    placeholder: 'Official WhatsApp details coming soon',
+    links: [{ label: 'info@vitaltechmyanmar.com', href: 'mailto:info@vitaltechmyanmar.com' }],
   },
 ];
 
@@ -92,6 +89,18 @@ export const services: Service[] = [
   },
 ];
 
+export const technologyStack: TechnologyIcon[] = [
+  { label: 'AWS', iconPath: '/technology-icons/aws.svg' },
+  { label: 'Docker', iconPath: '/technology-icons/docker.svg' },
+  { label: 'Kubernetes', iconPath: '/technology-icons/kubernetes.svg' },
+  { label: 'Terraform', iconPath: '/technology-icons/terraform.svg' },
+  { label: 'GitLab', iconPath: '/technology-icons/gitlab.svg' },
+  { label: 'GitHub', iconPath: '/technology-icons/github.svg' },
+  { label: 'GitHub Actions', iconPath: '/technology-icons/github-actions.svg' },
+  { label: 'Red Hat', iconPath: '/technology-icons/red-hat.svg' },
+  { label: 'OpenStack', iconPath: '/technology-icons/openstack.svg' },
+];
+
 export const industries: Industry[] = [
   {
     title: 'Financial Services',
@@ -116,8 +125,6 @@ export const industries: Industry[] = [
 ];
 
 export const insights: Insight[] = [];
-
-export const careers: CareerOpportunity[] = [];
 
 export const pageMetadata: Record<RoutePath, PageMetadata> = {
   '/': {
@@ -145,11 +152,6 @@ export const pageMetadata: Record<RoutePath, PageMetadata> = {
     description:
       'Explore Vital Tech Myanmar perspectives on software, cloud, DevOps, systems integration, and IT solutions.',
   },
-  '/careers': {
-    title: 'Careers | Vital Tech Myanmar',
-    description:
-      'Discover opportunities to create meaningful technology outcomes with Vital Tech Myanmar.',
-  },
   '/contact': {
     title: 'Contact | Vital Tech Myanmar',
     description:
@@ -159,8 +161,8 @@ export const pageMetadata: Record<RoutePath, PageMetadata> = {
 
 export const homeHero: HeroContent = {
   eyebrow: 'Vital Tech Myanmar',
-  outline: 'CREATING',
-  title: 'GROWTH',
+  outline: 'Enterprise',
+  title: 'IT Partner',
   summary:
     'We design and deliver the software, cloud, DevOps, system integration, and IT foundations that help ambitious organizations move with confidence.',
 };
