@@ -70,18 +70,21 @@ Stories are organized by visitor-outcome epics and prioritize the Strategic Tech
 2. **Given** official phone and email endpoints have been configured, **when** I choose one, **then** its link uses the appropriate destination format for that channel.
 3. **Given** I open the Contact page, **when** I review the available actions, **then** I can clearly distinguish phone and email routes and am not presented with a non-functioning submission form.
 
-## Epic 4 - Navigate a Premium, Accessible Experience
+## Epic 4 - Navigate an Original, Accessible Technical Experience
 
 ### US-07 - Navigate Confidently Across the Site
 **Persona**: All Personas
 
-**Story**: As a website visitor, I want clear navigation and an accessible premium visual experience, so that I can reach relevant information and contact paths with confidence on any device.
+**Story**: As a website visitor, I want a clear, original, and accessible dark technical visual experience, so that I can understand Vital Tech Myanmar’s capabilities, reach relevant information, and start contact paths with confidence on any device.
 
 **Acceptance Criteria**
 1. **Given** I visit any public page, **when** I use primary or footer navigation, **then** I can reach Home, Services, Industries, About, Insights, and Contact, and I am not presented with a Careers destination.
-2. **Given** I request the retired legacy `/careers` URL, **when** the static site host resolves the request, **then** no replacement or redirect is provided and the host returns its normal 404 response.
-3. **Given** I use a keyboard or assistive technology, **when** I move through navigation and interactive controls, **then** the content uses meaningful landmarks, visible focus states, and accessible labels.
-4. **Given** I use a smaller screen, **when** navigation condenses, **then** I can reveal, use, and dismiss it without losing access to the six active page links or direct contact options.
+2. **Given** a page loads, **when** I scan its shared navigation, hero, cards, calls to action, and contact surfaces, **then** they present a consistent original Vital Tech Myanmar dark technical system with charcoal surfaces, warm readable text, ember-orange primary emphasis, and restrained secondary blue.
+3. **Given** I use a keyboard or assistive technology, **when** I move through navigation and interactive controls, **then** the content uses meaningful landmarks, visible focus states, accessible labels, and sufficient contrast against dark surfaces.
+4. **Given** I use a smaller screen, **when** navigation condenses or cards and calls to action reflow, **then** I can reveal, use, and dismiss navigation without horizontal scrolling or losing access to the six active page links and direct contact options.
+5. **Given** I use a phone or email call to action on any active route, **when** I activate it, **then** it retains its configured destination and remains visually distinguishable from surrounding content.
+6. **Given** I review the shared visual system or its implementation, **when** the page renders, **then** it retains Vital Tech Myanmar’s own identity and uses no HashiCorp-branded asset, font, logo, copy, or duplicated layout.
+7. **Given** I request the retired legacy `/careers` URL, **when** the static site host resolves the request, **then** no replacement or redirect is provided and the host returns its normal 404 response.
 
 ## Coverage Map
 | Requirement or page | Stories |

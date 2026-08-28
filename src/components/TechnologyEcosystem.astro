@@ -14,7 +14,7 @@ import { technologyStack } from '../content/site';
         {
           technologyStack.map((technology) => (
             <li class="editorial-card flex min-h-36 flex-col justify-between p-4 sm:p-5">
-              <div class="flex size-12 items-center justify-center rounded-md bg-page p-2.5">
+              <div class="flex size-12 items-center justify-center rounded-md border border-line bg-page p-2.5">
                 <img src={technology.iconPath} alt="" width="32" height="32" loading="lazy" decoding="async" class="max-h-8 max-w-8 object-contain" />
               </div>
               <span class="mt-6 text-sm font-black tracking-[-0.02em] text-ink">{technology.label}</span>

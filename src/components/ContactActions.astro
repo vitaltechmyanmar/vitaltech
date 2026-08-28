@@ -30,7 +30,7 @@ const layoutClass = variant === 'stacked' ? 'flex flex-col items-start gap-3' : 
           }
         </div>
       ) : (
-        <span class="border border-line bg-white px-4 py-3 text-xs font-semibold tracking-[0.08em] text-muted uppercase" data-testid={`${context}-contact-${channel.id}-placeholder`} title={channel.placeholder}>
+        <span class="border border-line bg-panel px-4 py-3 text-xs font-semibold tracking-[0.08em] text-muted uppercase" data-testid={`${context}-contact-${channel.id}-placeholder`} title={channel.placeholder}>
           {channel.label}: details coming soon
         </span>
       ),

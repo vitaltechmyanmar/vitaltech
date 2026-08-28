@@ -9,10 +9,10 @@ interface Props {
 const { pathname } = Astro.props;
 ---
 
-<header class="border-b border-line/80 bg-white/92 backdrop-blur-sm">
+<header class="border-b border-line/80 bg-panel/95 backdrop-blur-sm">
   <div class="section-frame flex min-h-20 items-center justify-between gap-6 py-4">
     <a href="/" class="group flex items-center gap-3" aria-label={`${siteName} home`} data-testid="site-logo-link">
-      <span class="grid size-8 place-items-center bg-cobalt text-sm font-black text-white shadow-sm">V</span>
+      <span class="grid size-8 place-items-center bg-ember text-sm font-black text-page shadow-sm">V</span>
       <span class="text-sm font-black tracking-[0.12em] text-ink uppercase">Vital Tech</span>
     </a>
 
@@ -30,12 +30,12 @@ const { pathname } = Astro.props;
       <a href="/contact" class="outline-button" data-testid="header-contact-link">Start a conversation</a>
     </div>
 
-    <button type="button" class="grid size-11 place-items-center border border-cobalt text-cobalt lg:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-testid="mobile-navigation-toggle" data-mobile-menu-toggle>
+    <button type="button" class="grid size-11 place-items-center border border-ember text-ember lg:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-testid="mobile-navigation-toggle" data-mobile-menu-toggle>
       <span aria-hidden="true" class="text-lg">+</span>
     </button>
   </div>
 
-  <nav id="mobile-navigation" class="border-t border-line bg-white px-4 py-5 lg:hidden" aria-label="Mobile navigation" data-mobile-menu>
+  <nav id="mobile-navigation" class="border-t border-line bg-panel px-4 py-5 lg:hidden" aria-label="Mobile navigation" data-mobile-menu>
     <div class="section-frame flex flex-col gap-5">
       {
         navigation.map((item) => (

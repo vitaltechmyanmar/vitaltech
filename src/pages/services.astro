@@ -18,7 +18,7 @@ const hero = {
 
   <section class="section-frame pb-12">
     <nav class="flex flex-wrap gap-2 border-y border-line py-5" aria-label="Service sections">
-      {services.map((service) => <a href={`#${service.id}`} class="nav-link border border-line bg-white px-3 py-2 hover:border-cobalt" data-testid={`service-nav-${service.id}-link`}>{service.title}</a>)}
+      {services.map((service) => <a href={`#${service.id}`} class="nav-link border border-line bg-panel px-3 py-2 hover:border-ember" data-testid={`service-nav-${service.id}-link`}>{service.title}</a>)}
     </nav>
   </section>
 
@@ -28,13 +28,13 @@ const hero = {
         services.map((service, index) => (
           <article id={service.id} class="grid scroll-mt-8 gap-8 py-12 lg:grid-cols-[0.22fr_0.78fr] lg:py-16">
             <div>
-              <p class="text-sm font-black tracking-[0.14em] text-cobalt uppercase">0{index + 1}</p>
+              <p class="text-sm font-black tracking-[0.14em] text-ember uppercase">0{index + 1}</p>
               <p class="mt-4 text-xs font-bold tracking-[0.1em] text-muted uppercase">{service.kicker}</p>
             </div>
             <div>
               <h2 class="text-3xl font-black tracking-[-0.05em] text-ink md:text-5xl">{service.title}</h2>
               <p class="mt-5 max-w-2xl text-base leading-8 text-muted">{service.summary}</p>
-              <p class="mt-6 border-l-2 border-cobalt pl-4 text-sm font-semibold leading-7 text-cobalt-dark">{service.outcome}</p>
+              <p class="mt-6 border-l-2 border-ember pl-4 text-sm font-semibold leading-7 text-cobalt-dark">{service.outcome}</p>
               <ul class="mt-7 grid gap-3 sm:grid-cols-2">
                 {service.capabilities.map((capability) => <li class="editorial-card-muted px-4 py-3 text-sm text-ink">{capability}</li>)}
               </ul>

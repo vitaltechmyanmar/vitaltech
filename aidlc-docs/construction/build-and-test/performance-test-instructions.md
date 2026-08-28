@@ -1,32 +1,37 @@
 # Performance Test Instructions
 
 ## Applicability
-Formal load, stress, throughput, and concurrent-user testing is not applicable to this approved first-release scope. The deliverable is a static Astro site without a backend, API, database, queue, cache, user sessions, or runtime service to load test. No numeric Core Web Vitals, response-time, or throughput target was selected.
 
-## Performance Baseline
-The implementation uses build-time static generation, minimal client-side enhancement limited to mobile navigation, CSS-led visual effects, and no intentionally large hero video or raster media. These are architectural optimizations, not measured performance guarantees.
+Formal load, stress, throughput, and concurrent-user testing remains N/A. This is a static Astro site with no backend, API, database, queue, cache, session, or runtime service. No numeric Core Web Vitals, asset budget, or response-time target was selected for the theme refresh.
 
-## Repeatable Build-Time Check
+## Theme Performance Baseline
+
+The refreshed design uses compiled CSS and existing local assets only:
+
+- no external font or design-library request
+- no new image, illustration, icon package, or runtime framework
+- CSS-led grid, surface, and ambient treatments
+- existing minimal client-side enhancement for mobile navigation
+- reduced-motion fallback retained
+
+## Repeatable Check
 
 ```powershell
 npm run build
 ```
 
-Review the command output for successful static generation and inspect `dist/_astro/` for emitted assets. A build success does not measure browser runtime performance, but it confirms the static asset pipeline completes.
+Review successful static generation and emitted assets in `dist/_astro/`. This confirms the asset pipeline but does not constitute browser-runtime performance measurement.
 
-## Manual Browser Review When a Preview Environment Is Available
+## Manual Browser Review
+
 1. Run `npm run build`.
-2. Start `npm run preview` manually in a terminal.
+2. Start `npm run preview` manually.
 3. Review Home and Services on current desktop and mobile browsers.
-4. Confirm the navigation opens and closes smoothly, content remains readable, and decorative glow effects do not obscure text.
-5. Check that reduced-motion preferences preserve usable content and interaction.
-6. Capture browser performance data only if a future release defines measurable acceptance thresholds and a test environment.
+4. Confirm dark surfaces, glow/ambient treatment, cards, and outlined display text remain readable.
+5. Confirm reduced-motion preferences preserve usable content and interaction.
+6. Capture performance metrics only when future acceptance thresholds and a measurement toolchain are approved.
 
 ## Not Executed
-- **Load testing**: N/A; no server-side workload or threshold is defined.
-- **Stress testing**: N/A; no stateful runtime system is in scope.
-- **Throughput testing**: N/A; no API or transaction endpoint exists.
-- **Performance report**: N/A; no benchmark tool or numeric target was selected.
 
-## Future Measurable Performance Testing
-Before adding performance tooling, define target devices, representative network conditions, page-level Core Web Vitals targets, asset budgets, and an approved toolchain. Then record actual outcomes against those explicit targets rather than inferring them from a build result.
+- **Load, stress, throughput, and benchmark tests**: N/A; no applicable runtime target or threshold.
+- **Performance report**: N/A; no metric collection tool or target was selected.
