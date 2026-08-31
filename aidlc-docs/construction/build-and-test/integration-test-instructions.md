@@ -2,42 +2,43 @@
 
 ## Purpose
 
-Validate interactions inside the single static Astro application after the theme refresh: shared layout composition, six-route navigation, direct contact links, generated sitemap output, and the shared dark visual system. No backend, API, database, queue, CMS, or service-to-service contract exists.
+Validate the static Astro application after the shared JPG branding update. The relevant integration surface is the shared base layout and header across all six generated routes; no backend, API, database, queue, CMS, or service-to-service contract exists.
 
 ## Environment
 
 - Build from the workspace root with `npm run build`.
 - Inspect generated files in `dist/`.
-- Optionally run `npm run preview` manually for browser review.
+- Optionally use `npm run preview` for manual browser review.
 - No credentials, service endpoint, or environment variable is required.
 
 ## Scenarios
 
-### Scenario 1: Active routes and navigation
+### Scenario 1: Shared JPG identity across active routes
 
 1. Run `npm run build`.
-2. Confirm `dist/` contains exactly Home, Services, Industries, About, Insights, and Contact HTML pages.
-3. Confirm desktop navigation includes `desktop-nav-home-link`, `desktop-nav-services-link`, `desktop-nav-industries-link`, `desktop-nav-about-link`, `desktop-nav-insights-link`, and `desktop-nav-contact-link`.
-4. Confirm `dist/careers/` and Careers sitemap entries are absent.
+2. Confirm generated Home, Services, Industries, About, Insights, and Contact pages contain the JPEG favicon link to `/logo.jpg`.
+3. Confirm the shared header renders `/logo.jpg` with decorative empty alt text, intrinsic `1674 × 1516` dimensions, and `site-logo-link`.
+4. Confirm `/og-preview.svg` remains present in generated Open Graph metadata.
 
-**Expected result**: All six active routes and their navigation identifiers are present; the retired Careers route remains absent.
+**Expected result**: Every active page uses the requested local JPG for branding while social metadata remains unchanged.
 
-### Scenario 2: Direct contact continuity
+### Scenario 2: Existing route and contact contracts
 
-1. Inspect generated HTML across the active pages.
-2. Confirm `tel:+959443167419`, `tel:+959964444882`, and `mailto:info@vitaltechmyanmar.com` are present.
-3. Confirm no contact form or WhatsApp action is emitted.
+1. Confirm the six desktop navigation test IDs remain in generated pages.
+2. Confirm approved telephone and email URI destinations remain present.
+3. Confirm no `dist/careers/` output or Careers sitemap entry exists.
 
-**Expected result**: The shared theme has not changed approved contact destinations or accessibility labels.
+**Expected result**: The shared-branding update does not alter routes, navigation, contact behavior, or retired-route behavior.
 
-### Scenario 3: Dark-system composition and interaction
+### Scenario 3: Manual browser presentation
 
-1. Inspect `src/styles/global.css` for dark semantic roles, visible focus styling, and reduced-motion support.
-2. In a manual preview, inspect header/footer, hero, cards, CTA/contact actions, technology tiles, and route-local service/industry/contact treatments at narrow and wide viewports.
-3. Open, close, and dismiss the mobile navigation with pointer and keyboard input.
-4. Navigate with keyboard to confirm visible focus against dark surfaces.
+1. Run `npm run preview` manually after building.
+2. Inspect the header at narrow and wide viewports.
+3. Navigate to the home link by keyboard and confirm visible focus.
+4. Open, close, and dismiss the mobile menu.
+5. Inspect favicon legibility at the browser’s small square tab size.
 
-**Expected result**: The original charcoal/warm-neutral/ember/secondary-blue system remains consistent; mobile navigation and direct contact behavior are unchanged; no horizontal scrolling occurs.
+**Expected result**: Header layout and mobile-menu behavior are preserved. The non-square JPG may be scaled or letterboxed in browser favicon slots; verify it remains acceptable for the intended browser targets.
 
 ## Execution Command
 
@@ -45,4 +46,4 @@ Validate interactions inside the single static Astro application after the theme
 npm run build
 ```
 
-No separate integration-test runner is configured. Record manual preview outcomes in release notes when a browser is available.
+No separate integration-test runner is configured.

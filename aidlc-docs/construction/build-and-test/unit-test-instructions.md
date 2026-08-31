@@ -2,36 +2,30 @@
 
 ## Current Test Scope
 
-No automated unit-test framework or test suite is configured for this static Astro site. The approved theme refresh adds no executable business logic, API, data transformation, or test runner. Do not run `npm test` unless a test runner and tests are explicitly added in a future change.
+No automated unit-test framework or test suite is configured for this static Astro site. The JPG branding update adds no executable business logic, data transformation, API, or test runner. Do not run `npm test` unless a test runner and tests are added in a future change.
 
 ## Available Automated Validation
 
-### 1. Execute the production build
+### 1. Production build
 
 ```powershell
 npm run build
 ```
 
-A successful build validates Astro component imports, TypeScript-backed content, Tailwind CSS compilation, route templates, and static generation.
+A successful build validates Astro component imports, TypeScript-backed content, Tailwind CSS compilation, route templates, shared layout composition, and static generation.
 
-### 2. Check visual-system source contracts
+### 2. Shared branding source contracts
 
-Confirm `src/styles/global.css` retains:
+Confirm:
 
-- `color-scheme: dark`
-- original charcoal, warm-neutral, ember, and secondary-blue semantic roles
-- visible `:focus-visible` treatment
-- `prefers-reduced-motion` fallback
+- `src/components/SiteHeader.astro` has `/logo.jpg`, empty decorative alt text, `width="1674"`, `height="1516"`, `h-8`, `w-auto`, and `object-contain`.
+- `src/layouts/BaseLayout.astro` has the JPEG favicon link to `/logo.jpg`.
+- The header home-link label, `site-logo-link`, visible wordmark, and `/og-preview.svg` remain unchanged.
+- No external font, package, or remote design asset was added.
 
-Confirm affected shared components and routes use semantic tokens rather than stale light or cobalt-only utility classes.
-
-### 3. Review results
+### 3. Results
 
 - **Automated unit-test result**: N/A; no test suite exists.
 - **Coverage target**: N/A; coverage tooling is not configured.
-- **Deterministic validation baseline**: Astro build plus focused source-contract checks.
-- **Recorded theme-refresh result**: Build and source visual-system checks passed on 2026-08-28.
-
-## Future Test Suite Guidance
-
-If tests are added later, use an approved pinned toolchain and cover pure metadata/content utilities and critical interactive behavior before representing coverage or test totals as executed.
+- **Deterministic validation baseline**: Astro build plus source and generated-output contract checks.
+- **Recorded JPG branding result**: Build and source-contract checks passed on 2026-08-31.
