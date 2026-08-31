@@ -2,17 +2,16 @@
 
 ## Applicability
 
-Formal load, stress, throughput, and concurrent-user testing remains N/A. This is a static Astro site with no backend, API, database, queue, cache, session, or runtime service. No numeric Core Web Vitals, asset budget, or response-time target was selected for the theme refresh.
+Formal load, stress, throughput, and concurrent-user testing is N/A. This is a static Astro site with no backend, API, database, queue, cache, session, or runtime service. The JPG branding update introduces no new dependency, external request, or numeric performance target.
 
-## Theme Performance Baseline
+## Static Asset Baseline
 
-The refreshed design uses compiled CSS and existing local assets only:
+The visible header logo and favicon use the existing local `public/logo.jpg` file:
 
-- no external font or design-library request
-- no new image, illustration, icon package, or runtime framework
-- CSS-led grid, surface, and ambient treatments
-- existing minimal client-side enhancement for mobile navigation
-- reduced-motion fallback retained
+- no external font, image, icon package, or design-library request
+- no new runtime JavaScript or framework
+- static asset served from the public directory
+- existing mobile navigation enhancement and reduced-motion behavior remain unchanged
 
 ## Repeatable Check
 
@@ -20,18 +19,17 @@ The refreshed design uses compiled CSS and existing local assets only:
 npm run build
 ```
 
-Review successful static generation and emitted assets in `dist/_astro/`. This confirms the asset pipeline but does not constitute browser-runtime performance measurement.
+Review successful static generation and emitted assets in `dist/`. This verifies the asset pipeline but is not a browser runtime performance measurement.
 
 ## Manual Browser Review
 
 1. Run `npm run build`.
 2. Start `npm run preview` manually.
-3. Review Home and Services on current desktop and mobile browsers.
-4. Confirm dark surfaces, glow/ambient treatment, cards, and outlined display text remain readable.
-5. Confirm reduced-motion preferences preserve usable content and interaction.
-6. Capture performance metrics only when future acceptance thresholds and a measurement toolchain are approved.
+3. Review header logo rendering on desktop and mobile sizes.
+4. Confirm browser favicon rendering is acceptable at small square sizes.
+5. Capture performance metrics only if future acceptance thresholds and measurement tooling are approved.
 
 ## Not Executed
 
-- **Load, stress, throughput, and benchmark tests**: N/A; no applicable runtime target or threshold.
-- **Performance report**: N/A; no metric collection tool or target was selected.
+- **Load, stress, throughput, and benchmark tests**: N/A; no runtime target or threshold.
+- **Performance report**: N/A; no metric collection tool or target is configured.

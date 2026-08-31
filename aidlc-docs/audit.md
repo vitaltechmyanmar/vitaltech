@@ -3281,3 +3281,331 @@ No file is active in editor
 **Context**: OPERATIONS - workflow complete
 
 ---
+## Local JPG Site Branding - User Request and Workspace Detection
+**Timestamp**: 2026-08-31T06:56:23Z
+**User Input**:
+```text
+I have uploaded the public folder in logo.jpg in site logo. please change with site logo and favicon with this jpg.
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+No files are open
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+No file is active in editor
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+```
+**AI Response**: Detected the existing brownfield Astro/TypeScript static site, confirmed `public/logo.jpg` exists, and mapped its two shared integration points: `src/components/SiteHeader.astro` for the visible mark and `src/layouts/BaseLayout.astro` for the global favicon. Existing reverse-engineering context is current; no reverse-engineering stage is needed.
+**Context**: INCEPTION - Workspace Detection complete; Requirements Analysis started
+
+---
+
+## Local JPG Site Branding - Requirements Analysis
+**Timestamp**: 2026-08-31T06:56:23Z
+**User Input**: "No additional user input."
+**AI Response**: Completed a minimal requirements analysis. The request is clear and limited to a local static asset swap. Existing Resiliency, Security, and Property-Based Testing extensions remain disabled and are not applicable; no full extension rule files were loaded. Created the requirements document and approval question file.
+**Context**: INCEPTION - Requirements Analysis review gate
+
+---
+
+## Local JPG Site Branding - Requirements Approval Prompt
+**Timestamp**: 2026-08-31T06:56:23Z
+**User Input**: "No additional user input."
+**AI Response**: Requested explicit approval of `aidlc-docs/inception/requirements/logo-jpg-site-branding-requirements.md` using the dedicated approval question file before creating an implementation plan.
+**Context**: INCEPTION - Requirements Analysis approval gate
+
+---
+## Local JPG Site Branding - Requirements Review Context
+**Timestamp**: 2026-08-31T06:56:53Z
+**User Input**:
+```text
+--- CONTEXT ENTRY BEGIN ---
+Active Task List for current session:
+
+Description: Replace the current text-mark logo and favicon with the user-uploaded local logo.jpg, while preserving shared header behavior and validating the Astro build.
+Progress: 1/4 tasks completed
+
+Tasks:
+[✓] #1. Verify the uploaded logo asset and current shared logo/favicon integration
+[ ] #2. Document and obtain approval for the minimal logo-and-favicon change (NEXT)
+[ ] #3. Implement the approved shared logo and favicon update
+[ ] #4. Build and validate the generated site output
+
+Recent Context:
+- Verified the uploaded public/logo.jpg asset and the only shared integration points. The 1674×1516 JPEG can replace the visible CSS V mark with intrinsic dimensions and can be directly linked as a JPEG favicon; Open Graph media remains unrelated and unchanged.
+
+Modified Files:
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\aidlc-state.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\audit.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements.md
+--- CONTEXT ENTRY END ---
+```
+**AI Response**: Confirmed that the logo-and-favicon change remains at the Requirements Analysis approval gate. No application source or public asset has changed.
+**Context**: INCEPTION - Requirements Analysis approval gate
+
+---
+## Local JPG Site Branding - Requirements Approval Received
+**Timestamp**: 2026-08-31T14:25:11Z
+**User Input**:
+```text
+completed
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md" />
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md" />
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+```
+**AI Response**: Validated Question 1 Answer A as approval of the minimal logo-and-favicon requirements. User Stories were assessed as not valuable for a direct shared branding asset substitution. Created the one-unit workflow plan and its approval question file; no application source changed.
+**Context**: INCEPTION - Requirements Analysis approved; Workflow Planning review gate
+
+---
+
+## Local JPG Site Branding - Workflow Planning Approval Prompt
+**Timestamp**: 2026-08-31T14:25:11Z
+**User Input**: "No additional user input."
+**AI Response**: Requested explicit approval of `aidlc-docs/inception/plans/logo-jpg-site-branding-execution-plan.md` using the dedicated approval question file before Code Generation planning.
+**Context**: INCEPTION - Workflow Planning approval gate
+
+---
+## Local JPG Site Branding - Workflow Planning Review Context
+**Timestamp**: 2026-08-31T14:25:40Z
+**User Input**:
+```text
+--- CONTEXT ENTRY BEGIN ---
+Active Task List for current session:
+
+Description: Replace the current text-mark logo and favicon with the user-uploaded local logo.jpg, while preserving shared header behavior and validating the Astro build.
+Progress: 2/4 tasks completed
+
+Tasks:
+[✓] #1. Verify the uploaded logo asset and current shared logo/favicon integration
+[✓] #2. Document and obtain approval for the minimal logo-and-favicon change
+[ ] #3. Implement the approved shared logo and favicon update (NEXT)
+[ ] #4. Build and validate the generated site output
+
+Recent Context:
+- Verified the uploaded public/logo.jpg asset and the only shared integration points. The 1674×1516 JPEG can replace the visible CSS V mark with intrinsic dimensions and can be directly linked as a JPEG favicon; Open Graph media remains unrelated and unchanged.
+- Validated the requirements approval (Answer A), documented the minimal one-unit execution sequence, and created the workflow-plan approval question. User Stories and all design/NFR/infrastructure stages are intentionally skipped because this is a two-file shared branding asset update with no behavioral change.
+
+Modified Files:
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\aidlc-state.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\audit.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan-approval-questions.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements.md
+--- CONTEXT ENTRY END ---
+```
+**AI Response**: Confirmed that the workflow plan remains at its approval gate. No application source or public asset was changed.
+**Context**: INCEPTION - Workflow Planning approval gate
+
+---
+## Local JPG Site Branding - Workflow Planning Approval Received
+**Timestamp**: 2026-08-31T14:26:41Z
+**User Input**:
+```text
+completed
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md" />
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan-approval-questions.md" />
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan-approval-questions.md" />
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+
+completed
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md" />
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan-approval-questions.md" />
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan-approval-questions.md" />
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+```
+**AI Response**: Validated the already-completed workflow-plan Answer A and created the detailed Code Generation plan and approval question file. No application source or public asset has changed.
+**Context**: INCEPTION - Workflow Planning approved; CONSTRUCTION - Code Generation Part 1 review gate
+
+---
+
+## Local JPG Site Branding - Code Generation Approval Prompt
+**Timestamp**: 2026-08-31T14:26:41Z
+**User Input**: "No additional user input."
+**AI Response**: Requested explicit approval of `aidlc-docs/construction/plans/local-jpg-site-branding-code-generation-plan.md` using the dedicated approval question file before modifying `src/components/SiteHeader.astro` or `src/layouts/BaseLayout.astro`.
+**Context**: CONSTRUCTION - Code Generation Part 1 approval gate
+
+---
+## Local JPG Site Branding - Code Generation Plan Approval Received
+**Timestamp**: 2026-08-31T14:27:37Z
+**User Input**:
+```text
+completed.
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\plans\local-jpg-site-branding-code-generation-approval-questions.md" />
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\plans\local-jpg-site-branding-code-generation-approval-questions.md" />
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+```
+**AI Response**: Validated Question 1 Answer A as approval of the detailed Code Generation plan and began the approved two-file shared header/favion update.
+**Context**: CONSTRUCTION - Code Generation Part 1 approved; Part 2 started
+
+---
+## Local JPG Site Branding - Code Generation Complete
+**Timestamp**: 2026-08-31T14:29:25Z
+**User Input**: "No additional user input."
+**AI Response**: Completed the approved shared source changes. `SiteHeader.astro` now renders the local JPG with requested intrinsic dimensions and decorative alt text; `BaseLayout.astro` declares it as the JPEG favicon. `npm run build`, generated-output contract validation, source-contract validation, and `git diff --check` passed. Created the code-generation summary; browser favicon rendering remains a manual review item.
+**Context**: CONSTRUCTION - Code Generation Part 2 complete; awaiting review
+
+---
+
+## Local JPG Site Branding - Code Generation Review Prompt
+**Timestamp**: 2026-08-31T14:29:25Z
+**User Input**: "No additional user input."
+**AI Response**: Requested review through `aidlc-docs/construction/plans/local-jpg-site-branding-code-generation-review-questions.md` before entering Build and Test.
+**Context**: CONSTRUCTION - Code Generation review gate
+
+---
+## Local JPG Site Branding - Code Generation Review Context
+**Timestamp**: 2026-08-31T14:29:52Z
+**User Input**:
+```text
+--- CONTEXT ENTRY BEGIN ---
+Active Task List for current session:
+
+Description: Replace the current text-mark logo and favicon with the user-uploaded local logo.jpg, while preserving shared header behavior and validating the Astro build.
+Progress: 3/4 tasks completed
+
+Tasks:
+[✓] #1. Verify the uploaded logo asset and current shared logo/favicon integration
+[✓] #2. Document and obtain approval for the minimal logo-and-favicon change
+[✓] #3. Implement the approved shared logo and favicon update
+[ ] #4. Build and validate the generated site output (NEXT)
+
+Recent Context:
+- Verified the uploaded public/logo.jpg asset and the only shared integration points. The 1674×1516 JPEG can replace the visible CSS V mark with intrinsic dimensions and can be directly linked as a JPEG favicon; Open Graph media remains unrelated and unchanged.
+- Validated the requirements approval (Answer A), documented the minimal one-unit execution sequence, and created the workflow-plan approval question. User Stories and all design/NFR/infrastructure stages are intentionally skipped because this is a two-file shared branding asset update with no behavioral change.
+- Implemented the approved two-file local JPG branding update. The header now renders public/logo.jpg with intrinsic dimensions and decorative alt text; BaseLayout declares the same asset as the JPEG favicon. npm run build, all six generated-page contract checks, source-boundary checks, and git diff --check passed. Code Generation review is pending.
+
+Modified Files:
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\aidlc-state.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\audit.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\local-jpg-site-branding\code\code-generation-summary.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\plans\local-jpg-site-branding-code-generation-plan.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\plans\local-jpg-site-branding-code-generation-review-questions.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan-approval-questions.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\plans\logo-jpg-site-branding-execution-plan.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements-approval-questions.md
+- d:\AI-DLC-Workshop\vitaltech\aidlc-docs\inception\requirements\logo-jpg-site-branding-requirements.md
+- d:\AI-DLC-Workshop\vitaltech\src\components\SiteHeader.astro
+- d:\AI-DLC-Workshop\vitaltech\src\layouts\BaseLayout.astro
+--- CONTEXT ENTRY END ---
+```
+**AI Response**: Confirmed the generated source is complete and validated, but Code Generation review approval is still required before the final Build and Test stage. No additional application source or asset change was made.
+**Context**: CONSTRUCTION - Code Generation review gate
+
+---
+## Local JPG Site Branding - Code Generation Approval Received
+**Timestamp**: 2026-08-31T14:30:26Z
+**User Input**:
+```text
+completed
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\plans\local-jpg-site-branding-code-generation-review-questions.md" />
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+<file name="d:\AI-DLC-Workshop\vitaltech\aidlc-docs\construction\plans\local-jpg-site-branding-code-generation-review-questions.md" />
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+```
+**AI Response**: Validated Question 1 Answer A as approval of the generated local JPG branding update and began the Build and Test stage.
+**Context**: CONSTRUCTION - Code Generation approved; Build and Test started
+
+---
+## Build and Test Stage - Local JPG Site Branding
+**Timestamp**: 2026-08-31T14:32:00Z
+**Build Status**: Success — `npm run build` completed with six pages built in 3.80 seconds.
+**Test Status**: Pass for available production-build, static-route, JPG-header/favicon, Open Graph, navigation, contact-link, source-boundary, documentation, and whitespace checks; manual browser favicon review remains pending.
+**Files Generated or Updated**:
+- `build-instructions.md`
+- `unit-test-instructions.md`
+- `integration-test-instructions.md`
+- `performance-test-instructions.md`
+- `build-and-test-summary.md`
+
+**AI Response**: Rebuilt the site successfully, verified the requested JPG header mark and JPEG favicon on six generated routes, retained the Open Graph image and shared navigation/contact contracts, confirmed no external-design dependency, and re-ran `git diff --check` successfully.
+**Context**: CONSTRUCTION - Build and Test complete; awaiting review
+
+---
+
+## Local JPG Site Branding - Build and Test Approval Prompt
+**Timestamp**: 2026-08-31T14:32:00Z
+**User Input**: "No additional user input."
+**AI Response**: Requested review of `aidlc-docs/construction/build-and-test/build-and-test-summary.md` before the Operations placeholder. Manual browser verification of the non-square JPG favicon remains a release check.
+**Context**: CONSTRUCTION - Build and Test approval gate
+
+---
+## Local JPG Site Branding - Build and Test Approval Received
+**Timestamp**: 2026-08-31T14:32:42Z
+**User Input**:
+```text
+Approve & Continue
+
+<EnvironmentContext>
+This information is provided as context about user environment. Only consider it if it's relevant to the user request ignore it otherwise.
+
+<OPEN-EDITOR-FILES>
+No files are open
+</OPEN-EDITOR-FILES>
+
+<ACTIVE-EDITOR-FILE>
+No file is active in editor
+</ACTIVE-EDITOR-FILE>
+</EnvironmentContext>
+```
+**AI Response**: Recorded explicit approval of the local JPG branding Build and Test result and transitioned to the Operations placeholder. No deployment, hosting, infrastructure, monitoring, or production configuration was created.
+**Context**: CONSTRUCTION - Build and Test approved; OPERATIONS - placeholder acknowledged
+
+---
+
+## Local JPG Site Branding - Operations Placeholder
+**Timestamp**: 2026-08-31T14:32:42Z
+**User Input**: "No additional user input."
+**AI Response**: The Operations stage is a placeholder with no executable activities. The local JPG header-logo and favicon workflow is complete.
+**Context**: OPERATIONS - workflow complete
+
+---
