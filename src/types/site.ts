@@ -45,6 +45,30 @@ export interface Service {
   featured?: boolean;
 }
 
+export interface ContactFormField {
+  label: string;
+  placeholder: string;
+  optional?: boolean;
+}
+
+export interface ContactFormContent {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  fields: Record<'name' | 'email' | 'company' | 'phone' | 'service' | 'message', ContactFormField>;
+  servicePlaceholder: string;
+  serviceOptions: string[];
+  requiredNote: string;
+  submitLabel: string;
+  submittingLabel: string;
+  successMessage: string;
+  validationMessage: string;
+  rateLimitMessage: string;
+  unavailableMessage: string;
+  failureMessage: string;
+  privacyNote: string;
+}
+
 export interface Industry {
   title: string;
   summary: string;

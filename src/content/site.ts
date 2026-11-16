@@ -1,5 +1,6 @@
 import type {
   ContactChannel,
+  ContactFormContent,
   HeroContent,
   Industry,
   Insight,
@@ -97,6 +98,35 @@ export const services: Service[] = [
     capabilities: ['Delivery assessment', 'Tooling strategy', 'Team enablement', 'Metrics and improvement'],
   },
 ];
+
+export const contactForm: ContactFormContent = {
+  eyebrow: 'Project enquiry',
+  title: 'Send us a message.',
+  summary:
+    'Share a little about your organization and what you want to achieve. We will reply using the details you provide.',
+  fields: {
+    name: { label: 'Name', placeholder: 'Your full name' },
+    email: { label: 'Email', placeholder: 'you@company.com' },
+    company: { label: 'Organization', placeholder: 'Company or team name', optional: true },
+    phone: { label: 'Phone', placeholder: '+95 9 000 000 000', optional: true },
+    service: { label: 'Area of interest', placeholder: 'Select a service', optional: true },
+    message: {
+      label: 'How can we help?',
+      placeholder: 'Tell us about the project, challenge, or outcome you have in mind.',
+    },
+  },
+  servicePlaceholder: 'Select a service',
+  serviceOptions: services.map((service) => service.title),
+  requiredNote: '* Required fields',
+  submitLabel: 'Send message',
+  submittingLabel: 'Sending…',
+  successMessage: 'Thank you. Your message has been sent and we will be in touch shortly.',
+  validationMessage: 'Please check the highlighted fields and try again.',
+  rateLimitMessage: 'Too many messages in a short period. Please wait a few minutes and try again.',
+  unavailableMessage: 'The contact form is temporarily unavailable. Please use the direct contact options.',
+  failureMessage: 'We could not send your message. Please try again or use the direct contact options.',
+  privacyNote: 'We use the details you provide only to respond to your enquiry. We do not sell or share them.',
+};
 
 export const technologyStack: TechnologyIcon[] = [
   { label: 'AWS', iconPath: '/technology-icons/aws.svg' },
