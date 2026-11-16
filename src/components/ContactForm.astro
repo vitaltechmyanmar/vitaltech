@@ -9,7 +9,6 @@ const labelClass = 'block text-xs font-black tracking-[0.08em] text-ink uppercas
 const fieldClass =
   'mt-2 w-full rounded-md border border-line bg-surface px-4 py-3 text-sm text-ink shadow-sm outline-none transition placeholder:text-muted/60 focus:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none';
 const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
-const optionalClass = 'ml-1 font-semibold tracking-normal text-muted normal-case';
 ---
 
 <Card padding="lg" data-testid="contact-form-card">
@@ -78,12 +77,14 @@ const optionalClass = 'ml-1 font-semibold tracking-normal text-muted normal-case
 
       <div>
         <label for="contact-company" class={labelClass}>
-          {fields.company.label}<span class={optionalClass}>(optional)</span>
+          {fields.company.label}<span class="ml-1 text-accent" aria-hidden="true">*</span>
         </label>
         <input
           id="contact-company"
           name="company"
           type="text"
+          required
+          minlength="2"
           maxlength="120"
           autocomplete="organization"
           placeholder={fields.company.placeholder}
@@ -96,13 +97,16 @@ const optionalClass = 'ml-1 font-semibold tracking-normal text-muted normal-case
 
       <div>
         <label for="contact-phone" class={labelClass}>
-          {fields.phone.label}<span class={optionalClass}>(optional)</span>
+          {fields.phone.label}<span class="ml-1 text-accent" aria-hidden="true">*</span>
         </label>
         <input
           id="contact-phone"
           name="phone"
           type="tel"
+          required
+          minlength="5"
           maxlength="40"
+          pattern="[0-9+()\-.\s]{5,40}"
           autocomplete="tel"
           placeholder={fields.phone.placeholder}
           class={fieldClass}
@@ -114,11 +118,12 @@ const optionalClass = 'ml-1 font-semibold tracking-normal text-muted normal-case
 
       <div class="sm:col-span-2">
         <label for="contact-service" class={labelClass}>
-          {fields.service.label}<span class={optionalClass}>(optional)</span>
+          {fields.service.label}<span class="ml-1 text-accent" aria-hidden="true">*</span>
         </label>
         <select
           id="contact-service"
           name="service"
+          required
           class={fieldClass}
           aria-describedby="contact-service-error"
           data-testid="contact-form-service"

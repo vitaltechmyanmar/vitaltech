@@ -107,9 +107,9 @@ export const contactForm: ContactFormContent = {
   fields: {
     name: { label: 'Name', placeholder: 'Your full name' },
     email: { label: 'Email', placeholder: 'you@company.com' },
-    company: { label: 'Organization', placeholder: 'Company or team name', optional: true },
-    phone: { label: 'Phone', placeholder: '+95 9 000 000 000', optional: true },
-    service: { label: 'Area of interest', placeholder: 'Select a service', optional: true },
+    company: { label: 'Organization', placeholder: 'Company or team name' },
+    phone: { label: 'Phone', placeholder: '+95 9 000 000 000' },
+    service: { label: 'Area of interest', placeholder: 'Select a service' },
     message: {
       label: 'How can we help?',
       placeholder: 'Tell us about the project, challenge, or outcome you have in mind.',

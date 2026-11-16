@@ -103,15 +103,19 @@ function validate(data: Record<string, string>): { enquiry: Enquiry; errors: Rec
     errors.email = 'Please enter a valid email address.';
   }
 
-  if (company.length > 120) {
-    errors.company = 'Organization must be 120 characters or fewer.';
+  if (company.length < 2 || company.length > 120) {
+    errors.company = 'Please enter your organization (2-120 characters).';
   }
 
-  if (phone && !PHONE_PATTERN.test(phone)) {
-    errors.phone = 'Please enter a valid phone number or leave it blank.';
+  if (!phone) {
+    errors.phone = 'Please enter your phone number.';
+  } else if (!PHONE_PATTERN.test(phone)) {
+    errors.phone = 'Please enter a valid phone number.';
   }
 
-  if (service && !services.some((item) => item.title === service)) {
+  if (!service) {
+    errors.service = 'Please select an area of interest.';
+  } else if (!services.some((item) => item.title === service)) {
     errors.service = 'Please choose an area of interest from the list.';
   }
 

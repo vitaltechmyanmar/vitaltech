@@ -48,7 +48,6 @@ export interface Service {
 export interface ContactFormField {
   label: string;
   placeholder: string;
-  optional?: boolean;
 }
 
 export interface ContactFormContent {
