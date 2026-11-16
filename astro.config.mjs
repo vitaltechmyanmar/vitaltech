@@ -1,12 +1,12 @@
 import { defineConfig, envField } from 'astro/config';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://vitaltech.example.com',
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  adapter: vercel(),
   integrations: [sitemap()],
   env: {
     schema: {
