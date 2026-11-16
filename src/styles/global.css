@@ -1,40 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #f5eee4;
-  --color-page: #0b0d11;
-  --color-paper: #171a21;
-  --color-panel: #1d212a;
-  --color-panel-soft: #12151b;
-  --color-line: #3a404d;
-  --color-lime: #f47a43;
-  --color-lime-soft: #352018;
-  --color-ember: #f47a43;
-  --color-ember-dark: #d95b2c;
-  --color-blue-ambient: #5b8cff;
-  --color-muted: #beb7ae;
-  --color-cobalt: #8ab4ff;
-  --color-cobalt-dark: #c2d7ff;
+  --color-canvas: #f7f9fc;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef3f9;
+  --color-ink: #102a4c;
+  --color-muted: #526073;
+  --color-line: #cbd5e1;
+  --color-line-strong: #7c8da6;
+  --color-accent: #2454d8;
+  --color-accent-hover: #1d46b8;
+  --color-accent-soft: #dce7ff;
+  --color-on-accent: #ffffff;
+  --color-inverse-surface: #102a4c;
+  --color-inverse-ink: #f7f9fc;
+  --color-inverse-muted: #c7d2e3;
+  --color-inverse-line: #3b557a;
+  --color-focus-inverse: #a8c3ff;
   --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow-card: 0 1px 2px rgb(16 42 76 / 0.04), 0 12px 32px rgb(16 42 76 / 0.06);
+  --shadow-card-hover: 0 2px 4px rgb(16 42 76 / 0.06), 0 20px 44px rgb(16 42 76 / 0.12);
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
-    background: var(--color-page);
+    color-scheme: light;
+    background: var(--color-canvas);
     font-family: var(--font-sans);
   }
 
   html {
     scroll-behavior: smooth;
-    background: var(--color-page);
+    background: var(--color-canvas);
   }
 
   body {
     min-width: 320px;
     overflow-x: hidden;
-    background: var(--color-page);
+    background: var(--color-canvas);
     color: var(--color-ink);
   }
 
@@ -45,13 +49,13 @@
 
   a:focus-visible,
   button:focus-visible {
-    outline: 3px solid var(--color-ember);
+    outline: 3px solid var(--color-accent);
     outline-offset: 4px;
   }
 
   ::selection {
-    background: var(--color-ember);
-    color: #0b0d11;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
   }
 }
 
@@ -61,10 +65,10 @@
     isolation: isolate;
     overflow: clip;
     background:
-      linear-gradient(rgba(245, 238, 228, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245, 238, 228, 0.025) 1px, transparent 1px),
-      radial-gradient(circle at 82% 4%, rgba(91, 140, 255, 0.16), transparent 28rem),
-      linear-gradient(180deg, #12151b 0%, var(--color-page) 48rem);
+      linear-gradient(rgb(16 42 76 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(16 42 76 / 0.035) 1px, transparent 1px),
+      radial-gradient(circle at 82% 4%, rgb(36 84 216 / 0.12), transparent 30rem),
+      linear-gradient(180deg, #eef3f9 0%, var(--color-canvas) 46rem);
     background-size: 2rem 2rem, 2rem 2rem, auto, auto;
   }
 
@@ -74,25 +78,25 @@
     width: 32rem;
     height: 32rem;
     border-radius: 42% 58% 66% 34% / 48% 35% 65% 52%;
-    background: radial-gradient(circle at 42% 40%, rgba(91, 140, 255, 0.27) 0%, rgba(244, 122, 67, 0.1) 38%, transparent 70%);
-    filter: blur(9px);
+    background: radial-gradient(circle at 42% 40%, rgb(36 84 216 / 0.16) 0%, rgb(36 84 216 / 0.08) 38%, transparent 70%);
+    filter: blur(10px);
     pointer-events: none;
   }
 
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(245, 238, 228, 0.32);
-    text-shadow: 0 16px 34px rgba(91, 140, 255, 0.14);
+    -webkit-text-stroke: 1px rgb(16 42 76 / 0.22);
+    text-shadow: 0 16px 34px rgb(36 84 216 / 0.08);
   }
 
   .display-title {
     font-family: var(--font-display);
-    letter-spacing: -0.07em;
-    line-height: 0.86;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
   }
 
   .eyebrow {
-    color: var(--color-ember);
+    color: var(--color-accent);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.16em;
@@ -100,7 +104,7 @@
   }
 
   .nav-link {
-    color: var(--color-ink);
+    color: var(--color-muted);
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -110,68 +114,25 @@
 
   .nav-link:hover,
   .nav-link[data-active="true"] {
-    color: var(--color-ember);
+    color: var(--color-accent);
   }
 
-  .lime-button,
-  .outline-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-height: 2.75rem;
-    padding: 0.75rem 1rem;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+  .nav-link[data-tone="inverse"] {
+    color: var(--color-inverse-muted);
   }
 
-  .lime-button {
-    border: 1px solid var(--color-ember);
-    background: var(--color-ember);
-    color: #0b0d11;
-    box-shadow: 0 10px 24px rgba(244, 122, 67, 0.22);
+  .nav-link[data-tone="inverse"]:hover,
+  .nav-link[data-tone="inverse"][data-active="true"] {
+    color: var(--color-inverse-ink);
   }
 
-  .lime-button:hover {
-    transform: translateY(-2px);
-    background: #ff9262;
-    border-color: #ff9262;
-  }
-
-  .outline-button {
-    border: 1px solid rgba(138, 180, 255, 0.58);
-    background: rgba(23, 26, 33, 0.84);
-    color: var(--color-ink);
-  }
-
-  .outline-button:hover {
-    background: rgba(91, 140, 255, 0.16);
-    border-color: var(--color-cobalt);
-    color: var(--color-cobalt-dark);
+  .nav-link[data-tone="inverse"]:focus-visible {
+    outline-color: var(--color-focus-inverse);
   }
 
   .section-frame {
     margin-inline: auto;
     width: min(100% - 2rem, 76rem);
-  }
-
-  .editorial-card {
-    border: 1px solid var(--color-line);
-    background: linear-gradient(145deg, rgba(29, 33, 42, 0.98), rgba(18, 21, 27, 0.98));
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
-  }
-
-  .editorial-card-muted {
-    border: 1px solid rgba(138, 180, 255, 0.25);
-    background: rgba(91, 140, 255, 0.08);
-  }
-
-  .editorial-empty-state {
-    border: 1px dashed rgba(245, 238, 228, 0.35);
-    background: rgba(23, 26, 33, 0.72);
   }
 }
 

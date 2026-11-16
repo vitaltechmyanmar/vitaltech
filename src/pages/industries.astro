@@ -1,5 +1,7 @@
 ---
+import Badge from '../components/ui/Badge.astro';
 import CallToAction from '../components/CallToAction.astro';
+import Card from '../components/ui/Card.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { industries, pageMetadata } from '../content/site';
@@ -21,24 +23,24 @@ const hero = {
     <div class="mt-12 grid gap-4 md:grid-cols-2">
       {
         industries.map((industry) => (
-          <article class="editorial-card p-7">
+          <Card as="article" padding="lg">
             <h2 class="text-2xl font-black tracking-[-0.04em] text-ink">{industry.title}</h2>
             <p class="mt-4 text-sm leading-7 text-muted">{industry.summary}</p>
             <ul class="mt-7 flex flex-wrap gap-2">
-              {industry.capabilities.map((capability) => <li class="border border-cobalt/50 bg-blue-ambient/10 px-3 py-2 text-xs font-bold tracking-[0.08em] text-cobalt-dark uppercase">{capability}</li>)}
+              {industry.capabilities.map((capability) => <li><Badge tone="accent">{capability}</Badge></li>)}
             </ul>
-          </article>
+          </Card>
         ))
       }
     </div>
   </section>
 
   <section class="section-frame pb-24 md:pb-32">
-    <div class="editorial-empty-state p-8 md:p-12">
+    <Card variant="empty" padding="none" class="p-8 md:p-12">
       <p class="eyebrow">Approved evidence</p>
       <h2 class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink">Case studies will appear here as customer-safe evidence becomes available.</h2>
       <p class="mt-4 max-w-2xl text-sm leading-7 text-muted">We do not publish customer claims or outcomes until they have been approved for public use.</p>
-    </div>
+    </Card>
   </section>
 
   <CallToAction context="industries" title="Find a technology path that fits your context." summary="Use a direct conversation to explore the systems, delivery practices, and priorities that matter to your organization." />

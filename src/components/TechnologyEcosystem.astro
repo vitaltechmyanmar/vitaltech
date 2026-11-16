@@ -1,8 +1,9 @@
 ---
+import Card from './ui/Card.astro';
 import { technologyStack } from '../content/site';
 ---
 
-<section class="border-y border-line bg-panel-soft py-20 md:py-28" aria-labelledby="technology-ecosystem-heading">
+<section class="border-y border-line bg-surface-muted py-20 md:py-28" aria-labelledby="technology-ecosystem-heading">
   <div class="section-frame">
     <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
       <div class="max-w-xl">
@@ -13,12 +14,12 @@ import { technologyStack } from '../content/site';
       <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3" role="list">
         {
           technologyStack.map((technology) => (
-            <li class="editorial-card flex min-h-36 flex-col justify-between p-4 sm:p-5">
-              <div class="flex size-12 items-center justify-center rounded-md border border-line bg-page p-2.5">
+            <Card as="li" padding="none" class="flex min-h-36 flex-col justify-between p-4 sm:p-5">
+              <div class="flex size-12 items-center justify-center rounded-md border border-line bg-surface p-2.5 shadow-sm">
                 <img src={technology.iconPath} alt="" width="32" height="32" loading="lazy" decoding="async" class="max-h-8 max-w-8 object-contain" />
               </div>
               <span class="mt-6 text-sm font-black tracking-[-0.02em] text-ink">{technology.label}</span>
-            </li>
+            </Card>
           ))
         }
       </ul>

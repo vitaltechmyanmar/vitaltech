@@ -1,4 +1,5 @@
 ---
+import Card from '../components/ui/Card.astro';
 import ContactActions from '../components/ContactActions.astro';
 import PageHero from '../components/PageHero.astro';
 import { pageMetadata } from '../content/site';
@@ -21,9 +22,9 @@ const hero = {
       <h2 class="mt-4 text-4xl font-black tracking-[-0.05em] text-ink">Choose the channel that works best for you.</h2>
       <p class="mt-5 max-w-xl text-base leading-8 text-muted">This first release uses direct contact rather than a form. Official contact details will appear here once they are supplied and approved.</p>
     </div>
-    <div class="editorial-card border-ember/70 p-7 md:p-10">
+    <Card variant="accent" padding="none" class="p-7 md:p-10">
       <ContactActions context="contact-page" variant="stacked" />
-      <p class="mt-8 border-t border-line pt-6 text-xs leading-6 text-muted">No personal information is collected or transmitted by this website in the first release.</p>
-    </div>
+      <p class="mt-8 border-t border-accent/20 pt-6 text-xs leading-6 text-muted">No personal information is collected or transmitted by this website in the first release.</p>
+    </Card>
   </section>
 </BaseLayout>

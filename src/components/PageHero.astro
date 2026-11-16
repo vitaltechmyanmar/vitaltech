@@ -1,4 +1,5 @@
 ---
+import Button from './ui/Button.astro';
 import type { HeroContent } from '../types/site';
 
 interface Props {
@@ -16,13 +17,13 @@ const spacing = compact ? 'py-20 md:py-28' : 'py-24 md:py-36 lg:py-44';
     <p class="eyebrow">{hero.eyebrow}</p>
     <h1 class="display-title mt-8 max-w-5xl text-[clamp(3.25rem,11vw,9.75rem)] text-ink">
       <span aria-hidden="true" class="text-outline block">{hero.outline}</span>
-      <span aria-hidden="true" class="block text-ember">{hero.title}</span>
+      <span aria-hidden="true" class="block text-accent">{hero.title}</span>
       <span class="sr-only">{hero.outline} {hero.title}</span>
     </h1>
     <p class="mt-8 max-w-2xl text-base leading-8 text-muted md:text-lg">{hero.summary}</p>
     <div class="mt-9 flex flex-wrap gap-3">
-      <a href="/contact" class="lime-button" data-testid="hero-contact-link">Talk to Vital Tech</a>
-      <a href="/services" class="outline-button" data-testid="hero-services-link">Explore services</a>
+      <Button href="/contact" variant="primary" data-testid="hero-contact-link">Talk to Vital Tech</Button>
+      <Button href="/services" variant="secondary" data-testid="hero-services-link">Explore services</Button>
     </div>
   </div>
 </section>

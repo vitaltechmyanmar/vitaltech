@@ -1,0 +1,24 @@
+---
+interface Props {
+  tone?: 'accent' | 'neutral' | 'inverse';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { tone = 'accent', class: className, ...rest } = Astro.props as Props;
+
+const base =
+  'inline-flex items-center rounded-full border px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.08em]';
+
+const tones = {
+  accent: 'border-accent/20 bg-accent-soft text-accent',
+  neutral: 'border-line bg-surface-muted text-muted',
+  inverse: 'border-inverse-line bg-white/5 text-inverse-ink',
+};
+
+const classes = [base, tones[tone], className].filter(Boolean).join(' ');
+---
+
+<span class={classes} {...rest}>
+  <slot />
+</span>

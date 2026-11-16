@@ -11,14 +11,14 @@ interface Props {
 const { eyebrow = 'Start a conversation', title, summary, context = 'cta' } = Astro.props;
 ---
 
-<section class="border-y border-line bg-panel-soft px-5 py-14 md:px-10 md:py-18">
+<section class="border-y border-accent/20 bg-accent-soft px-5 py-14 md:px-10 md:py-18">
   <div class="section-frame grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
     <div class="max-w-3xl">
       <p class="eyebrow">{eyebrow}</p>
       <h2 class="mt-4 text-4xl font-black tracking-[-0.06em] text-ink md:text-6xl">{title}</h2>
       <p class="mt-4 max-w-2xl text-sm leading-7 text-muted md:text-base">{summary}</p>
     </div>
-    <div class="[&_.outline-button]:border-cobalt/70 [&_.outline-button]:bg-panel [&_.outline-button]:text-ink [&_.outline-button:hover]:bg-blue-ambient/15 [&_.outline-button:hover]:text-cobalt-dark">
+    <div>
       <ContactActions context={context} variant="stacked" />
     </div>
   </div>

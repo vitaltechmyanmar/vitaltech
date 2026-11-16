@@ -1,14 +1,21 @@
 ---
+import Button from './ui/Button.astro';
 import { getContactChannels } from '../lib/site';
 
 interface Props {
   context?: string;
   variant?: 'inline' | 'stacked' | 'footer';
+  tone?: 'default' | 'inverse';
 }
 
-const { context = 'global', variant = 'inline' } = Astro.props;
+const { context = 'global', variant = 'inline', tone = 'default' } = Astro.props;
 const channels = getContactChannels();
 const layoutClass = variant === 'stacked' ? 'flex flex-col items-start gap-3' : 'flex flex-wrap gap-3';
+const buttonVariant = tone === 'inverse' ? 'inverse' : 'secondary';
+const labelClass = tone === 'inverse' ? 'text-inverse-ink' : 'text-ink';
+const placeholderClass = tone === 'inverse'
+  ? 'border-inverse-line bg-white/5 text-inverse-muted'
+  : 'border-line bg-surface-muted text-muted';
 ---
 
 <div class={layoutClass} aria-label="Direct contact options">
@@ -16,21 +23,22 @@ const layoutClass = variant === 'stacked' ? 'flex flex-col items-start gap-3' : 
     channels.map((channel) =>
       channel.links?.length ? (
         <div class="flex flex-wrap items-center gap-2" role="group" aria-label={`${channel.label} contact options`}>
-          <span class="text-xs font-black tracking-[0.1em] text-ink uppercase">{channel.label}</span>
+          <span class={`text-xs font-black tracking-[0.1em] uppercase ${labelClass}`}>{channel.label}</span>
           {
             channel.links.map((link, index) => (
-              <a
-                class="outline-button"
+              <Button
                 href={link.href}
+                variant={buttonVariant}
+                size="md"
                 data-testid={index === 0 ? `${context}-contact-${channel.id}-link` : `${context}-contact-${channel.id}-link-${index + 1}`}
               >
                 {link.label}
-              </a>
+              </Button>
             ))
           }
         </div>
       ) : (
-        <span class="border border-line bg-panel px-4 py-3 text-xs font-semibold tracking-[0.08em] text-muted uppercase" data-testid={`${context}-contact-${channel.id}-placeholder`} title={channel.placeholder}>
+        <span class={`border px-4 py-3 text-xs font-semibold tracking-[0.08em] uppercase ${placeholderClass}`} data-testid={`${context}-contact-${channel.id}-placeholder`} title={channel.placeholder}>
           {channel.label}: details coming soon
         </span>
       ),

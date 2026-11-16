@@ -1,0 +1,45 @@
+---
+interface Props {
+  as?: 'article' | 'div' | 'section' | 'li';
+  variant?: 'default' | 'muted' | 'accent' | 'empty';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
+  interactive?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'div',
+  variant = 'default',
+  padding = 'md',
+  interactive = false,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const base = 'relative rounded-xl border transition duration-200 motion-reduce:transition-none';
+
+const variants = {
+  default: 'border-line bg-surface shadow-card',
+  muted: 'border-line bg-surface-muted',
+  accent: 'border-accent/25 bg-accent-soft',
+  empty: 'border-dashed border-line-strong bg-surface-muted',
+};
+
+const paddings = {
+  none: '',
+  sm: 'p-5',
+  md: 'p-6',
+  lg: 'p-7',
+};
+
+const interaction = interactive
+  ? 'hover:-translate-y-1 hover:border-accent hover:shadow-card-hover motion-reduce:transform-none'
+  : '';
+
+const classes = [base, variants[variant], paddings[padding], interaction, className].filter(Boolean).join(' ');
+---
+
+<Tag class={classes} {...rest}>
+  <slot />
+</Tag>
