@@ -40,34 +40,43 @@ export const contactChannels: ContactChannel[] = [
 
 export const services: Service[] = [
   {
-    id: 'software-development',
-    title: 'Software Development',
-    kicker: 'Build what moves your business forward',
+    id: 'cloud-managed-service',
+    title: 'Cloud Managed Service',
+    kicker: 'Keep your cloud dependable',
     summary:
-      'Purpose-built digital products and business systems designed around the way your people, customers, and operations actually work.',
-    outcome: 'Turn complex operational needs into maintainable, high-value software.',
-    capabilities: ['Business applications', 'Web platforms', 'Workflow automation', 'System modernization'],
+      'Ongoing management and operational care for cloud environments, so your teams can focus on delivering value while infrastructure stays secure, observable, and cost-aware.',
+    outcome: 'Gain reliable day-to-day operations without carrying the full overhead in-house.',
+    capabilities: ['Environment monitoring', 'Incident response', 'Cost optimization', 'Security patching'],
     featured: true,
   },
   {
-    id: 'cloud-solutions',
-    title: 'Cloud Solutions',
-    kicker: 'Make your technology ready for growth',
+    id: 'cicd-automation',
+    title: 'CI/CD Automation',
+    kicker: 'Move from commit to release with confidence',
     summary:
-      'Practical cloud planning and implementation that helps teams modernize infrastructure, improve flexibility, and manage change with confidence.',
-    outcome: 'Create a scalable foundation for reliable, adaptable digital services.',
-    capabilities: ['Cloud readiness', 'Migration planning', 'Architecture advisory', 'Cost-aware modernization'],
+      'Automated build, test, and deployment pipelines that shorten feedback loops, reduce manual steps, and make releases predictable for every team.',
+    outcome: 'Ship changes faster with fewer errors and clearer release visibility.',
+    capabilities: ['Pipeline design', 'Automated testing', 'Release orchestration', 'Deployment strategies'],
     featured: true,
   },
   {
-    id: 'devops',
-    title: 'DevOps',
-    kicker: 'Release with confidence',
+    id: 'infrastructure-as-code',
+    title: 'Infrastructure as Code',
+    kicker: 'Make infrastructure repeatable by default',
     summary:
-      'Delivery practices that connect development and operations, reduce manual friction, and give technology teams a clearer path from change to value.',
-    outcome: 'Improve delivery consistency, visibility, and operational readiness.',
-    capabilities: ['Delivery automation', 'Environment consistency', 'Release practices', 'Operational visibility'],
+      'Declarative, version-controlled infrastructure that teams can provision, review, and reproduce consistently across environments.',
+    outcome: 'Reduce drift and configuration risk while scaling environments with confidence.',
+    capabilities: ['Terraform provisioning', 'Environment templates', 'Policy and review workflows', 'Configuration management'],
     featured: true,
+  },
+  {
+    id: 'code-repositories-artifact-management',
+    title: 'Managing Code Repositories and Artifact Management',
+    kicker: 'Keep source and build artifacts governed',
+    summary:
+      'Structured repository practices and artifact management that give teams clear ownership, traceable history, and dependable access to the builds they ship.',
+    outcome: 'Strengthen code governance and make every release traceable and reproducible.',
+    capabilities: ['Repository standards', 'Branching and access control', 'Artifact repositories', 'Version and dependency policy'],
   },
   {
     id: 'system-integration',
@@ -79,13 +88,13 @@ export const services: Service[] = [
     capabilities: ['Platform integration', 'Process mapping', 'Data-flow design', 'Legacy connection planning'],
   },
   {
-    id: 'managed-it',
-    title: 'Managed IT Solutions',
-    kicker: 'Keep technology dependable',
+    id: 'devops-consulting',
+    title: 'DevOps Consulting',
+    kicker: 'Adopt DevOps with a practical roadmap',
     summary:
-      'Responsive technology support and operational guidance for organizations that need a capable partner to keep essential systems working well.',
-    outcome: 'Strengthen day-to-day technology confidence and business continuity.',
-    capabilities: ['IT operations support', 'Technology advisory', 'Environment review', 'Service improvement'],
+      'Assessment and hands-on guidance that help teams improve delivery flow, tooling, and operating practices without disrupting current commitments.',
+    outcome: 'Build a realistic, measurable path toward faster and safer delivery.',
+    capabilities: ['Delivery assessment', 'Tooling strategy', 'Team enablement', 'Metrics and improvement'],
   },
 ];
 
@@ -115,12 +124,12 @@ export const industries: Industry[] = [
   {
     title: 'Professional Services',
     summary: 'Create practical digital foundations for teams that depend on reliable collaboration and delivery.',
-    capabilities: ['Custom platforms', 'Cloud solutions', 'Managed IT'],
+    capabilities: ['Custom platforms', 'Cloud managed services', 'CI/CD automation'],
   },
   {
     title: 'Growing Enterprises',
     summary: 'Modernize the technology foundations needed to scale with confidence in Myanmar and beyond.',
-    capabilities: ['Digital roadmaps', 'DevOps practices', 'Technology advisory'],
+    capabilities: ['Digital roadmaps', 'DevOps consulting', 'Technology advisory'],
   },
 ];
 
@@ -130,12 +139,12 @@ export const pageMetadata: Record<RoutePath, PageMetadata> = {
   '/': {
     title: 'Vital Tech Myanmar | Technology that creates growth',
     description:
-      'Vital Tech Myanmar delivers software development, cloud, DevOps, system integration, and managed IT solutions for ambitious businesses.',
+      'Vital Tech Myanmar delivers cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, and DevOps consulting.',
   },
   '/services': {
     title: 'Services | Vital Tech Myanmar',
     description:
-      'Explore Vital Tech Myanmar software development, cloud, DevOps, system integration, and managed IT solutions.',
+      'Explore Vital Tech Myanmar cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, and DevOps consulting.',
   },
   '/industries': {
     title: 'Industries | Vital Tech Myanmar',
@@ -150,12 +159,12 @@ export const pageMetadata: Record<RoutePath, PageMetadata> = {
   '/insights': {
     title: 'Insights | Vital Tech Myanmar',
     description:
-      'Explore Vital Tech Myanmar perspectives on software, cloud, DevOps, systems integration, and IT solutions.',
+      'Explore Vital Tech Myanmar perspectives on cloud operations, delivery automation, infrastructure as code, system integration, and DevOps consulting.',
   },
   '/contact': {
     title: 'Contact | Vital Tech Myanmar',
     description:
-      'Start a direct conversation with Vital Tech Myanmar about software, cloud, DevOps, system integration, and IT solutions.',
+      'Start a direct conversation with Vital Tech Myanmar about cloud managed services, CI/CD automation, infrastructure as code, system integration, or DevOps consulting.',
   },
 };
 
@@ -164,5 +173,5 @@ export const homeHero: HeroContent = {
   outline: 'Enterprise',
   title: 'IT Partner',
   summary:
-    'We design and deliver the software, cloud, DevOps, system integration, and IT foundations that help ambitious organizations move with confidence.',
+    'We design and deliver the cloud, delivery automation, and integration foundations that help ambitious organizations move with confidence.',
 };
