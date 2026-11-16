@@ -102,12 +102,12 @@ export const technologyStack: TechnologyIcon[] = [
   { label: 'AWS', iconPath: '/technology-icons/aws.svg' },
   { label: 'Docker', iconPath: '/technology-icons/docker.svg' },
   { label: 'Kubernetes', iconPath: '/technology-icons/kubernetes.svg' },
+  { label: 'Helm', iconPath: '/technology-icons/helm.svg' },
   { label: 'Terraform', iconPath: '/technology-icons/terraform.svg' },
-  { label: 'GitLab', iconPath: '/technology-icons/gitlab.svg' },
-  { label: 'GitHub', iconPath: '/technology-icons/github.svg' },
+  { label: 'Ansible', iconPath: '/technology-icons/ansible.svg' },
   { label: 'GitHub Actions', iconPath: '/technology-icons/github-actions.svg' },
-  { label: 'Red Hat', iconPath: '/technology-icons/red-hat.svg' },
-  { label: 'OpenStack', iconPath: '/technology-icons/openstack.svg' },
+  { label: 'GitLab', iconPath: '/technology-icons/gitlab.svg' },
+  { label: 'Argo CD', iconPath: '/technology-icons/argocd.svg' },
 ];
 
 export const industries: Industry[] = [
