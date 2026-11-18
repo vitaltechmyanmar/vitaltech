@@ -742,6 +742,8 @@ export const contactForm: ContactFormContent = {
   submittingLabel: 'Sending…',
   successMessage: 'Thank you. Your message has been sent and we will be in touch shortly.',
   validationMessage: 'Please check the highlighted fields and try again.',
+  turnstileAction: 'contact',
+  verificationMessage: 'We could not verify this submission. Please refresh the page and try again.',
   rateLimitMessage: 'Too many messages in a short period. Please wait a few minutes and try again.',
   unavailableMessage: 'The contact form is temporarily unavailable. Please use the direct contact options.',
   failureMessage: 'We could not send your message. Please try again or use the direct contact options.',

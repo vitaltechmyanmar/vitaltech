@@ -13,6 +13,9 @@ export default defineConfig({
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       CONTACT_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
       CONTACT_TO_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      PUBLIC_TURNSTILE_SITEKEY: envField.string({ context: 'client', access: 'public', optional: true }),
+      TURNSTILE_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
+      TURNSTILE_HOSTNAMES: envField.string({ context: 'server', access: 'secret', optional: true }),
     },
   },
   vite: {

@@ -1,4 +1,5 @@
 ---
+import { PUBLIC_TURNSTILE_SITEKEY } from 'astro:env/client';
 import Button from './ui/Button.astro';
 import Card from './ui/Card.astro';
 import { contactForm } from '../content/site';
@@ -25,6 +26,8 @@ const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
     method="post"
     data-contact-form
     data-validation-message={contactForm.validationMessage}
+    data-verification-message={contactForm.verificationMessage}
+    data-turnstile-action={contactForm.turnstileAction}
     data-success-message={contactForm.successMessage}
     data-failure-message={contactForm.failureMessage}
     aria-labelledby="contact-form-heading"
@@ -155,6 +158,13 @@ const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
     </div>
 
     <div
+      class="mt-6"
+      data-turnstile-widget
+      data-sitekey={PUBLIC_TURNSTILE_SITEKEY}
+      data-testid="contact-form-turnstile"
+    ></div>
+
+    <div
       data-contact-status
       data-success-message={contactForm.successMessage}
       data-failure-message={contactForm.failureMessage}
@@ -191,11 +201,40 @@ const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const submitLabel = submit?.dataset.label ?? '';
     const submittingLabel = submit?.dataset.submittingLabel ?? '';
+    const turnstileContainer = form.querySelector<HTMLElement>('[data-turnstile-widget]');
+    const sitekey = turnstileContainer?.dataset.sitekey ?? '';
+    const action = form.dataset.turnstileAction ?? '';
+    const turnstileConfigured = Boolean(turnstileContainer && sitekey && action);
+    const turnstileWindow = window as Window & {
+      turnstile?: {
+        render: (
+          container: HTMLElement,
+          options: {
+            sitekey: string;
+            action: string;
+            callback: (token: string) => void;
+            'expired-callback': () => void;
+            'error-callback': () => void;
+          },
+        ) => string;
+        reset: (widgetId: string) => void;
+      };
+    };
+
+    let submitting = false;
+    let turnstileToken = '';
+    let turnstileWidgetId: string | undefined;
+
+    const syncSubmitState = () => {
+      if (!submit) return;
+      submit.disabled = submitting || (turnstileConfigured && !turnstileToken);
+    };
 
     const setBusy = (busy: boolean) => {
+      submitting = busy;
       if (!submit) return;
-      submit.disabled = busy;
       submit.textContent = busy ? submittingLabel : submitLabel;
+      syncSubmitState();
     };
 
     const clearErrors = () => {
@@ -237,6 +276,39 @@ const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
       firstInvalid?.focus();
     };
 
+    const renderWidget = () => {
+      if (!turnstileContainer || !turnstileWindow.turnstile || turnstileWidgetId !== undefined) return;
+
+      try {
+        turnstileWidgetId = turnstileWindow.turnstile.render(turnstileContainer, {
+          sitekey,
+          action,
+          callback: (token) => {
+            turnstileToken = typeof token === 'string' ? token : '';
+            syncSubmitState();
+          },
+          'expired-callback': () => {
+            turnstileToken = '';
+            syncSubmitState();
+          },
+          'error-callback': () => {
+            turnstileToken = '';
+            syncSubmitState();
+            showStatus('error', form.dataset.verificationMessage ?? '', false);
+          },
+        });
+      } catch {
+        showStatus('error', form.dataset.verificationMessage ?? '', false);
+      }
+    };
+
+    const resetTurnstile = () => {
+      if (turnstileWidgetId !== undefined) {
+        turnstileWindow.turnstile?.reset(turnstileWidgetId);
+      }
+      turnstileToken = '';
+    };
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (submit?.disabled) return;
@@ -249,6 +321,11 @@ const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
       }
 
       if (!form.reportValidity()) return;
+
+      if (turnstileConfigured && !turnstileToken) {
+        showStatus('error', form.dataset.verificationMessage ?? '');
+        return;
+      }
 
       setBusy(true);
 
@@ -278,9 +355,30 @@ const errorClass = 'mt-2 hidden text-xs font-semibold leading-5 text-red-700';
       } catch {
         showStatus('error', form.dataset.failureMessage ?? '');
       } finally {
+        resetTurnstile();
         setBusy(false);
       }
     });
+
+    if (turnstileConfigured) {
+      syncSubmitState();
+
+      if (turnstileWindow.turnstile) {
+        renderWidget();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.async = true;
+        script.defer = true;
+        script.addEventListener('load', renderWidget, { once: true });
+        script.addEventListener(
+          'error',
+          () => showStatus('error', form.dataset.verificationMessage ?? '', false),
+          { once: true },
+        );
+        document.head.appendChild(script);
+      }
+    }
   }
 </script>
 

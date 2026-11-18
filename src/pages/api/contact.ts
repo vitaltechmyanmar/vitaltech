@@ -1,6 +1,12 @@
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
-import { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, RESEND_API_KEY } from 'astro:env/server';
+import {
+  CONTACT_FROM_EMAIL,
+  CONTACT_TO_EMAIL,
+  RESEND_API_KEY,
+  TURNSTILE_HOSTNAMES,
+  TURNSTILE_SECRET,
+} from 'astro:env/server';
 import { contactChannels, contactForm, services } from '../../content/site';
 
 export const prerender = false;
@@ -10,6 +16,15 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_PATTERN = /^[0-9+()\-.\s]{5,40}$/;
+const TURNSTILE_SITEVERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const TURNSTILE_TIMEOUT_MS = 10_000;
+const MAX_TURNSTILE_TOKEN_LENGTH = 2_048;
+const expectedTurnstileHostnames = new Set(
+  (TURNSTILE_HOSTNAMES ?? '')
+    .split(',')
+    .map((hostname) => hostname.trim())
+    .filter(Boolean),
+);
 
 const rateLimitHits = new Map<string, number[]>();
 
@@ -145,6 +160,51 @@ function defaultRecipient(): string {
   return contactChannels.find((channel) => channel.id === 'email')?.links?.[0]?.label ?? '';
 }
 
+async function verifyTurnstile(token: unknown, remoteip?: string): Promise<boolean> {
+  if (
+    typeof token !== 'string' ||
+    token.length === 0 ||
+    token.length > MAX_TURNSTILE_TOKEN_LENGTH ||
+    !TURNSTILE_SECRET ||
+    expectedTurnstileHostnames.size === 0
+  ) {
+    return false;
+  }
+
+  try {
+    const response = await fetch(TURNSTILE_SITEVERIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: TURNSTILE_SECRET,
+        response: token,
+        ...(remoteip ? { remoteip } : {}),
+      }),
+      signal: AbortSignal.timeout(TURNSTILE_TIMEOUT_MS),
+    });
+
+    if (!response.ok) return false;
+
+    const result: unknown = await response.json();
+    if (!result || typeof result !== 'object') return false;
+
+    const { success, action, hostname } = result as {
+      success?: unknown;
+      action?: unknown;
+      hostname?: unknown;
+    };
+
+    return (
+      success === true &&
+      action === contactForm.turnstileAction &&
+      typeof hostname === 'string' &&
+      expectedTurnstileHostnames.has(hostname)
+    );
+  } catch {
+    return false;
+  }
+}
+
 function buildEmail(enquiry: Enquiry): { html: string; text: string } {
   const messageHtml = escapeHtml(enquiry.message).replace(/\r?\n/g, '<br />');
   const rows: Array<[string, string]> = [
@@ -202,6 +262,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const data = await readPayload(request);
   if (!data) {
     return fail(400, contactForm.validationMessage);
+  }
+
+  if (!(await verifyTurnstile(data['cf-turnstile-response'], clientAddress))) {
+    return fail(403, contactForm.verificationMessage);
   }
 
   if ((data.website ?? '').trim()) {

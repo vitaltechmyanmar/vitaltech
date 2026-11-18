@@ -114,6 +114,8 @@ export interface ContactFormContent {
   submittingLabel: string;
   successMessage: string;
   validationMessage: string;
+  turnstileAction: string;
+  verificationMessage: string;
   rateLimitMessage: string;
   unavailableMessage: string;
   failureMessage: string;
