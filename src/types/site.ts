@@ -44,6 +44,22 @@ export interface ServiceApproachStep {
   description: string;
 }
 
+export interface ServiceIllustration {
+  src: string;
+  alt: string;
+}
+
+export interface ServiceScope {
+  included: string[];
+  inputs?: string[];
+  outputs?: string[];
+}
+
+export interface ServiceFaq {
+  question: string;
+  answer: string;
+}
+
 export interface Service {
   id: string;
   title: string;
@@ -55,9 +71,16 @@ export interface Service {
   metaTitle?: string;
   metaDescription?: string;
   intro?: string;
+  technicalSummary?: string;
+  illustration?: ServiceIllustration;
+  challenges?: string[];
   deliverables?: string[];
+  scope?: ServiceScope;
   approach?: ServiceApproachStep[];
+  tooling?: string[];
+  principles?: string[];
   idealFor?: string[];
+  faqs?: ServiceFaq[];
 }
 
 export interface ContactFormField {

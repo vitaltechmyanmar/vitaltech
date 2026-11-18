@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">CI/CD automation illustration</title>
+  <desc id="desc">Abstract pipeline showing code commit flowing through build, test, and deployment stages with automated checks.</desc>
+  <rect width="1200" height="800" rx="48" fill="#F7F9FC"/>
+  <rect x="70" y="90" width="1060" height="620" rx="36" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <path d="M180 400H1020" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+  <g>
+    <rect x="110" y="320" width="150" height="160" rx="22" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="185" y="370" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Commit</text>
+    <path d="M150 410h70M150 438h50M150 466h60" stroke="#526073" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="230" cy="452" r="14" fill="#2454D8"/>
+  </g>
+  <g>
+    <rect x="340" y="250" width="170" height="300" rx="24" fill="#DCE7FF" stroke="#2454D8" stroke-width="3"/>
+    <text x="425" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Build</text>
+    <rect x="380" y="330" width="90" height="70" rx="12" fill="#FFFFFF"/>
+    <rect x="380" y="415" width="90" height="18" rx="9" fill="#2454D8" opacity="0.8"/>
+    <rect x="380" y="445" width="90" height="18" rx="9" fill="#2454D8" opacity="0.5"/>
+    <rect x="380" y="475" width="90" height="18" rx="9" fill="#2454D8" opacity="0.3"/>
+    <path d="M403 365l14 14 30-34" stroke="#2454D8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g>
+    <rect x="590" y="250" width="170" height="300" rx="24" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="675" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Test</text>
+    <g stroke-linecap="round">
+      <rect x="630" y="335" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <path d="M648 353l10 10 18-20" stroke="#2454D8" stroke-width="5" stroke-linejoin="round"/>
+      <rect x="630" y="385" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <path d="M648 403l10 10 18-20" stroke="#2454D8" stroke-width="5" stroke-linejoin="round"/>
+      <rect x="630" y="435" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <path d="M648 453l10 10 18-20" stroke="#2454D8" stroke-width="5" stroke-linejoin="round"/>
+      <rect x="630" y="485" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <path d="M648 503l10 10 18-20" stroke="#2454D8" stroke-width="5" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <g>
+    <rect x="840" y="250" width="170" height="300" rx="24" fill="#102A4C"/>
+    <text x="925" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#F7F9FC">Deploy</text>
+    <circle cx="925" cy="380" r="46" fill="#2454D8"/>
+    <path d="M905 380l14 14 26-30" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="875" y="450" width="100" height="12" rx="6" fill="#A8C3FF" opacity="0.8"/>
+    <rect x="875" y="474" width="100" height="12" rx="6" fill="#A8C3FF" opacity="0.5"/>
+    <rect x="875" y="498" width="70" height="12" rx="6" fill="#A8C3FF" opacity="0.35"/>
+  </g>
+  <g fill="#2454D8">
+    <path d="M280 400l40-22v44z"/>
+    <path d="M530 400l40-22v44z"/>
+    <path d="M780 400l40-22v44z"/>
+  </g>
+  <g>
+    <rect x="250" y="620" width="700" height="26" rx="13" fill="#EEF3F9"/>
+    <rect x="250" y="620" width="520" height="26" rx="13" fill="#2454D8"/>
+    <circle cx="770" cy="633" r="18" fill="#FFFFFF" stroke="#2454D8" stroke-width="4"/>
+    <text x="600" y="690" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#526073">Automated flow with feedback and release visibility</text>
+  </g>
+</svg>

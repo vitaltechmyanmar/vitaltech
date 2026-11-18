@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Code repositories and artifact management illustration</title>
+  <desc id="desc">Abstract illustration of source branches, reviews, and versioned build artifacts flowing into governed releases.</desc>
+  <rect width="1200" height="800" rx="48" fill="#F7F9FC"/>
+  <rect x="70" y="80" width="1060" height="640" rx="36" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <g>
+    <rect x="120" y="150" width="360" height="500" rx="26" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="160" y="205" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#102A4C">Source repository</text>
+    <path d="M180 260v330" stroke="#526073" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="180" cy="290" r="12" fill="#2454D8"/>
+    <circle cx="180" cy="370" r="12" fill="#2454D8"/>
+    <circle cx="180" cy="450" r="12" fill="#2454D8"/>
+    <circle cx="180" cy="530" r="12" fill="#2454D8"/>
+    <path d="M180 330c60 0 60 40 120 40v120c-60 0-60 40-120 40" stroke="#2454D8" stroke-width="5" fill="none"/>
+    <circle cx="300" cy="370" r="12" fill="#102A4C"/>
+    <circle cx="300" cy="430" r="12" fill="#102A4C"/>
+    <circle cx="300" cy="490" r="12" fill="#102A4C"/>
+    <path d="M300 370v120" stroke="#102A4C" stroke-width="5" stroke-linecap="round"/>
+    <rect x="340" y="350" width="100" height="40" rx="12" fill="#DCE7FF" stroke="#2454D8"/>
+    <text x="390" y="376" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#102A4C">Review</text>
+    <rect x="210" y="270" width="190" height="10" rx="5" fill="#526073" opacity="0.4"/>
+    <rect x="210" y="352" width="70" height="10" rx="5" fill="#526073" opacity="0.4"/>
+    <rect x="330" y="412" width="110" height="10" rx="5" fill="#526073" opacity="0.4"/>
+    <rect x="210" y="512" width="160" height="10" rx="5" fill="#526073" opacity="0.4"/>
+  </g>
+  <g>
+    <path d="M480 400h90" stroke="#2454D8" stroke-width="6" stroke-linecap="round"/>
+    <path d="M550 380l40 20-40 20z" fill="#2454D8"/>
+    <rect x="600" y="220" width="220" height="360" rx="24" fill="#102A4C"/>
+    <text x="710" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#F7F9FC">Artifact registry</text>
+    <rect x="640" y="310" width="140" height="56" rx="14" fill="#1D46B8"/>
+    <text x="710" y="345" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">app:1.4.2</text>
+    <rect x="640" y="382" width="140" height="56" rx="14" fill="#2454D8"/>
+    <text x="710" y="417" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">app:1.4.1</text>
+    <rect x="640" y="454" width="140" height="56" rx="14" fill="#3B557A"/>
+    <text x="710" y="489" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">app:1.4.0</text>
+    <rect x="640" y="526" width="140" height="16" rx="8" fill="#A8C3FF" opacity="0.6"/>
+  </g>
+  <g>
+    <path d="M820 400h80" stroke="#2454D8" stroke-width="6" stroke-linecap="round"/>
+    <path d="M880 380l40 20-40 20z" fill="#2454D8"/>
+    <rect x="930" y="250" width="150" height="300" rx="24" fill="#DCE7FF" stroke="#2454D8" stroke-width="3"/>
+    <text x="1005" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Release</text>
+    <circle cx="1005" cy="380" r="34" fill="#FFFFFF" stroke="#2454D8" stroke-width="4"/>
+    <path d="M990 380l10 10 20-22" stroke="#2454D8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1005" y="450" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#102A4C">Traceable</text>
+    <text x="1005" y="478" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#102A4C">Reproducible</text>
+    <text x="1005" y="506" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#102A4C">Governed</text>
+  </g>
+</svg>

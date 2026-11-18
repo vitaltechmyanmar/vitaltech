@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Infrastructure as code illustration</title>
+  <desc id="desc">Abstract illustration of version-controlled infrastructure templates producing consistent environments.</desc>
+  <rect width="1200" height="800" rx="48" fill="#F7F9FC"/>
+  <rect x="70" y="80" width="1060" height="640" rx="36" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <g>
+    <rect x="120" y="150" width="320" height="500" rx="26" fill="#102A4C"/>
+    <text x="160" y="205" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22" font-weight="700" fill="#A8C3FF">main.tf</text>
+    <rect x="160" y="240" width="220" height="12" rx="6" fill="#DCE7FF" opacity="0.9"/>
+    <rect x="160" y="270" width="180" height="12" rx="6" fill="#7C8DA6" opacity="0.8"/>
+    <rect x="190" y="300" width="200" height="12" rx="6" fill="#2454D8"/>
+    <rect x="190" y="330" width="160" height="12" rx="6" fill="#2454D8" opacity="0.7"/>
+    <rect x="190" y="360" width="210" height="12" rx="6" fill="#2454D8" opacity="0.5"/>
+    <rect x="160" y="390" width="140" height="12" rx="6" fill="#7C8DA6" opacity="0.8"/>
+    <rect x="160" y="430" width="230" height="12" rx="6" fill="#DCE7FF" opacity="0.8"/>
+    <rect x="190" y="460" width="170" height="12" rx="6" fill="#2454D8" opacity="0.75"/>
+    <rect x="190" y="490" width="190" height="12" rx="6" fill="#2454D8" opacity="0.55"/>
+    <rect x="160" y="520" width="120" height="12" rx="6" fill="#7C8DA6" opacity="0.8"/>
+    <rect x="160" y="560" width="200" height="12" rx="6" fill="#DCE7FF" opacity="0.7"/>
+    <rect x="160" y="590" width="150" height="12" rx="6" fill="#2454D8" opacity="0.6"/>
+  </g>
+  <g>
+    <circle cx="520" cy="400" r="42" fill="#DCE7FF" stroke="#2454D8" stroke-width="4"/>
+    <path d="M500 400h40M520 380v40" stroke="#2454D8" stroke-width="6" stroke-linecap="round"/>
+    <path d="M440 400h38M562 400h38" stroke="#526073" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+    <rect x="470" y="250" width="100" height="52" rx="16" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="520" y="283" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Review</text>
+    <path d="M520 302v56" stroke="#526073" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+  </g>
+  <g>
+    <rect x="640" y="170" width="440" height="140" rx="22" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="680" y="215" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Development</text>
+    <rect x="680" y="245" width="120" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <rect x="815" y="245" width="120" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <rect x="950" y="245" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <text x="740" y="269" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Network</text>
+    <text x="875" y="269" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Compute</text>
+    <text x="995" y="269" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Policy</text>
+    <rect x="640" y="340" width="440" height="140" rx="22" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="680" y="385" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Staging</text>
+    <rect x="680" y="415" width="120" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <rect x="815" y="415" width="120" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <rect x="950" y="415" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <text x="740" y="439" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Network</text>
+    <text x="875" y="439" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Compute</text>
+    <text x="995" y="439" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Policy</text>
+    <rect x="640" y="510" width="440" height="140" rx="22" fill="#DCE7FF" stroke="#2454D8" stroke-width="3"/>
+    <text x="680" y="555" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#102A4C">Production</text>
+    <rect x="680" y="585" width="120" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <rect x="815" y="585" width="120" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <rect x="950" y="585" width="90" height="36" rx="10" fill="#FFFFFF" stroke="#2454D8"/>
+    <text x="740" y="609" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Network</text>
+    <text x="875" y="609" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Compute</text>
+    <text x="995" y="609" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#2454D8">Policy</text>
+  </g>
+  <path d="M600 240h40M600 410h40M600 580h40" stroke="#2454D8" stroke-width="5" stroke-linecap="round"/>
+</svg>

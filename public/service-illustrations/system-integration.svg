@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">System integration illustration</title>
+  <desc id="desc">Abstract illustration of multiple business systems connected through mapped data flows and an integration layer.</desc>
+  <rect width="1200" height="800" rx="48" fill="#F7F9FC"/>
+  <rect x="70" y="80" width="1060" height="640" rx="36" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <g stroke="#2454D8" stroke-width="5" stroke-linecap="round" opacity="0.9">
+    <path d="M300 220C430 220 470 360 560 390"/>
+    <path d="M300 400H560"/>
+    <path d="M300 580C430 580 470 440 560 410"/>
+    <path d="M640 390C730 360 770 220 900 220"/>
+    <path d="M640 400H900"/>
+    <path d="M640 410C730 440 770 580 900 580"/>
+  </g>
+  <g>
+    <circle cx="600" cy="400" r="92" fill="#DCE7FF" stroke="#2454D8" stroke-width="4"/>
+    <circle cx="600" cy="400" r="58" fill="#FFFFFF" stroke="#2454D8" stroke-width="4"/>
+    <path d="M575 400h50M600 375v50" stroke="#2454D8" stroke-width="6" stroke-linecap="round"/>
+    <text x="600" y="520" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#102A4C">Integration layer</text>
+  </g>
+  <g>
+    <rect x="140" y="150" width="170" height="120" rx="20" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <rect x="170" y="182" width="70" height="10" rx="5" fill="#102A4C" opacity="0.8"/>
+    <rect x="170" y="206" width="110" height="10" rx="5" fill="#526073" opacity="0.5"/>
+    <rect x="170" y="228" width="90" height="10" rx="5" fill="#526073" opacity="0.35"/>
+    <text x="225" y="295" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Platform A</text>
+
+    <rect x="140" y="340" width="170" height="120" rx="20" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <rect x="170" y="372" width="80" height="10" rx="5" fill="#102A4C" opacity="0.8"/>
+    <rect x="170" y="396" width="100" height="10" rx="5" fill="#526073" opacity="0.5"/>
+    <rect x="170" y="418" width="70" height="10" rx="5" fill="#526073" opacity="0.35"/>
+    <text x="225" y="485" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Legacy system</text>
+
+    <rect x="140" y="530" width="170" height="120" rx="20" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <rect x="170" y="562" width="75" height="10" rx="5" fill="#102A4C" opacity="0.8"/>
+    <rect x="170" y="586" width="105" height="10" rx="5" fill="#526073" opacity="0.5"/>
+    <rect x="170" y="608" width="85" height="10" rx="5" fill="#526073" opacity="0.35"/>
+    <text x="225" y="675" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Data source</text>
+  </g>
+  <g>
+    <rect x="890" y="150" width="170" height="120" rx="20" fill="#102A4C"/>
+    <rect x="920" y="182" width="70" height="10" rx="5" fill="#A8C3FF" opacity="0.8"/>
+    <rect x="920" y="206" width="110" height="10" rx="5" fill="#A8C3FF" opacity="0.45"/>
+    <rect x="920" y="228" width="90" height="10" rx="5" fill="#A8C3FF" opacity="0.3"/>
+    <text x="975" y="295" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Platform B</text>
+
+    <rect x="890" y="340" width="170" height="120" rx="20" fill="#102A4C"/>
+    <rect x="920" y="372" width="80" height="10" rx="5" fill="#A8C3FF" opacity="0.8"/>
+    <rect x="920" y="396" width="100" height="10" rx="5" fill="#A8C3FF" opacity="0.45"/>
+    <rect x="920" y="418" width="70" height="10" rx="5" fill="#A8C3FF" opacity="0.3"/>
+    <text x="975" y="485" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Operations app</text>
+
+    <rect x="890" y="530" width="170" height="120" rx="20" fill="#102A4C"/>
+    <rect x="920" y="562" width="75" height="10" rx="5" fill="#A8C3FF" opacity="0.8"/>
+    <rect x="920" y="586" width="105" height="10" rx="5" fill="#A8C3FF" opacity="0.45"/>
+    <rect x="920" y="608" width="85" height="10" rx="5" fill="#A8C3FF" opacity="0.3"/>
+    <text x="975" y="675" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Analytics</text>
+  </g>
+  <g fill="#2454D8">
+    <circle cx="430" cy="286" r="10"/><circle cx="430" cy="400" r="10"/><circle cx="430" cy="514" r="10"/>
+    <circle cx="770" cy="286" r="10"/><circle cx="770" cy="400" r="10"/><circle cx="770" cy="514" r="10"/>
+  </g>
+</svg>

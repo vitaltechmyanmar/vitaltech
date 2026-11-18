@@ -1,10 +1,11 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import Badge from '../../components/ui/Badge.astro';
 import Button from '../../components/ui/Button.astro';
 import CallToAction from '../../components/CallToAction.astro';
 import Card from '../../components/ui/Card.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
-import { services } from '../../content/site';
+import { services, technologyStack } from '../../content/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getServiceMetadata, getServicePath } from '../../lib/site';
 import type { Service } from '../../types/site';
@@ -23,10 +24,24 @@ interface Props {
 const { service } = Astro.props;
 const metadata = getServiceMetadata(service);
 const pathname = getServicePath(service);
+const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
 const intro = service.intro ?? service.summary;
+const technicalSummary = service.technicalSummary ?? intro;
 const deliverables = service.deliverables ?? service.capabilities;
 const relatedServices = services.filter((item) => item.id !== service.id).slice(0, 3);
-const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
+const toolingItems = (service.tooling ?? []).map((label) => {
+  const match = technologyStack.find((technology) => technology.label === label);
+  return match ?? { label, iconPath: '' };
+});
+const sections = [
+  service.challenges?.length ? { id: 'challenges', label: 'Challenges' } : null,
+  service.scope ? { id: 'scope', label: 'Scope' } : null,
+  service.approach?.length ? { id: 'approach', label: 'Delivery phases' } : null,
+  toolingItems.length ? { id: 'tooling', label: 'Tooling' } : null,
+  service.principles?.length ? { id: 'principles', label: 'Principles' } : null,
+  deliverables.length ? { id: 'deliverables', label: 'Deliverables' } : null,
+  service.faqs?.length ? { id: 'faq', label: 'FAQ' } : null,
+].filter((section): section is { id: string; label: string } => Boolean(section));
 ---
 
 <BaseLayout metadata={metadata} pathname={pathname}>
@@ -40,74 +55,273 @@ const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
       >
         <span aria-hidden="true">←</span> All services
       </a>
-      <p class="eyebrow mt-8">{service.kicker}</p>
-      <h1 class="display-title mt-6 max-w-4xl text-[clamp(2.75rem,8vw,6.5rem)] tracking-[-0.05em] text-ink">
-        {service.title}
-      </h1>
-      <p class="mt-8 max-w-3xl text-base leading-8 text-muted md:text-lg">{service.summary}</p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <Button href="/contact" variant="primary" data-testid="service-detail-contact-link">Discuss this service</Button>
-        <Button href="/services" variant="secondary" data-testid="service-detail-services-link">View all services</Button>
+
+      <div class="mt-8 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        <div>
+          <p class="eyebrow">Technical service profile</p>
+          <p class="mt-4 text-xs font-bold tracking-[0.1em] text-muted uppercase">{service.kicker}</p>
+          <h1 class="display-title mt-5 max-w-4xl text-[clamp(2.6rem,7vw,5.8rem)] tracking-[-0.05em] text-ink">
+            {service.title}
+          </h1>
+          <p class="mt-7 max-w-2xl text-base leading-8 text-muted md:text-lg">{service.summary}</p>
+          <div class="mt-8 flex flex-wrap gap-2">
+            <Badge tone="accent">0{serviceIndex} / 0{services.length}</Badge>
+            {service.featured && <Badge tone="neutral">Core capability</Badge>}
+            <Badge tone="neutral">For technical leads</Badge>
+          </div>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <Button href="/contact" variant="primary" data-testid="service-detail-contact-link">Discuss technical requirements</Button>
+            <Button href="/services" variant="secondary" data-testid="service-detail-services-link">View all services</Button>
+          </div>
+        </div>
+
+        {service.illustration && (
+          <Card padding="none" class="overflow-hidden border-accent/20 bg-surface shadow-card">
+            <div class="border-b border-line bg-surface-muted px-5 py-4">
+              <p class="text-xs font-black tracking-[0.1em] text-accent uppercase">Service illustration</p>
+              <p class="mt-1 text-sm text-muted">{service.illustration.alt}</p>
+            </div>
+            <div class="p-4 sm:p-6">
+              <img
+                src={service.illustration.src}
+                alt={service.illustration.alt}
+                width="1200"
+                height="800"
+                loading="eager"
+                decoding="async"
+                class="h-auto w-full rounded-lg border border-line bg-canvas"
+              />
+            </div>
+          </Card>
+        )}
       </div>
+
+      {sections.length > 0 && (
+        <nav class="mt-12 border-y border-line py-4" aria-label="On this page">
+          <ul class="flex flex-wrap gap-2">
+            {sections.map((section) => (
+              <li>
+                <a
+                  href={`#${section.id}`}
+                  class="inline-flex min-h-9 items-center rounded-md border border-line bg-surface px-3 py-2 text-[0.68rem] font-black tracking-[0.08em] text-muted uppercase transition hover:border-accent hover:bg-accent-soft hover:text-accent"
+                >
+                  {section.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </div>
   </section>
 
   <section class="section-frame pb-20 md:pb-28">
-    <div class="grid gap-8 border-y border-line py-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-16">
+    <div class="grid gap-8 border-b border-line pb-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:pb-16">
       <div>
         <p class="text-sm font-black tracking-[0.14em] text-accent uppercase">0{serviceIndex}</p>
-        <h2 class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink md:text-4xl">Service overview</h2>
+        <h2 class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink md:text-4xl">Technical overview</h2>
+        <p class="mt-5 max-w-md text-sm leading-7 text-muted">Context, operating intent, and the technical value this service is designed to deliver.</p>
       </div>
-      <div>
+      <div class="space-y-6">
         <p class="text-base leading-8 text-muted md:text-lg">{intro}</p>
-        <p class="mt-8 border-l-2 border-accent pl-5 text-base font-semibold leading-8 text-ink">{service.outcome}</p>
+        <p class="text-base leading-8 text-ink/90">{technicalSummary}</p>
+        <Card variant="accent" padding="md" class="border-l-4 border-l-accent">
+          <p class="text-xs font-black tracking-[0.1em] text-accent uppercase">Primary outcome</p>
+          <p class="mt-3 text-base font-semibold leading-8 text-ink">{service.outcome}</p>
+        </Card>
       </div>
     </div>
   </section>
 
-  <section class="section-frame pb-24 md:pb-32">
-    <SectionHeading
-      eyebrow="What’s included"
-      title="Capabilities and deliverables."
-      summary="Practical support shaped around the outcomes this service is designed to achieve."
-    />
-    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {deliverables.map((item) => (
-        <Card as="li" variant="muted" padding="md" class="text-sm leading-7 text-ink">
-          {item}
-        </Card>
-      ))}
-    </ul>
-  </section>
+  {service.challenges && service.challenges.length > 0 && (
+    <section id="challenges" class="section-frame scroll-mt-24 pb-24 md:pb-32">
+      <SectionHeading
+        eyebrow="Problem space"
+        title="Technical challenges this service addresses."
+        summary="Common constraints and failure modes we account for when designing and delivering this capability."
+      />
+      <ul class="mt-12 grid gap-4 md:grid-cols-2">
+        {service.challenges.map((challenge) => (
+          <Card as="li" padding="md" class="flex gap-4">
+            <span aria-hidden="true" class="mt-1 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-accent-soft text-xs font-black text-accent">!</span>
+            <p class="text-sm leading-7 text-muted"><span class="font-semibold text-ink">{challenge}</span></p>
+          </Card>
+        ))}
+      </ul>
+    </section>
+  )}
 
-  {service.approach && service.approach.length > 0 && (
-    <section class="border-y border-line bg-surface-muted py-24 md:py-32">
+  {service.scope && (
+    <section id="scope" class="border-y border-line bg-surface-muted py-24 md:py-32">
       <div class="section-frame">
         <SectionHeading
-          eyebrow="How we work"
-          title="A practical approach."
-          summary="We focus on clear steps that fit your current context and create measurable progress."
+          eyebrow="Engagement scope"
+          title="Boundaries, inputs, and outputs."
+          summary="A clear view of what is covered, what is needed from your team, and what you can expect to receive."
         />
-        <ol class="mt-12 grid gap-4 md:grid-cols-2">
-          {service.approach.map((step, index) => (
-            <Card as="li" padding="lg">
-              <p class="text-xs font-black tracking-[0.12em] text-accent uppercase">Step 0{index + 1}</p>
-              <h3 class="mt-4 text-xl font-black tracking-[-0.03em] text-ink">{step.title}</h3>
-              <p class="mt-3 text-sm leading-7 text-muted">{step.description}</p>
+        <div class="mt-12 grid gap-4 lg:grid-cols-3">
+          <Card as="article" padding="lg" class="h-full">
+            <p class="eyebrow">Included</p>
+            <h3 class="mt-3 text-xl font-black tracking-[-0.03em] text-ink">What we deliver</h3>
+            <ul class="mt-6 space-y-3">
+              {service.scope.included.map((item) => (
+                <li class="flex gap-3 text-sm leading-7 text-muted">
+                  <span aria-hidden="true" class="mt-2 size-1.5 shrink-0 rounded-full bg-accent"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+          {service.scope.inputs && service.scope.inputs.length > 0 && (
+            <Card as="article" padding="lg" class="h-full">
+              <p class="eyebrow">Inputs</p>
+              <h3 class="mt-3 text-xl font-black tracking-[-0.03em] text-ink">What we need from you</h3>
+              <ul class="mt-6 space-y-3">
+                {service.scope.inputs.map((item) => (
+                  <li class="flex gap-3 text-sm leading-7 text-muted">
+                    <span aria-hidden="true" class="mt-2 size-1.5 shrink-0 rounded-full bg-line-strong"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+          {service.scope.outputs && service.scope.outputs.length > 0 && (
+            <Card as="article" padding="lg" class="h-full border-accent/20 bg-accent-soft/40">
+              <p class="eyebrow">Outputs</p>
+              <h3 class="mt-3 text-xl font-black tracking-[-0.03em] text-ink">Artifacts and outcomes</h3>
+              <ul class="mt-6 space-y-3">
+                {service.scope.outputs.map((item) => (
+                  <li class="flex gap-3 text-sm leading-7 text-muted">
+                    <span aria-hidden="true" class="mt-2 size-1.5 shrink-0 rounded-full bg-accent"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {service.approach && service.approach.length > 0 && (
+    <section id="approach" class="section-frame scroll-mt-24 py-24 md:py-32">
+      <SectionHeading
+        eyebrow="Delivery model"
+        title="Phased approach and execution flow."
+        summary="A structured sequence of activities designed to produce clarity early, reduce risk, and enable sustainable operations."
+      />
+      <ol class="mt-12 grid gap-4 md:grid-cols-2">
+        {service.approach.map((step, index) => (
+          <Card as="li" padding="lg" class="relative overflow-hidden">
+            <p class="text-xs font-black tracking-[0.12em] text-accent uppercase">Phase 0{index + 1}</p>
+            <h3 class="mt-4 text-xl font-black tracking-[-0.03em] text-ink">{step.title}</h3>
+            <p class="mt-3 text-sm leading-7 text-muted">{step.description}</p>
+          </Card>
+        ))}
+      </ol>
+    </section>
+  )}
+
+  {toolingItems.length > 0 && (
+    <section id="tooling" class="border-y border-line bg-surface-muted py-24 md:py-32">
+      <div class="section-frame">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <SectionHeading
+            eyebrow="Tooling and platforms"
+            title="Technologies commonly involved."
+            summary="Tools and platforms we work with in this service area, selected and adapted to your environment and constraints."
+          />
+          <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3" role="list">
+            {toolingItems.map((tool) => (
+              <Card as="li" padding="none" class="flex min-h-32 flex-col justify-between p-4 sm:p-5">
+                <div class="flex size-11 items-center justify-center rounded-md border border-line bg-surface p-2 shadow-sm">
+                  {tool.iconPath ? (
+                    <img src={tool.iconPath} alt="" width="28" height="28" loading="lazy" decoding="async" class="max-h-7 max-w-7 object-contain" />
+                  ) : (
+                    <span class="text-xs font-black text-accent">●</span>
+                  )}
+                </div>
+                <span class="mt-5 text-sm font-black tracking-[-0.02em] text-ink">{tool.label}</span>
+              </Card>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {service.principles && service.principles.length > 0 && (
+    <section id="principles" class="section-frame scroll-mt-24 py-24 md:py-32">
+      <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <SectionHeading
+          eyebrow="Engineering principles"
+          title="Practices and controls we emphasize."
+          summary="Guiding principles that shape how we design, implement, and operate this service for technical teams."
+        />
+        <ul class="grid gap-4">
+          {service.principles.map((principle, index) => (
+            <Card as="li" padding="md" class="flex gap-4">
+              <span class="mt-0.5 inline-flex h-7 min-w-7 items-center justify-center rounded-md border border-accent/20 bg-accent-soft px-2 text-xs font-black text-accent">0{index + 1}</span>
+              <p class="text-sm leading-7 text-muted">{principle}</p>
             </Card>
           ))}
-        </ol>
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section id="deliverables" class="border-y border-line bg-surface-muted py-24 md:py-32">
+    <div class="section-frame">
+      <SectionHeading
+        eyebrow="Detailed deliverables"
+        title="Concrete outputs and artifacts."
+        summary="Tangible work products, configurations, and documentation produced through this service."
+      />
+      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {deliverables.map((item) => (
+          <Card as="li" variant="default" padding="md" class="text-sm leading-7 text-ink">
+            <span class="mb-3 block h-1.5 w-8 rounded-full bg-accent"></span>
+            {item}
+          </Card>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {service.faqs && service.faqs.length > 0 && (
+    <section id="faq" class="section-frame scroll-mt-24 py-24 md:py-32">
+      <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <SectionHeading
+          eyebrow="Technical FAQ"
+          title="Common questions from engineering teams."
+          summary="Answers to practical questions about scope, approach, and how this service fits your environment."
+        />
+        <div class="space-y-3">
+          {service.faqs.map((faq) => (
+            <Card as="details" padding="none" class="group overflow-hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-left text-sm font-black tracking-[-0.01em] text-ink marker:content-none [&::-webkit-details-marker]:hidden">
+                <span>{faq.question}</span>
+                <span aria-hidden="true" class="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-line bg-surface-muted text-accent transition group-open:rotate-45">+</span>
+              </summary>
+              <div class="border-t border-line px-5 py-4">
+                <p class="text-sm leading-7 text-muted">{faq.answer}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   )}
 
   {service.idealFor && service.idealFor.length > 0 && (
-    <section class="section-frame py-24 md:py-32">
-      <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+    <section class="border-y border-line bg-surface-muted py-24 md:py-32">
+      <div class="section-frame grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <SectionHeading
-          eyebrow="Good fit"
-          title="Who this service is for."
-          summary="This service is especially useful when teams need clarity, consistency, and support in these areas."
+          eyebrow="Fit and context"
+          title="When this service is most relevant."
+          summary="Situations and team contexts where this capability typically provides the most value."
         />
         <ul class="grid gap-4">
           {service.idealFor.map((item) => (
@@ -120,11 +334,11 @@ const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
     </section>
   )}
 
-  <section class="section-frame pb-24 md:pb-32">
+  <section class="section-frame py-24 md:py-32">
     <SectionHeading
-      eyebrow="Explore more"
-      title="Related services."
-      summary="See other ways we can help strengthen your technology foundations and delivery capability."
+      eyebrow="Related capabilities"
+      title="Continue exploring."
+      summary="Related services that often complement this capability across cloud, delivery, and operations."
     />
     <div class="mt-12 grid gap-4 md:grid-cols-3">
       {relatedServices.map((item) => {
@@ -149,7 +363,7 @@ const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
 
   <CallToAction
     context={`service-${service.id}`}
-    title={`Let’s talk about ${service.title}.`}
-    summary="Share your goals and current challenges, and we’ll help you identify a practical next step."
+    title={`Discuss ${service.title} with our team.`}
+    summary="Share your environment, constraints, and goals. We can help define scope, priorities, and a practical technical path forward."
   />
 </BaseLayout>

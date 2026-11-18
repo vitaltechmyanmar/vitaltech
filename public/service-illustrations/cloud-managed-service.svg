@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Cloud managed service illustration</title>
+  <desc id="desc">Abstract illustration of monitored cloud infrastructure with connected nodes, health signals, and operational controls.</desc>
+  <rect width="1200" height="800" rx="48" fill="#F7F9FC"/>
+  <rect x="70" y="70" width="1060" height="660" rx="36" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <g stroke="#CBD5E1" stroke-width="2">
+    <path d="M70 220H1130"/>
+    <path d="M420 220V730"/>
+    <path d="M820 220V730"/>
+  </g>
+  <rect x="120" y="120" width="260" height="54" rx="27" fill="#DCE7FF"/>
+  <circle cx="152" cy="147" r="8" fill="#2454D8"/>
+  <rect x="172" y="140" width="170" height="14" rx="7" fill="#2454D8" opacity="0.35"/>
+  <g>
+    <rect x="120" y="270" width="250" height="150" rx="20" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <rect x="150" y="305" width="120" height="12" rx="6" fill="#102A4C" opacity="0.8"/>
+    <rect x="150" y="334" width="170" height="10" rx="5" fill="#526073" opacity="0.5"/>
+    <rect x="150" y="356" width="140" height="10" rx="5" fill="#526073" opacity="0.4"/>
+    <rect x="150" y="388" width="90" height="10" rx="5" fill="#2454D8"/>
+    <rect x="120" y="450" width="250" height="150" rx="20" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <rect x="150" y="485" width="130" height="12" rx="6" fill="#102A4C" opacity="0.8"/>
+    <rect x="150" y="514" width="160" height="10" rx="5" fill="#526073" opacity="0.5"/>
+    <rect x="150" y="536" width="120" height="10" rx="5" fill="#526073" opacity="0.4"/>
+    <rect x="150" y="568" width="100" height="10" rx="5" fill="#2454D8"/>
+  </g>
+  <g>
+    <path d="M500 360c0-44 36-80 80-80 12 0 24 3 34 8 18-34 54-58 96-58 60 0 108 48 108 108 0 4 0 8-1 12 33 10 57 41 57 77 0 44-36 80-80 80H540c-39 0-70-31-70-70 0-34 24-62 56-69  -16-2-26-4-26-8z" fill="#DCE7FF" stroke="#2454D8" stroke-width="4"/>
+    <circle cx="575" cy="410" r="26" fill="#FFFFFF" stroke="#2454D8" stroke-width="4"/>
+    <circle cx="665" cy="370" r="26" fill="#FFFFFF" stroke="#2454D8" stroke-width="4"/>
+    <circle cx="755" cy="420" r="26" fill="#FFFFFF" stroke="#2454D8" stroke-width="4"/>
+    <path d="M601 404l38-24M691 382l38 28M601 420h128" stroke="#102A4C" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="575" cy="410" r="8" fill="#2454D8"/>
+    <circle cx="665" cy="370" r="8" fill="#2454D8"/>
+    <circle cx="755" cy="420" r="8" fill="#2454D8"/>
+  </g>
+  <g>
+    <rect x="870" y="270" width="210" height="110" rx="18" fill="#102A4C"/>
+    <text x="900" y="315" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#F7F9FC">Health signals</text>
+    <rect x="900" y="335" width="150" height="10" rx="5" fill="#A8C3FF" opacity="0.7"/>
+    <rect x="900" y="352" width="110" height="10" rx="5" fill="#A8C3FF" opacity="0.45"/>
+    <rect x="870" y="405" width="210" height="110" rx="18" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="900" y="450" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Cost &amp; posture</text>
+    <path d="M900 492h35l20-24 24 34 18-18h53" stroke="#2454D8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="870" y="540" width="210" height="110" rx="18" fill="#EEF3F9" stroke="#CBD5E1"/>
+    <text x="900" y="585" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#102A4C">Response flow</text>
+    <circle cx="915" cy="618" r="10" fill="#2454D8"/>
+    <circle cx="975" cy="618" r="10" fill="#7C8DA6"/>
+    <circle cx="1035" cy="618" r="10" fill="#7C8DA6"/>
+    <path d="M925 618h40M985 618h40" stroke="#526073" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <path d="M370 345c40 0 60 30 80 30s40-30 80-30" stroke="#2454D8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M370 525c40 0 60-20 80-20s40 20 80 20" stroke="#2454D8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M790 375h80M790 455h80M790 535h80" stroke="#2454D8" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 10"/>
+</svg>
