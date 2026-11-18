@@ -17,6 +17,11 @@ There is no lint, format, typecheck, or test script. Do not run `npm test`. `npm
 
 A successful build produces six prerendered pages plus `robots.txt` and sitemap files in `dist/client/`, and the Vercel Build Output API bundle in `.vercel/output/` (static assets plus the `/api/contact` function). Confirm no errors and inspect `dist/` only after success. Both `dist/` and `.vercel/` are generated and Git-ignored; never edit them by hand. Deploy through Vercel; uploading `dist/client/` to static-only hosting will not run the contact form. `astro preview` does not work with the Vercel adapter — use `npm run dev` or `vercel dev` to test the form locally.
 
+## Workflow preferences
+
+- Do not run local build, dev, preview, or test commands in this WSL checkout. The user validates through Vercel.
+- Do not commit or push changes. Leave changes in the working tree for the user to review and deploy manually.
+
 ## Content and routes
 
 - All copy, navigation, contact links, services, industries, insights, and page metadata are centralized in `src/content/site.ts`; types live in `src/types/site.ts`. Do not hardcode or duplicate site copy/contact details in components or pages.
@@ -49,3 +54,4 @@ A successful build produces six prerendered pages plus `robots.txt` and sitemap 
 Append a dated entry here for every code or configuration change.
 
 - 2026-11-18: Added Cloudflare Turnstile protection to the contact form: typed env fields, explicit widget with token reset, canonical `siteverify` gate, centralized action/message copy, Vercel env documentation, and this change-log rule.
+- 2026-11-18: Added workflow preferences to avoid local WSL runs and to leave changes uncommitted and unpushed for manual Vercel deployment.
