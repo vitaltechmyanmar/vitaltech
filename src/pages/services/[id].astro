@@ -1,0 +1,155 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Button from '../../components/ui/Button.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import Card from '../../components/ui/Card.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { services } from '../../content/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getServiceMetadata, getServicePath } from '../../lib/site';
+import type { Service } from '../../types/site';
+
+export const getStaticPaths = (() => {
+  return services.map((service) => ({
+    params: { id: service.id },
+    props: { service },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const metadata = getServiceMetadata(service);
+const pathname = getServicePath(service);
+const intro = service.intro ?? service.summary;
+const deliverables = service.deliverables ?? service.capabilities;
+const relatedServices = services.filter((item) => item.id !== service.id).slice(0, 3);
+const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
+---
+
+<BaseLayout metadata={metadata} pathname={pathname}>
+  <section class="relative overflow-hidden py-20 md:py-28">
+    <div class="ambient-orb -top-52 left-[18%] md:left-[26%]"></div>
+    <div class="section-frame relative">
+      <a
+        href="/services"
+        class="inline-flex items-center gap-2 text-xs font-black tracking-[0.1em] text-accent uppercase transition hover:text-accent-hover"
+        data-testid="service-detail-back-link"
+      >
+        <span aria-hidden="true">←</span> All services
+      </a>
+      <p class="eyebrow mt-8">{service.kicker}</p>
+      <h1 class="display-title mt-6 max-w-4xl text-[clamp(2.75rem,8vw,6.5rem)] tracking-[-0.05em] text-ink">
+        {service.title}
+      </h1>
+      <p class="mt-8 max-w-3xl text-base leading-8 text-muted md:text-lg">{service.summary}</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <Button href="/contact" variant="primary" data-testid="service-detail-contact-link">Discuss this service</Button>
+        <Button href="/services" variant="secondary" data-testid="service-detail-services-link">View all services</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-frame pb-20 md:pb-28">
+    <div class="grid gap-8 border-y border-line py-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-16">
+      <div>
+        <p class="text-sm font-black tracking-[0.14em] text-accent uppercase">0{serviceIndex}</p>
+        <h2 class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink md:text-4xl">Service overview</h2>
+      </div>
+      <div>
+        <p class="text-base leading-8 text-muted md:text-lg">{intro}</p>
+        <p class="mt-8 border-l-2 border-accent pl-5 text-base font-semibold leading-8 text-ink">{service.outcome}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-frame pb-24 md:pb-32">
+    <SectionHeading
+      eyebrow="What’s included"
+      title="Capabilities and deliverables."
+      summary="Practical support shaped around the outcomes this service is designed to achieve."
+    />
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {deliverables.map((item) => (
+        <Card as="li" variant="muted" padding="md" class="text-sm leading-7 text-ink">
+          {item}
+        </Card>
+      ))}
+    </ul>
+  </section>
+
+  {service.approach && service.approach.length > 0 && (
+    <section class="border-y border-line bg-surface-muted py-24 md:py-32">
+      <div class="section-frame">
+        <SectionHeading
+          eyebrow="How we work"
+          title="A practical approach."
+          summary="We focus on clear steps that fit your current context and create measurable progress."
+        />
+        <ol class="mt-12 grid gap-4 md:grid-cols-2">
+          {service.approach.map((step, index) => (
+            <Card as="li" padding="lg">
+              <p class="text-xs font-black tracking-[0.12em] text-accent uppercase">Step 0{index + 1}</p>
+              <h3 class="mt-4 text-xl font-black tracking-[-0.03em] text-ink">{step.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-muted">{step.description}</p>
+            </Card>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  {service.idealFor && service.idealFor.length > 0 && (
+    <section class="section-frame py-24 md:py-32">
+      <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <SectionHeading
+          eyebrow="Good fit"
+          title="Who this service is for."
+          summary="This service is especially useful when teams need clarity, consistency, and support in these areas."
+        />
+        <ul class="grid gap-4">
+          {service.idealFor.map((item) => (
+            <Card as="li" padding="md" class="border-l-2 border-l-accent text-sm leading-7 text-muted">
+              <span class="font-semibold text-ink">{item}</span>
+            </Card>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="section-frame pb-24 md:pb-32">
+    <SectionHeading
+      eyebrow="Explore more"
+      title="Related services."
+      summary="See other ways we can help strengthen your technology foundations and delivery capability."
+    />
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      {relatedServices.map((item) => {
+        const itemIndex = services.findIndex((entry) => entry.id === item.id) + 1;
+        return (
+          <Card as="article" interactive class="group flex h-full flex-col">
+            <p class="text-xs font-black tracking-[0.12em] text-accent uppercase">0{itemIndex}</p>
+            <h3 class="mt-6 text-xl font-black tracking-[-0.04em] text-ink">{item.title}</h3>
+            <p class="mt-3 text-sm leading-7 text-muted">{item.summary}</p>
+            <a
+              href={getServicePath(item)}
+              class="mt-auto inline-flex pt-7 text-xs font-black tracking-[0.1em] text-accent uppercase transition hover:text-accent-hover"
+              data-testid={`related-service-${item.id}-link`}
+            >
+              View service <span aria-hidden="true" class="ml-2">↗</span>
+            </a>
+          </Card>
+        );
+      })}
+    </div>
+  </section>
+
+  <CallToAction
+    context={`service-${service.id}`}
+    title={`Let’s talk about ${service.title}.`}
+    summary="Share your goals and current challenges, and we’ll help you identify a practical next step."
+  />
+</BaseLayout>

@@ -6,6 +6,10 @@ export type RoutePath =
   | '/insights'
   | '/contact';
 
+export type ServiceRoutePath = `/services/${string}`;
+
+export type PagePath = RoutePath | ServiceRoutePath;
+
 export interface PageMetadata {
   title: string;
   description: string;
@@ -35,6 +39,11 @@ export interface TechnologyIcon {
   iconPath: string;
 }
 
+export interface ServiceApproachStep {
+  title: string;
+  description: string;
+}
+
 export interface Service {
   id: string;
   title: string;
@@ -43,6 +52,12 @@ export interface Service {
   outcome: string;
   capabilities: string[];
   featured?: boolean;
+  metaTitle?: string;
+  metaDescription?: string;
+  intro?: string;
+  deliverables?: string[];
+  approach?: ServiceApproachStep[];
+  idealFor?: string[];
 }
 
 export interface ContactFormField {

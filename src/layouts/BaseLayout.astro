@@ -1,18 +1,19 @@
 ---
 import { siteName, siteUrl } from '../content/site';
-import { getCanonicalUrl } from '../lib/site';
-import type { PageMetadata, RoutePath } from '../types/site';
+import { getActiveRoutePath, getCanonicalUrl } from '../lib/site';
+import type { PageMetadata, PagePath } from '../types/site';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import '../styles/global.css';
 
 interface Props {
   metadata: PageMetadata;
-  pathname: RoutePath;
+  pathname: PagePath;
 }
 
 const { metadata, pathname } = Astro.props;
 const canonicalUrl = getCanonicalUrl(pathname);
+const activePath = getActiveRoutePath(pathname);
 const pageTitle = metadata.ogTitle ?? metadata.title;
 const pageDescription = metadata.ogDescription ?? metadata.description;
 const ogImage = new URL('/og-preview.svg', siteUrl).toString();
@@ -40,7 +41,7 @@ const ogImage = new URL('/og-preview.svg', siteUrl).toString();
       Skip to main content
     </a>
     <div class="page-shell min-h-screen">
-      <SiteHeader pathname={pathname} />
+      <SiteHeader pathname={activePath} />
       <main id="main-content">
         <slot />
       </main>
