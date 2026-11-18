@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="OpenTelemetry">
+  <circle cx="42" cy="42" r="10" fill="#F5A800"/>
+  <circle cx="66" cy="30" r="10" fill="#425CC7"/>
+  <circle cx="90" cy="42" r="10" fill="#425CC7"/>
+  <path d="M42 52v34M66 40v46M90 52v34" stroke="#425CC7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M22 86c10-16 26-24 44-24s34 8 44 24" fill="none" stroke="#F5A800" stroke-width="10" stroke-linecap="round"/>
+  <path d="M34 100c8-10 18-15 30-15s22 5 30 15" fill="none" stroke="#425CC7" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="64" cy="104" r="8" fill="#F5A800"/>
+</svg>

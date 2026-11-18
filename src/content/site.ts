@@ -117,7 +117,7 @@ export const services: Service[] = [
           'We analyze trends across incidents, performance, and spend to recommend practical improvements and evolve runbooks, controls, and routines over time.',
       },
     ],
-    tooling: ['AWS'],
+    tooling: ['AWS', 'Linux', 'Grafana', 'Prometheus', 'OpenTelemetry'],
     principles: [
       'Observability before optimization: establish clear signals and ownership before tuning',
       'Controlled change: treat maintenance and patching as planned, traceable operational work',
@@ -343,7 +343,7 @@ export const services: Service[] = [
           'We refine patterns, document operations, and support adoption so teams can manage infrastructure changes safely and evolve the codebase with confidence.',
       },
     ],
-    tooling: ['Terraform', 'AWS', 'Ansible'],
+    tooling: ['Terraform', 'AWS', 'Ansible', 'Linux'],
     principles: [
       'Declarative, idempotent definitions with changes driven through version control',
       'Environment parity through reusable modules and explicit configuration boundaries',
@@ -455,7 +455,7 @@ export const services: Service[] = [
           'We document practices, support team adoption, and refine the model so source-to-release traceability remains clear and maintainable over time.',
       },
     ],
-    tooling: ['GitLab', 'GitHub Actions'],
+    tooling: ['GitHub', 'GitLab', 'GitHub Actions'],
     principles: [
       'Clear ownership and access boundaries aligned to team responsibilities',
       'Versioned, immutable build artifacts with explicit provenance from source to release',
@@ -679,7 +679,7 @@ export const services: Service[] = [
           'We support teams with guidance and enablement, recommend meaningful indicators of progress, and help establish a cadence for reviewing and adapting improvements.',
       },
     ],
-    tooling: ['AWS', 'Terraform', 'Docker', 'Kubernetes', 'GitHub Actions', 'GitLab', 'Argo CD'],
+    tooling: ['AWS', 'Linux', 'Terraform', 'Docker', 'Kubernetes', 'GitHub', 'GitHub Actions', 'GitLab', 'Argo CD', 'Grafana', 'Prometheus', 'OpenTelemetry'],
     principles: [
       'Improve flow by addressing systemic constraints, not isolated symptoms',
       'Favor pragmatic, incremental changes that fit team capacity and operating reality',
@@ -748,14 +748,21 @@ export const contactForm: ContactFormContent = {
 
 export const technologyStack: TechnologyIcon[] = [
   { label: 'AWS', iconPath: '/technology-icons/aws.svg' },
+  { label: 'Linux', iconPath: '/technology-icons/linux.svg' },
   { label: 'Docker', iconPath: '/technology-icons/docker.svg' },
   { label: 'Kubernetes', iconPath: '/technology-icons/kubernetes.svg' },
   { label: 'Helm', iconPath: '/technology-icons/helm.svg' },
   { label: 'Terraform', iconPath: '/technology-icons/terraform.svg' },
   { label: 'Ansible', iconPath: '/technology-icons/ansible.svg' },
+  { label: 'GitHub', iconPath: '/technology-icons/github.svg' },
   { label: 'GitHub Actions', iconPath: '/technology-icons/github-actions.svg' },
   { label: 'GitLab', iconPath: '/technology-icons/gitlab.svg' },
   { label: 'Argo CD', iconPath: '/technology-icons/argocd.svg' },
+  { label: 'Grafana', iconPath: '/technology-icons/grafana.svg' },
+  { label: 'Prometheus', iconPath: '/technology-icons/prometheus.svg' },
+  { label: 'OpenTelemetry', iconPath: '/technology-icons/opentelemetry.svg' },
+  { label: 'OpenStack', iconPath: '/technology-icons/openstack.svg' },
+  { label: 'Red Hat', iconPath: '/technology-icons/red-hat.svg' },
 ];
 
 export const industries: Industry[] = [
