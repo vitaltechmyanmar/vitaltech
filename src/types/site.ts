@@ -42,6 +42,17 @@ export interface TechnologyIcon {
   iconPath: string;
 }
 
+export interface TechnologyStackGroup {
+  title: string;
+  labels: string[];
+}
+
+export interface HomeTechStackContent {
+  eyebrow: string;
+  title: string;
+  summary: string;
+}
+
 export interface ServiceApproachStep {
   title: string;
   description: string;

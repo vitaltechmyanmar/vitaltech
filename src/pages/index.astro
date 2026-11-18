@@ -2,6 +2,7 @@
 import Button from '../components/ui/Button.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Card from '../components/ui/Card.astro';
+import HomeTechStack from '../components/HomeTechStack.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
@@ -43,6 +44,8 @@ const featuredServices = services.filter((service) => service.featured);
       </div>
     </div>
   </section>
+
+  <HomeTechStack />
 
   <section class="section-frame py-24 md:py-32">
     <SectionHeading

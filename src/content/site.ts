@@ -2,6 +2,7 @@ import type {
   ContactChannel,
   ContactFormContent,
   HeroContent,
+  HomeTechStackContent,
   Industry,
   Insight,
   NavigationItem,
@@ -9,6 +10,7 @@ import type {
   RoutePath,
   Service,
   TechnologyIcon,
+  TechnologyStackGroup,
 } from '../types/site';
 
 export const siteName = 'Vital Tech Myanmar';
@@ -764,6 +766,36 @@ export const technologyStack: TechnologyIcon[] = [
   { label: 'OpenStack', iconPath: '/technology-icons/openstack.svg' },
   { label: 'Red Hat', iconPath: '/technology-icons/red-hat.svg' },
 ];
+
+export const technologyStackGroups: TechnologyStackGroup[] = [
+  {
+    title: 'Cloud & platform',
+    labels: ['AWS', 'Linux', 'OpenStack', 'Red Hat'],
+  },
+  {
+    title: 'Containers & orchestration',
+    labels: ['Docker', 'Kubernetes', 'Helm'],
+  },
+  {
+    title: 'Infrastructure as Code & configuration',
+    labels: ['Terraform', 'Ansible'],
+  },
+  {
+    title: 'CI/CD & source control',
+    labels: ['GitHub', 'GitHub Actions', 'GitLab', 'Argo CD'],
+  },
+  {
+    title: 'Observability',
+    labels: ['Grafana', 'Prometheus', 'OpenTelemetry'],
+  },
+];
+
+export const homeTechStackContent: HomeTechStackContent = {
+  eyebrow: 'DevOps technology stack',
+  title: 'Tools and platforms we use to build, deliver, and operate.',
+  summary:
+    'We work across cloud, infrastructure, automation, delivery, and observability tooling to help teams create reliable environments and predictable software delivery.',
+};
 
 export const industries: Industry[] = [
   {

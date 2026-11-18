@@ -1,0 +1,96 @@
+---
+import Card from './ui/Card.astro';
+import SectionHeading from './SectionHeading.astro';
+import { homeTechStackContent, technologyStack, technologyStackGroups } from '../content/site';
+import type { TechnologyIcon } from '../types/site';
+
+const iconByLabel = new Map(technologyStack.map((item) => [item.label, item]));
+const resolveIcons = (labels: string[]): TechnologyIcon[] =>
+  labels.map((label) => iconByLabel.get(label)).filter((item): item is TechnologyIcon => Boolean(item));
+
+const groups = technologyStackGroups
+  .map((group) => ({ title: group.title, items: resolveIcons(group.labels) }))
+  .filter((group) => group.items.length > 0);
+
+const marqueeRowA = technologyStack;
+const marqueeRowB = [...technologyStack].reverse();
+---
+
+<section class="section-frame py-24 md:py-32" aria-labelledby="home-tech-stack-heading">
+  <SectionHeading
+    id="home-tech-stack-heading"
+    eyebrow={homeTechStackContent.eyebrow}
+    title={homeTechStackContent.title}
+    summary={homeTechStackContent.summary}
+  />
+
+  <div class="mt-12 space-y-4" aria-label="Technology stack">
+    <div class="tech-marquee" role="presentation">
+      <div class="tech-marquee-track animate-tech-marquee-left">
+        <div class="tech-marquee-group">
+          {marqueeRowA.map((tech) => (
+            <div class="tech-marquee-item">
+              <span class="tech-marquee-icon">
+                <img src={tech.iconPath} alt="" width="24" height="24" loading="lazy" decoding="async" />
+              </span>
+              <span class="tech-marquee-label">{tech.label}</span>
+            </div>
+          ))}
+        </div>
+        <div class="tech-marquee-group" data-duplicate="true" aria-hidden="true">
+          {marqueeRowA.map((tech) => (
+            <div class="tech-marquee-item">
+              <span class="tech-marquee-icon">
+                <img src={tech.iconPath} alt="" width="24" height="24" loading="lazy" decoding="async" />
+              </span>
+              <span class="tech-marquee-label">{tech.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-marquee" role="presentation" data-reduced-hide="true">
+      <div class="tech-marquee-track animate-tech-marquee-right">
+        <div class="tech-marquee-group">
+          {marqueeRowB.map((tech) => (
+            <div class="tech-marquee-item">
+              <span class="tech-marquee-icon">
+                <img src={tech.iconPath} alt="" width="24" height="24" loading="lazy" decoding="async" />
+              </span>
+              <span class="tech-marquee-label">{tech.label}</span>
+            </div>
+          ))}
+        </div>
+        <div class="tech-marquee-group" data-duplicate="true" aria-hidden="true">
+          {marqueeRowB.map((tech) => (
+            <div class="tech-marquee-item">
+              <span class="tech-marquee-icon">
+                <img src={tech.iconPath} alt="" width="24" height="24" loading="lazy" decoding="async" />
+              </span>
+              <span class="tech-marquee-label">{tech.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    {groups.map((group) => (
+      <Card as="article" padding="md" class="h-full">
+        <p class="eyebrow">{group.title}</p>
+        <ul class="mt-5 flex flex-wrap gap-2" role="list">
+          {group.items.map((tech) => (
+            <li class="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-3 py-1.5 text-sm font-bold text-ink">
+              <img src={tech.iconPath} alt="" width="16" height="16" loading="lazy" decoding="async" class="h-4 w-4 object-contain" />
+              <span>{tech.label}</span>
+            </li>
+          ))}
+        </ul>
+      </Card>
+    ))}
+  </div>
+
+  <p class="sr-only">Technology stack includes: {technologyStack.map((tech) => tech.label).join(', ')}.</p>
+</section>

@@ -3,13 +3,14 @@ interface Props {
   eyebrow: string;
   title: string;
   summary?: string;
+  id?: string;
 }
 
-const { eyebrow, title, summary } = Astro.props;
+const { eyebrow, title, summary, id } = Astro.props;
 ---
 
 <div class="max-w-2xl border-l-2 border-accent pl-5 sm:pl-6">
   <p class="eyebrow">{eyebrow}</p>
-  <h2 class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink md:text-5xl">{title}</h2>
+  <h2 id={id} class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink md:text-5xl">{title}</h2>
   {summary && <p class="mt-5 text-base leading-8 text-muted">{summary}</p>}
 </div>
