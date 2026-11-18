@@ -788,38 +788,75 @@ export const industries: Industry[] = [
   },
 ];
 
-export const insights: Insight[] = [];
+export const insights: Insight[] = [
+  {
+    category: 'Cloud operations',
+    title: 'What dependable cloud operations look like for growing teams',
+    summary:
+      'Reliable cloud operations start with clear visibility, defined ownership, and repeatable routines. Monitoring, patching, incident response, and cost review work best when they are treated as ongoing engineering practices—not occasional clean-up tasks—so teams can reduce surprises and focus on delivery.',
+  },
+  {
+    category: 'CI/CD automation',
+    title: 'Building a CI/CD pipeline that teams can trust',
+    summary:
+      'A trustworthy pipeline is versioned, observable, and designed for fast feedback. Clear stages, consistent quality gates, traceable artifacts, and safe promotion paths help engineering teams release with confidence while keeping the delivery process maintainable as systems evolve.',
+  },
+  {
+    category: 'Infrastructure as Code',
+    title: 'Why infrastructure as code matters beyond provisioning speed',
+    summary:
+      'Infrastructure as code is as much about control as it is about automation. Declarative definitions, reviewable changes, and reusable environment patterns help reduce drift, improve auditability, and make infrastructure changes safer and easier to reproduce across environments.',
+  },
+  {
+    category: 'Artifact governance',
+    title: 'Traceability from source to release starts with good repository practices',
+    summary:
+      'Strong governance connects repositories, build outputs, and releases into a clear chain of custody. Consistent branching, access controls, versioning, and artifact management make it easier for teams to understand what changed, what shipped, and how to reproduce or roll back when needed.',
+  },
+  {
+    category: 'System integration',
+    title: 'Designing integrations that stay maintainable over time',
+    summary:
+      'Effective integration work begins with clear system boundaries, data ownership, and failure handling—not just connectivity. When interfaces, data flows, and operational responsibilities are explicit, teams can reduce fragmentation and evolve connected systems without creating brittle dependencies.',
+  },
+  {
+    category: 'DevOps consulting',
+    title: 'A practical way to prioritize DevOps improvements',
+    summary:
+      'Meaningful DevOps progress comes from addressing the constraints that limit flow today. By focusing on high-impact changes, aligning tooling with team capacity, and using useful feedback signals, organizations can improve delivery speed and reliability without disrupting ongoing commitments.',
+  },
+];
 
 export const pageMetadata: Record<RoutePath, PageMetadata> = {
   '/': {
-    title: 'Vital Tech Myanmar | Technology that creates growth',
+    title: 'Vital Tech Myanmar | Cloud, CI/CD, and DevOps Services',
     description:
-      'Vital Tech Myanmar delivers cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, and DevOps consulting.',
+      'Vital Tech Myanmar helps organizations in Myanmar and beyond with cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, and DevOps consulting.',
   },
   '/services': {
-    title: 'Services | Vital Tech Myanmar',
+    title: 'Cloud, CI/CD, and DevOps Services | Vital Tech Myanmar',
     description:
-      'Explore Vital Tech Myanmar cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, and DevOps consulting.',
+      'Explore Vital Tech Myanmar services: cloud managed services, CI/CD automation, infrastructure as code, repository and artifact management, system integration, and DevOps consulting.',
   },
   '/industries': {
-    title: 'Industries | Vital Tech Myanmar',
+    title: 'Industries We Support | Vital Tech Myanmar',
     description:
-      'See how Vital Tech Myanmar aligns technology capability with the needs of growing organizations and industries.',
+      'See how Vital Tech Myanmar supports financial services, commerce, professional services, and growing enterprises with practical cloud, delivery, and integration capabilities.',
   },
   '/about': {
-    title: 'About | Vital Tech Myanmar',
+    title: 'About Vital Tech Myanmar | Practical Technology Partnership',
     description:
-      'Learn about Vital Tech Myanmar and our approach to practical, growth-focused technology partnership.',
+      'Learn about Vital Tech Myanmar, our approach to cloud operations, delivery automation, infrastructure, and integration, and how we help teams make practical technology progress.',
   },
   '/insights': {
-    title: 'Insights | Vital Tech Myanmar',
+    title: 'Insights on Cloud, CI/CD, and DevOps | Vital Tech Myanmar',
     description:
-      'Explore Vital Tech Myanmar perspectives on cloud operations, delivery automation, infrastructure as code, system integration, and DevOps consulting.',
+      'Read Vital Tech Myanmar perspectives on cloud operations, CI/CD automation, infrastructure as code, artifact governance, system integration, and DevOps improvement.',
   },
   '/contact': {
-    title: 'Contact | Vital Tech Myanmar',
+    title: 'Contact Vital Tech Myanmar | Start a Conversation',
     description:
-      'Start a direct conversation with Vital Tech Myanmar about cloud managed services, CI/CD automation, infrastructure as code, system integration, or DevOps consulting.',
+      'Contact Vital Tech Myanmar to discuss cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, or DevOps consulting.',
   },
 };
 
@@ -829,4 +866,132 @@ export const homeHero: HeroContent = {
   title: 'IT Partner',
   summary:
     'We design and deliver the cloud, delivery automation, and integration foundations that help ambitious organizations move with confidence.',
+};
+
+export const servicesPageContent = {
+  hero: {
+    eyebrow: 'Our services',
+    outline: 'BUILT FOR',
+    title: 'MOMENTUM',
+    summary:
+      'Explore cloud, delivery automation, infrastructure, and integration capabilities designed to help teams modernize how they build, operate, and grow.',
+  },
+  section: {
+    eyebrow: 'What we deliver',
+    title: 'Practical capabilities for modern operations.',
+    summary:
+      'Each service addresses a specific part of your technology landscape—from cloud operations and CI/CD to infrastructure as code, artifact governance, system integration, and DevOps consulting—with clear outcomes and hands-on support.',
+  },
+};
+
+export const industriesPageContent = {
+  hero: {
+    eyebrow: 'Industries',
+    outline: 'RELEVANT',
+    title: 'EXPERIENCE',
+    summary:
+      'Technology creates the most value when it fits the operational context, constraints, and goals of the organization using it.',
+  },
+  section: {
+    eyebrow: 'Where capability meets context',
+    title: 'Designed for organizations ready to operate with more clarity.',
+    summary:
+      'We bring a practical lens to cloud operations, delivery automation, infrastructure, and integration so teams can improve reliability, visibility, and momentum in ways that fit their environment.',
+  },
+  evidence: {
+    eyebrow: 'Approved evidence',
+    title: 'Case studies will appear here as customer-safe evidence becomes available.',
+    summary:
+      'We share customer stories and outcomes only when they have been approved for public use. In the meantime, we focus on clear capabilities, practical approaches, and direct conversations about your context.',
+  },
+};
+
+export const aboutPageContent = {
+  hero: {
+    eyebrow: 'About Vital Tech Myanmar',
+    outline: 'PRACTICAL',
+    title: 'PARTNERSHIP',
+    summary:
+      'We help teams make better technology decisions and turn them into reliable delivery across cloud, infrastructure, integration, and DevOps practices.',
+  },
+  approach: {
+    eyebrow: 'Our approach',
+    title: 'Clear thinking. Strong delivery. Useful technology.',
+    summary:
+      'Vital Tech Myanmar brings together technical capability and business context so organizations can focus effort where it creates the most value—building foundations that are maintainable, secure, and ready to evolve.',
+  },
+  principles: [
+    {
+      step: '01',
+      title: 'Understand the operating reality',
+      summary:
+        'We start with the systems, people, constraints, and outcomes that shape the work, so recommendations and delivery fit how your organization actually operates.',
+    },
+    {
+      step: '02',
+      title: 'Build for useful progress',
+      summary:
+        'We favor clear, maintainable solutions over unnecessary complexity, helping teams improve reliability, delivery flow, and visibility in practical increments.',
+    },
+    {
+      step: '03',
+      title: 'Support the next stage',
+      summary:
+        'We create foundations that can adapt as business needs, platforms, and delivery maturity evolve—through documentation, enablement, and repeatable practices.',
+    },
+  ],
+  focus: {
+    eyebrow: 'What we focus on',
+    title: 'Capabilities that strengthen day-to-day technology operations.',
+    summary:
+      'Our work spans the practices that help teams run and improve modern systems with confidence.',
+    areas: [
+      {
+        title: 'Cloud and operations',
+        summary:
+          'Operational care, visibility, and cost-aware practices that keep cloud environments dependable and easier to manage.',
+      },
+      {
+        title: 'Delivery and automation',
+        summary:
+          'CI/CD and workflow improvements that make software delivery more predictable, traceable, and efficient for engineering teams.',
+      },
+      {
+        title: 'Infrastructure and governance',
+        summary:
+          'Infrastructure as code and artifact/repository practices that improve consistency, control, and reproducibility across environments and releases.',
+      },
+      {
+        title: 'Integration and enablement',
+        summary:
+          'System integration and DevOps guidance that connect platforms, align processes, and help teams adopt sustainable ways of working.',
+      },
+    ],
+  },
+};
+
+export const insightsPageContent = {
+  hero: {
+    eyebrow: 'Insights',
+    outline: 'THINKING',
+    title: 'FORWARD',
+    summary:
+      'Practical perspectives on cloud operations, CI/CD automation, infrastructure as code, artifact governance, system integration, and DevOps improvement.',
+  },
+};
+
+export const contactPageContent = {
+  hero: {
+    eyebrow: 'Contact',
+    outline: "LET'S",
+    title: 'CONNECT',
+    summary:
+      'Start a direct conversation about your cloud, delivery, infrastructure, integration, or DevOps goals and the practical next step for your team.',
+  },
+  intro: {
+    eyebrow: 'Direct contact',
+    title: 'Choose the channel that works best for you.',
+    summary:
+      'Prefer to speak directly? Reach the team by phone or email, or send a message using the form with details about your organization and what you want to achieve.',
+  },
 };

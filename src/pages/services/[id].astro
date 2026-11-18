@@ -5,9 +5,9 @@ import Button from '../../components/ui/Button.astro';
 import CallToAction from '../../components/CallToAction.astro';
 import Card from '../../components/ui/Card.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
-import { services, technologyStack } from '../../content/site';
+import { services, siteUrl, technologyStack } from '../../content/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getServiceMetadata, getServicePath } from '../../lib/site';
+import { getCanonicalUrl, getServiceMetadata, getServicePath } from '../../lib/site';
 import type { Service } from '../../types/site';
 
 export const getStaticPaths = (() => {
@@ -24,6 +24,7 @@ interface Props {
 const { service } = Astro.props;
 const metadata = getServiceMetadata(service);
 const pathname = getServicePath(service);
+const canonicalUrl = getCanonicalUrl(pathname);
 const serviceIndex = services.findIndex((item) => item.id === service.id) + 1;
 const intro = service.intro ?? service.summary;
 const technicalSummary = service.technicalSummary ?? intro;
@@ -42,19 +43,83 @@ const sections = [
   deliverables.length ? { id: 'deliverables', label: 'Deliverables' } : null,
   service.faqs?.length ? { id: 'faq', label: 'FAQ' } : null,
 ].filter((section): section is { id: string; label: string } => Boolean(section));
+
+const breadcrumbStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: new URL('/', siteUrl).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Services',
+      item: new URL('/services', siteUrl).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: service.title,
+      item: canonicalUrl,
+    },
+  ],
+};
+
+const serviceStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.title,
+  serviceType: service.title,
+  description: metadata.description,
+  url: canonicalUrl,
+  areaServed: {
+    '@type': 'Country',
+    name: 'Myanmar',
+  },
+  provider: {
+    '@id': `${siteUrl}#organization`,
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Technical leads and engineering teams',
+  },
+};
+
+const faqStructuredData = service.faqs?.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: service.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    }
+  : null;
+
+const structuredData = [breadcrumbStructuredData, serviceStructuredData, ...(faqStructuredData ? [faqStructuredData] : [])];
 ---
 
-<BaseLayout metadata={metadata} pathname={pathname}>
+<BaseLayout metadata={metadata} pathname={pathname} structuredData={structuredData}>
   <section class="relative overflow-hidden py-20 md:py-28">
     <div class="ambient-orb -top-52 left-[18%] md:left-[26%]"></div>
     <div class="section-frame relative">
-      <a
-        href="/services"
-        class="inline-flex items-center gap-2 text-xs font-black tracking-[0.1em] text-accent uppercase transition hover:text-accent-hover"
-        data-testid="service-detail-back-link"
-      >
-        <span aria-hidden="true">←</span> All services
-      </a>
+      <nav aria-label="Breadcrumb" class="text-xs font-bold tracking-[0.08em] text-muted uppercase">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="transition hover:text-accent">Home</a></li>
+          <li aria-hidden="true" class="text-line-strong">/</li>
+          <li><a href="/services" class="transition hover:text-accent" data-testid="service-detail-back-link">Services</a></li>
+          <li aria-hidden="true" class="text-line-strong">/</li>
+          <li aria-current="page" class="text-ink">{service.title}</li>
+        </ol>
+      </nav>
 
       <div class="mt-8 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         <div>

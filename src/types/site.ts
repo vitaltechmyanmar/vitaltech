@@ -15,6 +15,9 @@ export interface PageMetadata {
   description: string;
   ogTitle?: string;
   ogDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: 'website' | 'article';
 }
 
 export interface NavigationItem {

@@ -1,5 +1,5 @@
 ---
-import { siteName, siteUrl } from '../content/site';
+import { contactChannels, siteName, siteUrl } from '../content/site';
 import { getActiveRoutePath, getCanonicalUrl } from '../lib/site';
 import type { PageMetadata, PagePath } from '../types/site';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -9,14 +9,73 @@ import '../styles/global.css';
 interface Props {
   metadata: PageMetadata;
   pathname: PagePath;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { metadata, pathname } = Astro.props;
+const { metadata, pathname, structuredData } = Astro.props;
 const canonicalUrl = getCanonicalUrl(pathname);
 const activePath = getActiveRoutePath(pathname);
 const pageTitle = metadata.ogTitle ?? metadata.title;
 const pageDescription = metadata.ogDescription ?? metadata.description;
-const ogImage = new URL('/og-preview.svg', siteUrl).toString();
+const ogImage = new URL(metadata.ogImage ?? '/og-preview.svg', siteUrl).toString();
+const ogImageAlt = metadata.ogImageAlt ?? 'Vital Tech Myanmar — technology that creates growth';
+const ogType = metadata.ogType ?? 'website';
+
+const organizationId = `${siteUrl}#organization`;
+const phoneContact = contactChannels.find((channel) => channel.id === 'phone');
+const emailContact = contactChannels.find((channel) => channel.id === 'email');
+const contactPoints = [
+  ...(phoneContact?.links?.map((link) => ({
+    '@type': 'ContactPoint',
+    telephone: link.label.replace(/\s+/g, ''),
+    contactType: 'sales',
+    areaServed: 'MM',
+    availableLanguage: ['en', 'my'],
+  })) ?? []),
+  ...(emailContact?.links?.map((link) => ({
+    '@type': 'ContactPoint',
+    email: link.label,
+    contactType: 'sales',
+    areaServed: 'MM',
+    availableLanguage: ['en', 'my'],
+  })) ?? []),
+];
+
+const baseStructuredData: Array<Record<string, unknown>> = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: siteName,
+    url: siteUrl,
+    logo: new URL('/logo.jpg', siteUrl).toString(),
+    image: new URL('/og-preview.svg', siteUrl).toString(),
+    ...(contactPoints.length ? { contactPoint: contactPoints } : {}),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}#website`,
+    name: siteName,
+    url: siteUrl,
+    publisher: { '@id': organizationId },
+    inLanguage: 'en',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    name: metadata.title,
+    description: metadata.description,
+    url: canonicalUrl,
+    isPartOf: { '@id': `${siteUrl}#website` },
+    about: { '@id': organizationId },
+    inLanguage: 'en',
+  },
+];
+
+const extraStructuredData = structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : [];
+const structuredDataItems = [...baseStructuredData, ...extraStructuredData];
 ---
 
 <!doctype html>
@@ -24,17 +83,25 @@ const ogImage = new URL('/og-preview.svg', siteUrl).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2454d8" />
     <link rel="icon" href="/logo.jpg" type="image/jpeg" />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="description" content={metadata.description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Vital Tech Myanmar — technology that creates growth" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
     <title>{metadata.title}</title>
+    {structuredDataItems.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+    <slot name="head" />
   </head>
   <body>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-3 focus:font-bold focus:text-on-accent">

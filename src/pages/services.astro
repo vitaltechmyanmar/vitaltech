@@ -4,25 +4,18 @@ import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TechnologyEcosystem from '../components/TechnologyEcosystem.astro';
-import { pageMetadata, services } from '../content/site';
+import { pageMetadata, services, servicesPageContent } from '../content/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const hero = {
-  eyebrow: 'Our services',
-  outline: 'BUILT FOR',
-  title: 'MOMENTUM',
-  summary: 'Explore the capabilities that help organizations modernize the way they build, connect, operate, and grow.',
-};
 ---
 
 <BaseLayout metadata={pageMetadata['/services']} pathname="/services">
-  <PageHero hero={hero} compact />
+  <PageHero hero={servicesPageContent.hero} compact />
 
   <section class="section-frame py-24 md:py-32">
     <SectionHeading
-      eyebrow="What we deliver"
-      title="Practical capabilities for modern operations."
-      summary="Each service is designed to address a specific part of your technology landscape, with clear outcomes and hands-on support."
+      eyebrow={servicesPageContent.section.eyebrow}
+      title={servicesPageContent.section.title}
+      summary={servicesPageContent.section.summary}
     />
     <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       {services.map((service, index) => <ServiceCard service={service} index={index} />)}

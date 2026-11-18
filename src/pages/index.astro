@@ -5,7 +5,7 @@ import Card from '../components/ui/Card.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import { homeHero, industries, pageMetadata, services } from '../content/site';
+import { aboutPageContent, homeHero, industries, pageMetadata, services } from '../content/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const featuredServices = services.filter((service) => service.featured);
@@ -15,7 +15,11 @@ const featuredServices = services.filter((service) => service.featured);
   <PageHero hero={homeHero} />
 
   <section class="section-frame py-24 md:py-32">
-    <SectionHeading eyebrow="What we do" title="Technology capability, built around business progress." summary="We help organizations connect strategy to practical delivery across the capabilities that matter most to modern growth." />
+    <SectionHeading
+      eyebrow="What we do"
+      title="Technology capability, built around business progress."
+      summary="We help organizations connect strategy to practical delivery across cloud operations, CI/CD automation, infrastructure as code, artifact management, system integration, and DevOps consulting."
+    />
     <div class="mt-12 grid gap-4 md:grid-cols-3">
       {featuredServices.map((service, index) => <ServiceCard service={service} index={index} />)}
     </div>
@@ -24,7 +28,11 @@ const featuredServices = services.filter((service) => service.featured);
 
   <section class="border-y border-line bg-surface-muted py-24 md:py-32">
     <div class="section-frame grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-      <SectionHeading eyebrow="A better-connected business" title="Complexity becomes useful when systems start working together." summary="Vital Tech Myanmar combines product thinking, engineering discipline, and practical technology guidance to create progress that teams can use." />
+      <SectionHeading
+        eyebrow="A better-connected business"
+        title="Complexity becomes useful when systems start working together."
+        summary="Vital Tech Myanmar combines engineering discipline and practical technology guidance to improve reliability, delivery flow, and visibility across the systems teams depend on."
+      />
       <div class="grid gap-4 sm:grid-cols-2">
         {industries.map((industry) => (
           <Card as="article" padding="sm">
@@ -36,5 +44,25 @@ const featuredServices = services.filter((service) => service.featured);
     </div>
   </section>
 
-  <CallToAction context="home" title="Ready to make technology work harder for your business?" summary="Start with a direct conversation. We will help you frame the opportunity and identify a practical next move." />
+  <section class="section-frame py-24 md:py-32">
+    <SectionHeading
+      eyebrow={aboutPageContent.focus.eyebrow}
+      title={aboutPageContent.focus.title}
+      summary={aboutPageContent.focus.summary}
+    />
+    <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {aboutPageContent.focus.areas.map((area) => (
+        <Card as="article" padding="md">
+          <h3 class="text-lg font-black tracking-[-0.03em] text-ink">{area.title}</h3>
+          <p class="mt-3 text-sm leading-7 text-muted">{area.summary}</p>
+        </Card>
+      ))}
+    </div>
+  </section>
+
+  <CallToAction
+    context="home"
+    title="Ready to make technology work harder for your business?"
+    summary="Start with a direct conversation. We will help you frame the opportunity and identify a practical next move across cloud, delivery, infrastructure, or integration."
+  />
 </BaseLayout>
