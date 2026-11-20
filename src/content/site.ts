@@ -803,24 +803,164 @@ export const homeTechStackContent: HomeTechStackContent = {
 
 export const industries: Industry[] = [
   {
+    id: 'financial-services',
     title: 'Financial Services',
     summary: 'Support modern customer experiences and more connected operational systems.',
     capabilities: ['Workflow modernization', 'Integration planning', 'Cloud readiness'],
+    hero: {
+      eyebrow: 'Financial Services',
+      headline: 'Resilient foundations for regulated financial platforms.',
+      summary:
+        'Helping banking, payments, and fintech institutions modernize core workflows, enforce strict security compliance, and achieve continuous system availability.',
+    },
+    challenges: [
+      'Regulatory scrutiny requiring auditable change management and strict data residency.',
+      'Legacy monolithic cores that complicate real-time data integration and digital banking features.',
+      'Zero-tolerance expectations for transactional downtime and security vulnerabilities.',
+    ],
+    solutions: [
+      {
+        title: 'Zero-Downtime Delivery Pipelines',
+        description:
+          'Trunk-based CI/CD with automated vulnerability gates and rollback mechanisms for continuous release safety.',
+      },
+      {
+        title: 'Isolated Multi-Zone Cloud Architecture',
+        description:
+          'High-availability infrastructure designed for automated failover, private connectivity, and data encryption at rest and in transit.',
+      },
+      {
+        title: 'Comprehensive Audit & Compliance Logging',
+        description:
+          'Centralized immutable telemetry, distributed tracing, and automated access reviews satisfying audit mandates.',
+      },
+    ],
+    keyOutcomes: [
+      'Audit-ready infrastructure with declarative, versioned change controls.',
+      'Zero single points of failure across payment and transactional pathways.',
+      'Accelerated time-to-market for modern digital customer features.',
+    ],
+    relevantServices: ['cloud-managed-service', 'cicd-automation', 'infrastructure-as-code'],
   },
   {
+    id: 'commerce-distribution',
     title: 'Commerce & Distribution',
     summary: 'Connect operational data and systems to help teams move faster with better visibility.',
     capabilities: ['Business applications', 'System integration', 'Operational automation'],
+    hero: {
+      eyebrow: 'Commerce & Distribution',
+      headline: 'High-throughput infrastructure for connected supply chains.',
+      summary:
+        'Connecting inventory, order management, and multi-channel commerce platforms into a resilient, scalable digital backbone.',
+    },
+    challenges: [
+      'High-volume order surges during seasonal promotions overwhelming backend APIs.',
+      'Fragmented data between warehouse management, inventory, and online storefronts.',
+      'Operational disruption caused by brittle point-to-point system integrations.',
+    ],
+    solutions: [
+      {
+        title: 'Elastic Auto-Scaling Cloud Environments',
+        description:
+          'Containerized workloads that dynamically scale compute resources to absorb sudden consumer demand spikes.',
+      },
+      {
+        title: 'Event-Driven System Integration',
+        description:
+          'Decoupled message queues and asynchronous API pipelines that synchronize inventory without cascading failures.',
+      },
+      {
+        title: 'End-to-End Observability Dashboards',
+        description:
+          'Real-time tracking of order pipeline latency, checkout completion rates, and integration health.',
+      },
+    ],
+    keyOutcomes: [
+      'Uninterrupted checkout and order processing during peak promotional volumes.',
+      'Sub-second inventory synchronization across warehouses and sales channels.',
+      'Clear visibility into order lifecycle bottlenecks and delivery performance.',
+    ],
+    relevantServices: ['system-integration', 'cloud-managed-service', 'devops-consulting'],
   },
   {
+    id: 'professional-services',
     title: 'Professional Services',
     summary: 'Create practical digital foundations for teams that depend on reliable collaboration and delivery.',
     capabilities: ['Custom platforms', 'Cloud managed services', 'CI/CD automation'],
+    hero: {
+      eyebrow: 'Professional Services',
+      headline: 'Dependable digital platforms for client-facing organizations.',
+      summary:
+        'Enabling consulting, legal, and operational service firms to collaborate securely, streamline client deliverables, and operate with high reliability.',
+    },
+    challenges: [
+      'Siloed client engagement tools and disparate communication channels.',
+      'Client data protection requirements and access governance across distributed teams.',
+      'Lack of dedicated internal DevOps capacity to manage and patch cloud infrastructure.',
+    ],
+    solutions: [
+      {
+        title: 'Fully Managed Cloud Operations',
+        description:
+          '24/7 proactive monitoring, automated security patching, and SLA-backed operational management.',
+      },
+      {
+        title: 'Role-Based Access Governance',
+        description:
+          'Granular identity federation and least-privilege access controls protecting confidential client assets.',
+      },
+      {
+        title: 'Standardized Development Environments',
+        description:
+          'Reproducible developer workspaces and automated deployment workflows for rapid delivery of client tooling.',
+      },
+    ],
+    keyOutcomes: [
+      'Reliable, secure collaboration platforms with guaranteed uptime for client delivery.',
+      'Complete freedom for internal teams to focus on client work rather than server administration.',
+      'Verifiable data protection compliance reassuring enterprise clients.',
+    ],
+    relevantServices: ['cloud-managed-service', 'code-repositories-artifact-management', 'devops-consulting'],
   },
   {
+    id: 'growing-enterprises',
     title: 'Growing Enterprises',
     summary: 'Modernize the technology foundations needed to scale with confidence in Myanmar and beyond.',
     capabilities: ['Digital roadmaps', 'DevOps consulting', 'Technology advisory'],
+    hero: {
+      eyebrow: 'Growing Enterprises',
+      headline: 'Scalable engineering practices to fuel organizational growth.',
+      summary:
+        'Guiding expanding companies to transition from ad-hoc manual routines to modern, automated, and maintainable cloud systems.',
+    },
+    challenges: [
+      'Technical debt and manual release processes slowing down product iterations.',
+      'Difficulty recruiting and retaining specialized cloud and DevOps engineering talent.',
+      'Unpredictable infrastructure costs and lack of architectural standardization.',
+    ],
+    solutions: [
+      {
+        title: 'DevOps Transformation & Mentorship',
+        description:
+          'Hands-on advisory that introduces trunk-based workflows, automated testing, and team delivery velocity.',
+      },
+      {
+        title: 'Infrastructure as Code Standardization',
+        description:
+          'Declarative Terraform blueprints that replace manual setup with reproducible cloud environments.',
+      },
+      {
+        title: 'Cloud Cost Optimization & Architecture Review',
+        description:
+          'Identifying overprovisioned resources, architectural bottlenecks, and sustainable cloud budgeting.',
+      },
+    ],
+    keyOutcomes: [
+      'Transition from monthly manual releases to automated daily deployment capability.',
+      'Predictable, rightsized cloud expenditure aligned with business growth.',
+      'Empowered in-house engineering team equipped with modern DevOps practices.',
+    ],
+    relevantServices: ['devops-consulting', 'infrastructure-as-code', 'cicd-automation'],
   },
 ];
 
@@ -830,36 +970,108 @@ export const insights: Insight[] = [
     title: 'What dependable cloud operations look like for growing teams',
     summary:
       'Reliable cloud operations start with clear visibility, defined ownership, and repeatable routines. Monitoring, patching, incident response, and cost review work best when they are treated as ongoing engineering practices—not occasional clean-up tasks—so teams can reduce surprises and focus on delivery.',
+    slug: 'dependable-cloud-operations',
+    readTime: '5 min read',
+    metaDescription:
+      'Practical guidance on building dependable cloud operations: observability, ownership, incident response, and cost discipline as sustainable engineering routines.',
+    body: [
+      'Growing engineering teams often reach a point where the cloud environment has outpaced the operational discipline around it. Workloads accumulate, alerts multiply, and the people who understand what each service does are increasingly stretched. The result is a fragile, reactive posture—responding to incidents rather than preventing them.',
+      'Dependable cloud operations begin with visibility. Without clear observability across workloads, dependencies, and cost centres, every other practice is guesswork. This means instrumenting key services with meaningful metrics and alerts, capturing structured logs, and surfacing dashboards that reflect the actual health of the system—not just whether a process is running.',
+      'Ownership is the second pillar. When everyone is responsible for a service, in practice nobody is. Defining clear ownership for each workload—including who is on call, who approves changes, and who reviews post-incident reports—prevents the diffusion of responsibility that lets small problems grow into large failures.',
+      'Repeatable operational routines are what sustain the first two pillars over time. Patching, cost reviews, security posture checks, and backup validation should run on predictable schedules with documented outputs. When these routines are encoded into runbooks and tracked, teams accumulate institutional knowledge rather than depending on tribal memory.',
+      'Cost discipline fits within the same operational framework. Cloud costs are a function of configuration decisions made over time, and without regular review they drift upward. Effective teams treat rightsizing, reserved capacity planning, and waste identification as recurring engineering work, not a finance team concern surfaced at year-end.',
+      'The discipline required to run cloud environments reliably is achievable for growing teams, but it requires treating operations as a first-class engineering practice. That means investing in tooling, documentation, and routine review cycles before incidents make the investment feel urgent.',
+    ],
   },
   {
     category: 'CI/CD automation',
     title: 'Building a CI/CD pipeline that teams can trust',
     summary:
       'A trustworthy pipeline is versioned, observable, and designed for fast feedback. Clear stages, consistent quality gates, traceable artifacts, and safe promotion paths help engineering teams release with confidence while keeping the delivery process maintainable as systems evolve.',
+    slug: 'trustworthy-cicd-pipeline',
+    readTime: '6 min read',
+    metaDescription:
+      'How to design a CI/CD pipeline engineers trust: versioned configuration, observable stages, consistent quality gates, and safe artifact promotion paths.',
+    body: [
+      'A CI/CD pipeline that teams do not trust is worse than no pipeline at all. When engineers learn to work around a pipeline—pushing directly to main, skipping tests, or manually deploying because automation is unreliable—the investment in automation becomes negative. Building trust in the delivery process is an engineering problem, and it requires deliberate design.',
+      'The most visible property of a trustworthy pipeline is speed of feedback. If a commit takes forty minutes to reach a test result, engineers context-switch away and rarely return with full attention. Fast feedback loops—typically under ten minutes for the core check—require investment in test parallelism, caching strategy, and clear separation of quick unit checks from slower integration suites.',
+      'Pipeline configuration itself should be versioned, reviewed, and held to the same quality standards as application code. Pipeline-as-code stored in the repository means changes to the delivery process go through pull requests, are visible in history, and can be reverted cleanly if something breaks. Ad-hoc changes made through a CI tool UI accumulate invisible debt.',
+      'Quality gates require consistent enforcement. A gate that sometimes runs and sometimes does not—depending on who triggered the build or which branch is involved—teaches teams that the gate is optional. Every stage should have an explicit pass/fail criterion, and that criterion should be the same for every change regardless of urgency.',
+      'Artifact management and promotion paths close the loop. Building a versioned, immutable artifact once and promoting it through environments—rather than rebuilding at each stage—eliminates environment-specific build drift. Tracing a production deployment back to a specific commit, test run, and artifact version should be a routine operation, not a forensic investigation.',
+      'Secure credential handling and least-privilege access to deployment targets deserve attention early. Pipelines that hold broad credentials or interact with production in ways that bypass normal change controls create risk that grows with the organization. Environment-scoped secrets, explicit approval gates for production, and audit logs for deployments are practical starting points.',
+    ],
   },
   {
     category: 'Infrastructure as Code',
     title: 'Why infrastructure as code matters beyond provisioning speed',
     summary:
       'Infrastructure as code is as much about control as it is about automation. Declarative definitions, reviewable changes, and reusable environment patterns help reduce drift, improve auditability, and make infrastructure changes safer and easier to reproduce across environments.',
+    slug: 'infrastructure-as-code-beyond-speed',
+    readTime: '5 min read',
+    metaDescription:
+      'Infrastructure as code extends beyond fast provisioning: how declarative definitions, drift prevention, and reviewable changes improve auditability and operational safety.',
+    body: [
+      'The common case for infrastructure as code focuses on speed—spin up an environment in minutes rather than hours. Speed is a real benefit, but it is not the primary reason to invest. The more durable value is control: a clear, reviewable record of what infrastructure exists, why it was created, and what state it is expected to be in.',
+      'Drift is the central operational risk in any cloud environment managed without code. When engineers make changes through cloud consoles or ad-hoc scripts, the actual state of infrastructure diverges from whatever documentation or memory exists. Over time, nobody knows with confidence what is running, what it depends on, or what will break if something changes. Declarative infrastructure definitions make drift visible and correctable.',
+      'Reviewability is the property that changes organisational behaviour. When a Terraform plan or similar diff is part of a pull request review, infrastructure changes get the same scrutiny as application code. Junior engineers learn from the review process. Senior engineers catch configuration decisions that will cause problems at scale. Changes that bypass review become exceptions, not norms.',
+      'Reusable module patterns accelerate the right way. Rather than speed for its own sake, modules allow teams to encode organisational standards—security controls, tagging conventions, network boundaries—into reusable building blocks. Spinning up a new environment using an approved module is fast and correct, rather than fast and inconsistent.',
+      'State management is where infrastructure as code implementations often break down. Remote state stored reliably, locked during operations, and accessible to the right team members is a prerequisite for multi-person workflows. Teams that treat state as an afterthought encounter conflicts, corrupted state files, and the anxiety of not knowing whether a plan output reflects reality.',
+      'The transition from manual infrastructure to code-managed infrastructure is incremental in practice. Starting with new workloads, incrementally importing existing resources, and building review habits gradually produces more lasting results than attempting to convert everything at once. The goal is a codebase that accurately represents the environment—and can be used to recreate it.',
+    ],
   },
   {
     category: 'Artifact governance',
     title: 'Traceability from source to release starts with good repository practices',
     summary:
       'Strong governance connects repositories, build outputs, and releases into a clear chain of custody. Consistent branching, access controls, versioning, and artifact management make it easier for teams to understand what changed, what shipped, and how to reproduce or roll back when needed.',
+    slug: 'artifact-governance-traceability',
+    readTime: '5 min read',
+    metaDescription:
+      'Building traceability from source to release: repository branching standards, access controls, immutable artifact versioning, and chain-of-custody practices for engineering teams.',
+    body: [
+      'Traceability is the ability to answer a specific question under pressure: given what is running in production right now, what source code produced it, what tests validated it, and when was it deployed? Teams that cannot answer this question reliably spend incident time on investigation rather than remediation—and face harder conversations with customers and auditors.',
+      'Repository structure is where traceability begins. Consistent branching conventions, enforced through branch protection rules and clear contribution guidelines, mean that the history of a repository tells a coherent story. Merge commits, meaningful commit messages, and tag conventions for releases create a navigable record. Repositories where anything goes in any direction make archaeology difficult.',
+      'Access controls on repositories are operational hygiene, not just a security measure. When every engineer has write access to every branch of every repository, it is impossible to know whether a change was intended or accidental, reviewed or unreviewed. Restricting direct pushes to protected branches and requiring pull request approval before merge is a baseline that most teams find easy to implement and hard to argue against once in place.',
+      'Artifact versioning creates the second link in the chain. Build outputs—container images, compiled binaries, deployment packages—should be versioned immutably, stored in a managed registry, and annotated with metadata connecting them to source commits and build runs. Pulling an artifact by a mutable tag like "latest" in production undermines the entire traceability model.',
+      'The registry is the custody point between build and deploy. Policies on which registries can be used as sources for production deployments, who can promote artifacts between environments, and which scans or approvals are required before promotion represent operational controls that mature teams encode into their delivery process rather than relying on convention.',
+      'Retention policies and audit logs complete the picture. Knowing what was deployed matters; knowing when it was deployed and by whom matters equally when investigating a failure or responding to a compliance inquiry. These records should be treated as operational infrastructure with the same durability requirements as the systems they describe.',
+    ],
   },
   {
     category: 'System integration',
     title: 'Designing integrations that stay maintainable over time',
     summary:
       'Effective integration work begins with clear system boundaries, data ownership, and failure handling—not just connectivity. When interfaces, data flows, and operational responsibilities are explicit, teams can reduce fragmentation and evolve connected systems without creating brittle dependencies.',
+    slug: 'maintainable-system-integrations',
+    readTime: '6 min read',
+    metaDescription:
+      'Designing system integrations for long-term maintainability: clear boundaries, explicit data ownership, failure handling, and interface contracts that survive change.',
+    body: [
+      'Most integration failures are not technical failures—they are failures of definition. The systems that become unmaintainable over time are usually those where ownership boundaries were never explicit, data transformations were never documented, and failure handling was deferred to "we will deal with that later." Technical implementation follows from design clarity; it does not substitute for it.',
+      'System boundaries are the first thing to establish. Each system in an integration should have a defined scope of responsibility and a defined perimeter of what it owns versus what it consumes. When those boundaries are fuzzy, changes in one system create unexpected ripple effects in another, and the team responsible for neither system ends up debugging both.',
+      'Data ownership and schema contracts deserve explicit agreement early. Which system is the source of truth for a given entity? Who can modify the schema, and what notice is required? Versioned API contracts or schema registries are practical mechanisms for making these agreements durable rather than conversational. The integration that treats contracts informally accumulates silent breakage over time.',
+      'Failure handling is the design decision most often deferred and most costly when avoided. What happens when the upstream system is unavailable? What is the retry strategy, and does it include exponential backoff and circuit-breaking? How does the consuming system behave with stale data? Systems that handle failure gracefully—with explicit degraded modes and clear operational signals—are easier to operate and diagnose than those that fail silently or catastrophically.',
+      'Observability across integration boundaries is an operational necessity. Tracing a request through multiple systems, measuring latency and error rates at each boundary, and surfacing meaningful alerts when flows degrade are more difficult across system boundaries than within a single service. These concerns should be addressed during design, not added as a retrofit after the first production incident.',
+      'Governance of integration points includes knowing what integrations exist. Teams that have grown through acquisition or organic complexity often find they have undocumented dependencies discovered only when something breaks. Maintaining an integration map—even a simple one—and treating it as a living document alongside architecture decisions keeps the picture current and reduces the blast radius of changes.',
+    ],
   },
   {
     category: 'DevOps consulting',
     title: 'A practical way to prioritize DevOps improvements',
     summary:
       'Meaningful DevOps progress comes from addressing the constraints that limit flow today. By focusing on high-impact changes, aligning tooling with team capacity, and using useful feedback signals, organizations can improve delivery speed and reliability without disrupting ongoing commitments.',
+    slug: 'prioritizing-devops-improvements',
+    readTime: '5 min read',
+    metaDescription:
+      'A practical framework for prioritizing DevOps improvements: identifying flow constraints, aligning tooling to team capacity, and using feedback signals to guide high-impact changes.',
+    body: [
+      'DevOps improvement programmes fail most often not because they choose the wrong tools but because they attempt to change everything at once. Adoption pressure, competing priorities, and the difficulty of running improvements alongside delivery commitments mean that broad, simultaneous changes typically produce partial implementations that satisfy nobody. A focused, constraint-driven approach produces more durable results.',
+      'The first step is identifying where flow actually breaks down. Value stream mapping—even a lightweight version conducted in a workshop with the team—surfaces the stages where work waits longest, where rework rates are highest, and where handoffs introduce the most variability. These are the constraints. Improvements that do not address a real constraint in the value stream improve metrics without improving outcomes.',
+      'Tooling decisions should follow constraint analysis, not precede it. The selection of a CI platform, an observability stack, or an infrastructure provisioning tool matters significantly less than whether the tool directly addresses a bottleneck in the team's current delivery flow. Teams that invest in tooling before understanding their constraints often find that new tools create new overhead without resolving the original friction.',
+      'Team capacity and change absorption rate are practical limits on improvement velocity. A team already at capacity cannot sustain a parallel improvement programme without degrading delivery. Realistic planning accounts for this by sequencing changes, protecting time for improvement work explicitly, and treating improvement as a commitment rather than a background activity.',
+      'Feedback signals are what allow course correction. Deployment frequency, lead time for changes, change failure rate, and time to restore service are widely used indicators of delivery health. But the signal value comes from tracking them consistently over time, not from a single snapshot. Teams that review these metrics in regular retrospectives and connect them to recent changes build a feedback loop that guides prioritisation organically.',
+      'External consulting can accelerate the diagnostic phase and provide a reference point for what good looks like in comparable environments. The value is not in prescribing a universal toolchain but in helping teams distinguish between problems that are specific to their context and patterns that have well-tested solutions. The goal is a team that can sustain its own improvement programme, not one that is permanently dependent on external guidance.',
+    ],
   },
 ];
 

@@ -1,0 +1,180 @@
+---
+import Badge from '../../components/ui/Badge.astro';
+import Button from '../../components/ui/Button.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import Card from '../../components/ui/Card.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { industries, services } from '../../content/site';
+import { getIndustryMetadata, getIndustryPath, getServiceById, getServicePath } from '../../lib/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Industry } from '../../types/site';
+
+export function getStaticPaths() {
+  return industries.map((industry) => ({
+    params: { id: industry.id },
+    props: { industry },
+  }));
+}
+
+interface Props {
+  industry: Industry;
+}
+
+const { industry } = Astro.props;
+const metadata = getIndustryMetadata(industry);
+const pathname = getIndustryPath(industry);
+
+const linkedServices = (industry.relevantServices ?? [])
+  .map((serviceId) => getServiceById(serviceId))
+  .filter((service): service is NonNullable<typeof service> => Boolean(service));
+---
+
+<BaseLayout metadata={metadata} pathname={pathname}>
+  {/* Industry Hero */}
+  <section class="relative overflow-hidden py-20 md:py-28 border-b border-line">
+    <div class="ambient-orb -top-40 left-[20%]"></div>
+    <div class="section-frame relative">
+      <a
+        href="/industries"
+        class="inline-flex items-center text-xs font-black uppercase tracking-[0.1em] text-accent transition hover:text-accent-hover"
+      >
+        <span aria-hidden="true" class="mr-2">←</span> All industries
+      </a>
+
+      <div class="mt-8 max-w-4xl">
+        <p class="eyebrow">{industry.hero?.eyebrow ?? industry.title}</p>
+        <h1 class="mt-4 text-3xl font-black tracking-[-0.05em] text-ink sm:text-5xl lg:text-6xl">
+          {industry.hero?.headline ?? industry.title}
+        </h1>
+        <p class="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
+          {industry.hero?.summary ?? industry.summary}
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-2">
+          {industry.capabilities.map((capability) => (
+            <Badge tone="accent">{capability}</Badge>
+          ))}
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <Button href="/contact" variant="primary">Discuss your environment</Button>
+          <Button href="/services" variant="secondary">View all services</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Industry Challenges */}
+  {
+    industry.challenges && industry.challenges.length > 0 && (
+      <section class="section-frame py-20 md:py-28">
+        <SectionHeading
+          eyebrow="Key challenges"
+          title="Operational friction in this environment."
+          summary="Organizations in this sector often face recurring constraints that limit delivery flow and scalability."
+        />
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+          {industry.challenges.map((challenge, index) => (
+            <Card as="article" padding="lg">
+              <span class="text-xs font-black text-accent tracking-widest uppercase">
+                Challenge 0{index + 1}
+              </span>
+              <p class="mt-4 text-sm leading-7 text-ink font-medium">{challenge}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {/* Technical Solutions */}
+  {
+    industry.solutions && industry.solutions.length > 0 && (
+      <section class="border-y border-line bg-surface-muted py-20 md:py-28">
+        <div class="section-frame">
+          <SectionHeading
+            eyebrow="Practical approach"
+            title="How Vital Tech addresses these challenges."
+            summary="We introduce proven engineering patterns, automated delivery gates, and structured cloud operations tailored to your sector."
+          />
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
+            {industry.solutions.map((solution) => (
+              <Card as="article" padding="lg" class="border-line bg-surface shadow-card">
+                <h3 class="text-xl font-black tracking-tight text-ink">{solution.title}</h3>
+                <p class="mt-4 text-sm leading-7 text-muted">{solution.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* Key Outcomes */}
+  {
+    industry.keyOutcomes && industry.keyOutcomes.length > 0 && (
+      <section class="section-frame py-20 md:py-28">
+        <Card variant="muted" padding="lg">
+          <div class="max-w-2xl">
+            <p class="eyebrow">Engineered outcomes</p>
+            <h2 class="mt-3 text-2xl font-black tracking-tight text-ink sm:text-3xl">
+              Tangible results delivered through this playbook.
+            </h2>
+          </div>
+          <ul class="mt-8 grid gap-4 sm:grid-cols-3" role="list">
+            {industry.keyOutcomes.map((outcome) => (
+              <li class="flex items-start gap-3 rounded-lg border border-line bg-surface p-4 text-sm leading-6 text-ink">
+                <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent text-white" aria-hidden="true">
+                  <svg class="h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <span class="font-medium">{outcome}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </section>
+    )
+  }
+
+  {/* Relevant Capabilities / Services */}
+  {
+    linkedServices.length > 0 && (
+      <section class="border-t border-line bg-surface-muted py-20 md:py-28">
+        <div class="section-frame">
+          <SectionHeading
+            eyebrow="Relevant capabilities"
+            title="Core services commonly deployed."
+            summary="These services provide the direct technical implementation for the outcomes described above."
+          />
+          <div class="mt-12 grid gap-4 md:grid-cols-3">
+            {linkedServices.map((service) => (
+              <Card as="article" padding="md" interactive class="flex flex-col justify-between">
+                <div>
+                  <p class="eyebrow">{service.kicker}</p>
+                  <h3 class="mt-3 text-lg font-black tracking-tight text-ink">{service.title}</h3>
+                  <p class="mt-3 text-sm leading-6 text-muted">{service.summary}</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-line/60">
+                  <a
+                    href={getServicePath(service)}
+                    class="inline-flex items-center text-xs font-black tracking-[0.1em] text-accent uppercase transition hover:text-accent-hover"
+                  >
+                    View service details <span aria-hidden="true" class="ml-2">→</span>
+                  </a>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CallToAction
+    context="industries"
+    title={`Ready to modernize your ${industry.title} systems?`}
+    summary="Schedule a technical discussion with our team to evaluate your current architecture, delivery pipeline, and operational priorities."
+  />
+</BaseLayout>

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title id="title">Vital Tech Myanmar temporary visual</title>
-  <rect width="64" height="64" rx="12" fill="#ffffff"/>
-  <path d="M14 16h17v10H24v12h17v10H14V16Z" fill="#102a4c"/>
-  <path d="M35 16h15v32H35V38h5V26h-5V16Z" fill="#2454d8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vital Tech">
+  <rect width="64" height="64" rx="14" fill="#102a4c"/>
+  <path d="M14 20h6.5l5.5 16.5L31.5 20H38l-9 24h-6L14 20z" fill="#ffffff"/>
+  <path d="M35 20h17v5.5h-5.5V44h-6V25.5H35V20z" fill="#ffffff"/>
+  <rect x="14" y="48" width="38" height="4" rx="2" fill="#2454d8"/>
 </svg>

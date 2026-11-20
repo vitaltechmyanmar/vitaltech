@@ -8,7 +8,11 @@ export type RoutePath =
 
 export type ServiceRoutePath = `/services/${string}`;
 
-export type PagePath = RoutePath | ServiceRoutePath;
+export type IndustryRoutePath = `/industries/${string}`;
+
+export type InsightRoutePath = `/insights/${string}`;
+
+export type PagePath = RoutePath | ServiceRoutePath | IndustryRoutePath | InsightRoutePath;
 
 export interface PageMetadata {
   title: string;
@@ -122,10 +126,27 @@ export interface ContactFormContent {
   privacyNote: string;
 }
 
+export interface IndustrySolution {
+  title: string;
+  description: string;
+}
+
 export interface Industry {
+  id: string;
   title: string;
   summary: string;
   capabilities: string[];
+  hero?: {
+    eyebrow: string;
+    headline: string;
+    summary: string;
+  };
+  challenges?: string[];
+  solutions?: IndustrySolution[];
+  keyOutcomes?: string[];
+  relevantServices?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export interface Insight {
@@ -133,6 +154,10 @@ export interface Insight {
   category: string;
   summary: string;
   href?: string;
+  slug: string;
+  readTime: string;
+  body: string[];
+  metaDescription?: string;
 }
 
 export interface HeroContent {
