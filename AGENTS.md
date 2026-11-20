@@ -56,3 +56,4 @@ Append a dated entry here for every code or configuration change.
 - 2026-11-18: Added Cloudflare Turnstile protection to the contact form: typed env fields, explicit widget with token reset, canonical `siteverify` gate, centralized action/message copy, Vercel env documentation, and this change-log rule.
 - 2026-11-18: Added workflow preferences to avoid local WSL runs and to leave changes uncommitted and unpushed for manual Vercel deployment.
 - 2026-11-20: Added Trust & Social Proof section to the homepage: centralized types and content in `src/types/site.ts` and `src/content/site.ts` (operational delivery metrics, enterprise endorsements, and engineering governance standards), created `TrustProof.astro` component, and integrated into `index.astro`.
+- 2026-11-20: Replaced placeholder icons for Linux, Grafana, Prometheus, and OpenTelemetry with official vector SVG assets in `public/technology-icons/`.
