@@ -48,7 +48,7 @@ const baseStructuredData: Array<Record<string, unknown>> = [
     '@id': organizationId,
     name: siteName,
     url: siteUrl,
-    logo: new URL('/logo.jpg', siteUrl).toString(),
+    logo: new URL('/vital-tech-primary.svg', siteUrl).toString(),
     image: new URL('/og-preview.svg', siteUrl).toString(),
     ...(contactPoints.length ? { contactPoint: contactPoints } : {}),
   },
