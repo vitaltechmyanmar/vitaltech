@@ -1,4 +1,5 @@
 import type {
+  BlueprintContent,
   ContactChannel,
   ContactFormContent,
   HeroContent,
@@ -1096,6 +1097,90 @@ export const trustContent: TrustContent = {
     {
       title: 'Auditable Delivery Gates',
       description: 'Cryptographic commit signatures, artifact provenance tracking, and policy-as-code validation before releases.',
+    },
+  ],
+};
+
+export const blueprintContent: BlueprintContent = {
+  eyebrow: 'Architecture & Delivery Blueprint',
+  title: 'An end-to-end cloud engineering lifecycle.',
+  summary:
+    'Explore the sequential stages, automated verification gates, and tooling we implement to transform delivery from manual uncertainty into predictable, auditable software flow.',
+  stages: [
+    {
+      id: 'source',
+      step: '01',
+      kicker: 'Source & Policy',
+      title: 'Repository Architecture & Branch Governance',
+      summary:
+        'Standardized Git workflows with strict branch protection policies, pre-commit security hooks, and automated dependency scanning to guarantee that only validated code enters mainline development.',
+      gates: [
+        'Trunk-based branch protection requiring peer code reviews',
+        'Automated pre-commit secret detection & linting checks',
+        'Signed commits with cryptographic developer identity',
+      ],
+      tools: ['GitLab', 'GitHub', 'Linux'],
+      outcome: 'A tamper-proof, auditable source codebase with zero unauthorized or uninspected commits.',
+    },
+    {
+      id: 'build',
+      step: '02',
+      kicker: 'Build & Security',
+      title: 'Continuous Integration & Artifact Integrity',
+      summary:
+        'Containerized build runners execute deterministic pipelines, running automated test suites, software composition analysis (SCA), and container vulnerability scans before publishing signed artifacts.',
+      gates: [
+        'Automated unit, integration, and contract test matrices',
+        'Static application security testing (SAST) & dependency audits',
+        'Immutable container image building with cryptographic digest pinning',
+      ],
+      tools: ['GitHub Actions', 'Docker', 'Red Hat'],
+      outcome: 'Validated, vulnerability-screened container images ready for promotion across environments.',
+    },
+    {
+      id: 'provision',
+      step: '03',
+      kicker: 'Infrastructure as Code',
+      title: 'Declarative Cloud Infrastructure & Drift Control',
+      summary:
+        'All networking, VPCs, compute instances, and Kubernetes clusters are provisioned through declarative Terraform and Ansible configurations with isolated state backends and speculative plan reviews.',
+      gates: [
+        'Automated pull request plan execution and resource diff previews',
+        'State locking with encrypted remote backends to prevent concurrency errors',
+        'Policy-as-code verification preventing unapproved security group rules',
+      ],
+      tools: ['Terraform', 'Ansible', 'AWS', 'OpenStack'],
+      outcome: 'Zero configuration drift between staging and production environments, reproducible in minutes.',
+    },
+    {
+      id: 'deploy',
+      step: '04',
+      kicker: 'GitOps & Delivery',
+      title: 'GitOps Reconciliation & Zero-Downtime Rollouts',
+      summary:
+        'Argo CD continuously reconciles Kubernetes cluster state with desired state declared in Git. Progressive delivery techniques (blue-green and canary) ensure zero-downtime releases with instant automated rollback.',
+      gates: [
+        'Declarative GitOps sync loops eliminating out-of-band cluster modifications',
+        'Canary analysis measuring error rates and latency before full promotion',
+        'Instant automated rollback triggered by Prometheus threshold breaches',
+      ],
+      tools: ['Kubernetes', 'Helm', 'Argo CD'],
+      outcome: 'Zero-downtime application deployments with automated self-healing cluster synchronization.',
+    },
+    {
+      id: 'operate',
+      step: '05',
+      kicker: 'Telemetry & SRE',
+      title: 'Distributed Observability & Proactive SRE Operations',
+      summary:
+        'Unified telemetry captures distributed traces, application metrics, and infrastructure logs. Prometheus alerts notify engineering teams of threshold anomalies well before service levels or users are impacted.',
+      gates: [
+        'Full-context distributed tracing across microservices via OpenTelemetry',
+        'Multi-channel alerting routing high-priority incidents with actionable runbooks',
+        'Real-time SLA/SLO dashboards tracking error budgets and resource saturation',
+      ],
+      tools: ['Prometheus', 'Grafana', 'OpenTelemetry'],
+      outcome: 'Complete operational transparency with proactive incident response and guaranteed availability.',
     },
   ],
 };

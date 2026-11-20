@@ -169,3 +169,22 @@ export interface TrustContent {
   testimonials: Testimonial[];
   standards: TrustStandard[];
 }
+
+export interface BlueprintStage {
+  id: string;
+  step: string;
+  kicker: string;
+  title: string;
+  summary: string;
+  gates: string[];
+  tools: string[];
+  outcome: string;
+}
+
+export interface BlueprintContent {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  stages: BlueprintStage[];
+}
+
