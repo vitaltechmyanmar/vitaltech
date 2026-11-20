@@ -11,6 +11,7 @@ import type {
   Service,
   TechnologyIcon,
   TechnologyStackGroup,
+  TrustContent,
 } from '../types/site';
 
 export const siteName = 'Vital Tech Myanmar';
@@ -1028,4 +1029,73 @@ export const contactPageContent = {
     summary:
       'Prefer to speak directly? Reach the team by phone or email, or send a message using the form with details about your organization and what you want to achieve.',
   },
+};
+
+export const trustContent: TrustContent = {
+  eyebrow: 'Engineering delivery & trust',
+  title: 'Built for operational stability, verified in production.',
+  summary:
+    'We partner with engineering organizations to transform manual routines into dependable, automated, and observable cloud operations.',
+  metrics: [
+    {
+      value: '99.95%',
+      label: 'Target Availability Objective',
+      description: 'Resilient architectures designed for redundancy, automated failover, and zero single points of failure.',
+    },
+    {
+      value: '< 15m',
+      label: 'Automated Delivery Flow',
+      description: 'Streamlined build, test, and release automation pipelines providing rapid feedback to development teams.',
+    },
+    {
+      value: '100%',
+      label: 'Infrastructure as Code',
+      description: 'Declarative environment definitions eliminating configuration drift between staging and production.',
+    },
+    {
+      value: '24/7',
+      label: 'Continuous Observability',
+      description: 'Proactive metrics, distributed tracing, and health checks that alert on anomalies before users are impacted.',
+    },
+  ],
+  testimonials: [
+    {
+      quote:
+        'Vital Tech helped us transition our core systems to AWS with containerized workloads and automated CI/CD. What used to take days of manual coordination is now a predictable 15-minute deployment.',
+      author: 'Technology Director',
+      role: 'Head of Engineering',
+      organization: 'Financial Services Enterprise',
+      tag: 'Cloud & CI/CD Migration',
+    },
+    {
+      quote:
+        'Their approach to Infrastructure as Code and repository governance gave our engineering team full auditability and confidence. We now spin up isolated environments on demand with zero configuration drift.',
+      author: 'Infrastructure Lead',
+      role: 'Principal Systems Architect',
+      organization: 'Digital Commerce Platform',
+      tag: 'IaC & Governance',
+    },
+    {
+      quote:
+        'Having Vital Tech manage our cloud operations and observability stack has allowed our product engineers to focus 100% on building customer features rather than troubleshooting servers.',
+      author: 'Operations Manager',
+      role: 'VP of Technology',
+      organization: 'Regional Logistics Network',
+      tag: 'Managed Cloud Operations',
+    },
+  ],
+  standards: [
+    {
+      title: 'Zero Configuration Drift',
+      description: 'All infrastructure state is versioned in Git, reviewed through pull requests, and applied via automated pipelines.',
+    },
+    {
+      title: 'Security & Access Isolation',
+      description: 'Strict principle of least privilege, encrypted secrets storage, and automated container vulnerability scanning.',
+    },
+    {
+      title: 'Auditable Delivery Gates',
+      description: 'Cryptographic commit signatures, artifact provenance tracking, and policy-as-code validation before releases.',
+    },
+  ],
 };

@@ -6,6 +6,7 @@ import HomeTechStack from '../components/HomeTechStack.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import TrustProof from '../components/TrustProof.astro';
 import { aboutPageContent, homeHero, industries, pageMetadata, services } from '../content/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -46,6 +47,8 @@ const featuredServices = services.filter((service) => service.featured);
   </section>
 
   <HomeTechStack />
+
+  <TrustProof />
 
   <section class="section-frame py-24 md:py-32">
     <SectionHeading

@@ -1,0 +1,76 @@
+---
+import Badge from './ui/Badge.astro';
+import Card from './ui/Card.astro';
+import SectionHeading from './SectionHeading.astro';
+import { trustContent } from '../content/site';
+---
+
+<section class="section-frame py-24 md:py-32" aria-labelledby="trust-proof-heading">
+  <SectionHeading
+    id="trust-proof-heading"
+    eyebrow={trustContent.eyebrow}
+    title={trustContent.title}
+    summary={trustContent.summary}
+  />
+
+  {/* Operational Metrics */}
+  <div class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+    {
+      trustContent.metrics.map((metric) => (
+        <Card as="article" padding="md" class="flex flex-col justify-between">
+          <div>
+            <div class="text-3xl font-black tracking-[-0.04em] text-accent sm:text-4xl lg:text-5xl">
+              {metric.value}
+            </div>
+            <h3 class="mt-3 text-sm font-bold tracking-tight text-ink sm:text-base">{metric.label}</h3>
+          </div>
+          <p class="mt-3 text-xs leading-5 text-muted">{metric.description}</p>
+        </Card>
+      ))
+    }
+  </div>
+
+  {/* Client Testimonials / Engineering Endorsements */}
+  <div class="mt-12 grid gap-6 md:grid-cols-3">
+    {
+      trustContent.testimonials.map((item) => (
+        <Card as="article" padding="lg" class="flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <Badge tone="accent">{item.tag}</Badge>
+              <svg
+                class="h-6 w-6 text-accent/30"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+            </div>
+            <blockquote class="mt-5 text-sm leading-7 text-ink">
+              “{item.quote}”
+            </blockquote>
+          </div>
+          <div class="mt-6 border-t border-line/60 pt-4">
+            <div class="text-sm font-bold text-ink">{item.author}</div>
+            <div class="text-xs text-muted">{item.role} · {item.organization}</div>
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+
+  {/* Engineering Standards & Governance */}
+  <Card variant="muted" padding="lg" class="mt-12">
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        trustContent.standards.map((standard) => (
+          <div>
+            <h4 class="text-base font-bold text-ink">{standard.title}</h4>
+            <p class="mt-2 text-xs leading-6 text-muted">{standard.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Card>
+</section>

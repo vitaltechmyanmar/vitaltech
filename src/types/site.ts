@@ -141,3 +141,31 @@ export interface HeroContent {
   title: string;
   summary: string;
 }
+
+export interface TrustMetric {
+  value: string;
+  label: string;
+  description: string;
+}
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+  organization: string;
+  tag: string;
+}
+
+export interface TrustStandard {
+  title: string;
+  description: string;
+}
+
+export interface TrustContent {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  metrics: TrustMetric[];
+  testimonials: Testimonial[];
+  standards: TrustStandard[];
+}
