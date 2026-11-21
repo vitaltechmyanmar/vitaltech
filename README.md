@@ -1,135 +1,99 @@
 # Vital Tech Myanmar
 
-A marketing website for Vital Tech Myanmar. The site presents cloud managed services, CI/CD automation, infrastructure as code, repository and artifact management, system integration, and DevOps consulting for organizations seeking a practical technology partner.
+Marketing website and digital technical portal for Vital Tech Myanmar. The site presents enterprise cloud managed services, CI/CD automation, infrastructure as code, repository and artifact governance, system integration, and DevOps consulting for organizations seeking a dependable technology partner.
+
+---
 
 ## Technology Stack
 
-- [Astro](https://astro.build/) 7.2.8 for prerendered pages and one on-demand contact endpoint
-- [@astrojs/vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/) 11.0.22 for the Vercel deployment adapter
-- [Resend](https://resend.com/) 6.38.1 for contact form email delivery
-- TypeScript 7.0.2 for typed site content and routes
-- Tailwind CSS 4.3.3 with the Vite integration for styling
-- `@astrojs/sitemap` 3.7.3 for generated sitemap files
+- **[Astro](https://astro.build/) 7.2.8**: Prerendered static content pages and one on-demand contact endpoint
+- **[@astrojs/vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/) 11.0.22**: Vercel deployment adapter with Build Output API v3
+- **[Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/)**: Non-interactive, privacy-first CAPTCHA alternative protecting form endpoints
+- **[Resend](https://resend.com/) 6.38.1**: Transactional email delivery API for inquiry notifications
+- **[Tailwind CSS](https://tailwindcss.com/) 4.3.3**: Modern Vite-integrated utility styling with `@theme` design tokens
+- **TypeScript 7.0.2**: Strongly typed site models, routing unions, and content schemas
+- **`@astrojs/sitemap` 3.7.3**: Automated multi-page sitemap generation
 
-## Prerequisites
-
-- A current Node.js LTS release compatible with Astro 7.2.8
-- npm
-
-## Local Development
-
-Install the locked dependencies from the workspace root:
-
-```powershell
-npm ci
-```
-
-Start the local Astro development server:
-
-```powershell
-npm run dev
-```
-
-The contact form needs a Resend API key. Copy `.env.example` to `.env` and fill in `RESEND_API_KEY` (and, once a sending domain is verified, `CONTACT_FROM_EMAIL`). Without a key the form renders normally but submissions return a temporary-unavailable message.
-
-Create a production build:
-
-```powershell
-npm run build
-```
-
-Preview the built site, including the contact endpoint, after a successful build:
-
-```powershell
-npm run preview
-```
-
-`astro preview` is not supported by the Vercel adapter. Use `npm run dev` for local form testing, or `vercel dev` after linking the project to reproduce the deployed environment.
+---
 
 ## Active Routes
 
-| Route | Purpose |
-|---|---|
-| `/` | Home and service overview |
-| `/services` | Service hub and overview linking to individual service detail pages |
-| `/services/<service-id>` | Individual service detail page (technical delivery playbook, prerendered per service) |
-| `/industries` | Industry context and solution relevance |
-| `/about` | Company positioning and approach |
-| `/insights` | Technology and delivery perspectives |
-| `/contact` | Contact form and direct contact options |
-
-See [`docs/service-detail-pages.md`](docs/service-detail-pages.md) for service detail page structure, content fields, and maintenance notes.
-
-## Content and Contact Configuration
-
-Centralized site content, navigation, metadata, services, industries, technology icons, and contact actions are defined in [`src/content/site.ts`](src/content/site.ts).
-
-Service entries also include rich detail-page content (technical summaries, challenges, scope, delivery phases, tooling, principles, deliverables, FAQs) and per-service illustrations referenced from `public/service-illustrations/`. Detail page behavior and fields are documented in [`docs/service-detail-pages.md`](docs/service-detail-pages.md).
-
-The current approved public contact links are:
-
-- Phone: [`tel:+959443167419`](tel:+959443167419)
-- Phone: [`tel:+959964444882`](tel:+959964444882)
-- Email: [`mailto:info@vitaltechmyanmar.com`](mailto:info@vitaltechmyanmar.com)
-
-The configured canonical site URL is currently a placeholder. Update `siteUrl` in `src/content/site.ts` with the approved production domain before a public launch, then rebuild and review generated sitemap and canonical URLs.
-
-## Contact Form and Resend
-
-The contact page includes a form that submits to `/api/contact`. The endpoint validates the input, filters honeypot submissions, rate-limits each IP to five messages per ten minutes, and sends the enquiry with Resend.
-
-Configure the integration in `.env` (never commit it):
-
-| Variable | Required | Purpose |
+| Route | Purpose | Rendering Mode |
 |---|---|---|
-| `RESEND_API_KEY` | Yes | Resend API key used to send enquiry emails |
-| `CONTACT_FROM_EMAIL` | No | Sender address; defaults to Resend's test sender, which only delivers to the account owner |
-| `CONTACT_TO_EMAIL` | No | Recipient address; defaults to the approved email in `src/content/site.ts` |
+| `/` | Home: Value proposition, TrustProof delivery metrics, endorsements, and tech ecosystem | Prerendered |
+| `/services` | Service hub: 6 capability cards, 5-stage Cloud Blueprint, and interactive Cloud ROI Estimator | Prerendered |
+| `/services/<service-id>` | Service detail playbooks: Scopes, challenges, delivery phases, tooling, and technical FAQs | Prerendered (`getStaticPaths`) |
+| `/industries` | Industry hub: Strategic technology solutions tailored to specific market sectors | Prerendered |
+| `/industries/<industry-id>` | Industry playbooks: Financial Services, Digital Commerce, Growing Enterprises, Professional Services | Prerendered (`getStaticPaths`) |
+| `/about` | Company authority: Engineering Competencies, Regional Infrastructure Mastery, SLAs, and Models | Prerendered |
+| `/insights` | Knowledge hub: Thought leadership and technical engineering perspectives | Prerendered |
+| `/insights/<slug>` | Article reading experience: Long-form technical deep dives with read times and structured copy | Prerendered (`getStaticPaths`) |
+| `/contact` | Contact portal: Direct channels (phone, email) and progressive Turnstile contact form | Prerendered |
+| `/404` | Branded 404 page: High-contrast error message with quick directory links back to core sections | Prerendered |
+| `/api/contact` | On-demand contact endpoint: Turnstile `siteverify`, honeypot, rate limiting, and Resend delivery | Serverless Function |
+| `/robots.txt` | Dynamic robots directives linking to `sitemap-index.xml` | Prerendered |
 
-Set `CONTACT_FROM_EMAIL` to an address on a domain verified in Resend before launch. Form copy, service options, and success/error messages live in the `contactForm` export in `src/content/site.ts`.
+For detailed documentation on site architecture and dynamic routing, see:
+- [`docs/site-architecture.md`](docs/site-architecture.md) — Comprehensive technical architecture, design tokens, and components
+- [`docs/service-detail-pages.md`](docs/service-detail-pages.md) — Service detail page models, scopes, and maintenance workflows
+
+---
+
+## Centralized Content & Type Safety
+
+All copy, navigation links, services, industries, insights, and page metadata are centralized in:
+- **`src/content/site.ts`**: Single source of truth for all user-facing content
+- **`src/types/site.ts`**: TypeScript definitions for all site models, routes, and components
+- **`src/lib/site.ts`**: Query and lookup helpers (canonical URLs, route metadata, path derivation)
+
+> **Important**: Do not hardcode marketing copy or contact details into individual `.astro` components. Always update `src/content/site.ts` and `src/types/site.ts`.
+
+---
+
+## Contact Form & Security Integration
+
+The contact form submits to `/api/contact`. The endpoint executes a multi-layer verification pipeline:
+1. **Cloudflare Turnstile**: Validates the token against Cloudflare's `siteverify` endpoint with hostname verification.
+2. **Honeypot Filter**: Silently rejects automated submissions filling hidden bot traps.
+3. **In-Memory Rate Limiting**: Restricts submissions to 5 requests per 10 minutes per IP address.
+4. **Resend Email Delivery**: Delivers formatted inquiry notifications to the team inbox.
+
+Configure the environment variables in `.env` (never commit this file):
+
+| Variable | Scope | Required | Purpose |
+|---|---|---|---|
+| `RESEND_API_KEY` | Server | Yes | Resend API key used to send enquiry emails |
+| `CONTACT_FROM_EMAIL` | Server | No | Sender address (must use a verified domain in Resend for production) |
+| `CONTACT_TO_EMAIL` | Server | No | Recipient address; defaults to `info@vitaltechmyanmar.com` |
+| `PUBLIC_TURNSTILE_SITEKEY` | Client / Server | Yes | Public Cloudflare Turnstile sitekey rendered in the widget |
+| `TURNSTILE_SECRET` | Server | Yes | Server-only Turnstile secret for token validation |
+| `TURNSTILE_HOSTNAMES` | Server | No | Comma-separated list of allowed frontend hostnames |
+
+---
+
+## Brand Assets & Vector Identity
+
+All branding utilizes high-resolution vector SVG assets:
+- **Primary Wordmark**: `public/vital-tech-primary.svg` (Header logo and brand identifier)
+- **Official V Icon**: `public/vital-tech-icon.svg` (Gradient geometric V symbol)
+- **Web App Favicon**: `public/favicon.svg` (64×64 vector icon) & `public/favicon.ico` (32×32 fallback)
+- **iOS Touch Icon**: `public/apple-touch-icon.png` (180×180 PNG clip icon)
+- **Open Graph Social Card**: `public/og-preview.svg` (1200×630 vector preview card for LinkedIn/Twitter)
+- **Official Tech Icons**: `public/technology-icons/` (AWS, Linux, Kubernetes, Terraform, Prometheus, etc.)
+
+---
 
 ## Deploying to Vercel
 
-The project deploys with the `@astrojs/vercel` adapter and needs no `vercel.json`.
+The project deploys seamlessly with the `@astrojs/vercel` adapter:
 
-1. Import the repository in Vercel and keep **Framework Preset** set to **Astro**, **Build Command** `npm run build`, and **Output Directory** at its default. Vercel reads the generated `.vercel/output` bundle; pointing the output directory at `dist` causes 404s.
-2. Add the environment variables in **Project Settings → Environment Variables** for Production (and Preview if desired):
-   - `RESEND_API_KEY` (mark as sensitive)
-   - `CONTACT_FROM_EMAIL`
-   - `CONTACT_TO_EMAIL`
-3. Redeploy after adding variables so the `/api/contact` function receives them.
+1. Import the repository in Vercel with **Framework Preset** set to **Astro**, **Build Command** `npm run build`, and **Output Directory** at the default (`.vercel/output`).
+2. Add the environment variables (`RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL`, `PUBLIC_TURNSTILE_SITEKEY`, `TURNSTILE_SECRET`, `TURNSTILE_HOSTNAMES`) in **Project Settings → Environment Variables**.
+3. Deploy and verify the live deployment on Vercel.
 
-If the deployment succeeds but the site returns a 404, confirm the adapter in `astro.config.mjs` is `vercel()` (not `@astrojs/node`), the output directory setting is default, and the project's Root Directory points at this repository. Serverless functions cannot run from a purely static upload of `dist/client`.
+---
 
-## Project Structure
+## Workflow Preferences & Governance
 
-```text
-src/
-  components/         Shared Astro UI components (including ContactForm.astro)
-  content/            Centralized typed site content
-  layouts/            Shared page layouts
-  pages/              Prerendered Astro routes (including services/[id].astro detail pages)
-  pages/api/          On-demand contact endpoint
-  styles/             Global styling
-public/               Static assets, including technology icons and service illustrations
-docs/                 Project documentation (e.g. service detail pages)
-aidlc-docs/           Workflow and build/test documentation
-dist/                 Generated build output (dist/client)
-.vercel/output/       Generated Vercel deployment bundle
-```
-
-`dist/` and `.vercel/` are generated by `npm run build` and are ignored by Git. Do not edit their files manually; regenerate them after source or content changes.
-
-## Verification
-
-Run the production build after application changes:
-
-```powershell
-npm run build
-```
-
-The current validation baseline is a successful Astro build plus a manual submission through the contact form with `npm run dev`. The project does not define a separate unit-test script. Detailed build, integration-check, and manual release guidance is available in:
-
-- [`aidlc-docs/construction/build-and-test/build-instructions.md`](aidlc-docs/construction/build-and-test/build-instructions.md)
-- [`aidlc-docs/construction/build-and-test/integration-test-instructions.md`](aidlc-docs/construction/build-and-test/integration-test-instructions.md)
-- [`aidlc-docs/construction/build-and-test/build-and-test-summary.md`](aidlc-docs/construction/build-and-test/build-and-test-summary.md)
+- Local build and test commands are intentionally skipped in this WSL checkout per project rules. The user verifies changes directly through Vercel deployments.
+- Functional and configuration updates are documented with dated entries in [`AGENTS.md`](AGENTS.md).
