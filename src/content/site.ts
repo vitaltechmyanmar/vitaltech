@@ -1,4 +1,5 @@
 import type {
+  AboutPageContent,
   BlueprintContent,
   CloudRoiContent,
   ContactChannel,
@@ -1161,7 +1162,7 @@ export const industriesPageContent = {
   },
 };
 
-export const aboutPageContent = {
+export const aboutPageContent: AboutPageContent = {
   hero: {
     eyebrow: 'About Vital Tech Myanmar',
     outline: 'PRACTICAL',
@@ -1195,6 +1196,165 @@ export const aboutPageContent = {
         'We create foundations that can adapt as business needs, platforms, and delivery maturity evolve—through documentation, enablement, and repeatable practices.',
     },
   ],
+  competencies: {
+    eyebrow: 'Engineering Competencies',
+    title: 'Production-grade engineering standards across the modern cloud stack.',
+    summary:
+      'Our team operates with deep, certified expertise across cloud architecture, declarative infrastructure, container orchestration, and continuous release security.',
+    items: [
+      {
+        domain: 'Cloud Architecture & SRE',
+        tagline: 'Architecting resilient, cost-aware AWS environments with zero single points of failure.',
+        tools: ['AWS', 'Linux', 'OpenTelemetry', 'Grafana', 'Prometheus'],
+        practices: [
+          'Multi-AZ high availability and disaster recovery topologies',
+          'Full-stack distributed tracing and SLO telemetry baselines',
+          'Continuous error budget and saturation monitoring',
+          'FinOps cost rightsizing and reserved capacity planning',
+        ],
+      },
+      {
+        domain: 'Declarative Infrastructure & IaC',
+        tagline: 'Treating all infrastructure as versioned, auditable, and testable source code.',
+        tools: ['Terraform', 'Ansible', 'GitLab', 'GitHub'],
+        practices: [
+          'Encrypted remote state management with atomic locking',
+          'Automated pull-request plan validation and security linting',
+          'Zero configuration drift between staging and production',
+          'Modular, reusable infrastructure blueprints',
+        ],
+      },
+      {
+        domain: 'Container Orchestration & GitOps',
+        tagline: 'Automating software reconciliation and zero-downtime rollouts at enterprise scale.',
+        tools: ['Kubernetes', 'Helm', 'Argo CD', 'Docker'],
+        practices: [
+          'Canary and blue-green progressive delivery workflows',
+          'Self-healing automated cluster state synchronization',
+          'Fine-grained RBAC isolation and namespace segmentation',
+          'Sealed secrets and centralized vault integration',
+        ],
+      },
+      {
+        domain: 'DevSecOps & Release Engineering',
+        tagline: 'Shortening commit-to-production lead times with automated verification gates.',
+        tools: ['GitHub Actions', 'GitLab CI', 'Red Hat'],
+        practices: [
+          'Static application security testing (SAST) and dependency audits',
+          'Immutable container image building with digest pinning',
+          'Cryptographic commit signing and provenance tracking',
+          'Automated regression and smoke test matrices',
+        ],
+      },
+    ],
+  },
+  regional: {
+    eyebrow: 'Regional Infrastructure Mastery',
+    title: 'Engineered for Myanmar and Southeast Asian operational reality.',
+    summary:
+      'Global best practices must be adapted to local connectivity, latency, and compliance constraints. We engineer systems that stay stable under real-world operating conditions.',
+    pillars: [
+      {
+        title: 'Cross-Border Latency & Regional Transit',
+        summary:
+          'Direct peering and intelligent routing to AWS Singapore (ap-southeast-1) and regional hubs, coupled with CloudFront edge caching to keep response times fast across Yangon, Mandalay, and regional branches.',
+        highlight: '< 45ms latency optimization & multi-CDN failover',
+      },
+      {
+        title: 'Hybrid On-Premises to Cloud Integration',
+        summary:
+          'Secure IPsec VPN tunnels, AWS Transit Gateways, and private leased lines connecting legacy core banking and on-premises server rooms directly to isolated cloud VPCs without internet exposure.',
+        highlight: 'Zero-exposure private network bridging',
+      },
+      {
+        title: 'Power & Telecommunication Resilience',
+        summary:
+          'Multi-AZ active-passive and active-active architectures designed with automated stateless failover, guaranteeing operations continue smoothly despite local infrastructure fluctuations.',
+        highlight: 'Continuous automated disaster recovery',
+      },
+      {
+        title: 'Regulatory Compliance & Data Sovereignty',
+        summary:
+          'Structuring data residency, cryptographic key management (AWS KMS), and access auditing to strictly satisfy Central Bank of Myanmar directives and regional enterprise compliance.',
+        highlight: 'Full compliance-ready audit trails',
+      },
+    ],
+  },
+  commitments: {
+    eyebrow: 'Operational Governance & SLAs',
+    title: 'Definite standards, measurable outcomes, and clear ownership.',
+    summary:
+      'We reject vague promises. Our operational service agreements are anchored in explicit metrics, defined escalation paths, and transparent reporting.',
+    items: [
+      {
+        metric: '15 Min',
+        title: 'Critical Incident Triage',
+        description: 'Guaranteed 15-minute response for critical production outages with defined escalation runbooks.',
+      },
+      {
+        metric: '99.9%',
+        title: 'Production Availability Target',
+        description: 'SLA-backed uptime objectives supported by self-healing Kubernetes workloads and continuous synthetic health checks.',
+      },
+      {
+        metric: '100%',
+        title: 'Declarative State & Traceability',
+        description: 'Zero ad-hoc server tweaks. Every infrastructure change is reviewed in Git, tested in staging, and tracked.',
+      },
+      {
+        metric: '0 Drift',
+        title: 'Continuous Drift Reconciliation',
+        description: 'Automated GitOps sync loops and daily configuration scans ensuring staging and production match desired state.',
+      },
+    ],
+  },
+  engagement: {
+    eyebrow: 'Partnership Models',
+    title: 'Flexible ways to collaborate with our engineering team.',
+    summary:
+      'Choose the partnership model that best fits your technical maturity, team capacity, and project timeline.',
+    models: [
+      {
+        title: 'Cloud Managed Service (Ongoing SRE)',
+        badge: 'Dedicated Operational Care',
+        summary:
+          'Comprehensive day-to-day management of your cloud environments: 24/7 monitoring, incident response, patching, and continuous FinOps cost optimization.',
+        deliverables: [
+          '24/7 telemetry monitoring & alert triage',
+          'Routine security patching & maintenance',
+          'Monthly cost review & rightsizing',
+          'Disaster recovery drills & runbooks',
+        ],
+        bestFor: 'Organizations running mission-critical workloads without a full in-house 24/7 operations team.',
+      },
+      {
+        title: 'Cloud & DevOps Sprints (Project-Based)',
+        badge: 'Targeted Engineering Delivery',
+        summary:
+          'Time-boxed, milestone-driven engineering projects to design and implement new cloud platforms, migrate legacy workloads, or automate CI/CD delivery pipelines.',
+        deliverables: [
+          'Cloud architecture design & IaC templates',
+          'CI/CD pipeline implementation & GitOps setup',
+          'Containerization & Kubernetes cluster build',
+          'Comprehensive handover & team training',
+        ],
+        bestFor: 'Teams facing complex migrations or modernization deadlines needing accelerated senior expertise.',
+      },
+      {
+        title: 'Co-Engineering & Enablement (Advisory Pod)',
+        badge: 'Team Capability Uplift',
+        summary:
+          'Senior DevOps architects embedded alongside your engineers to mentor, review architecture, establish security policies, and upskill internal teams.',
+        deliverables: [
+          'Architecture review & Well-Architected audits',
+          'Hands-on pairing & team enablement',
+          'Standardized internal developer templates',
+          'Security & compliance posture reviews',
+        ],
+        bestFor: 'Growing engineering departments scaling up internal DevOps practices and engineering leadership.',
+      },
+    ],
+  },
   focus: {
     eyebrow: 'What we focus on',
     title: 'Capabilities that strengthen day-to-day technology operations.',

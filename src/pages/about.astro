@@ -1,4 +1,6 @@
 ---
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Card from '../components/ui/Card.astro';
 import PageHero from '../components/PageHero.astro';
@@ -10,7 +12,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout metadata={pageMetadata['/about']} pathname="/about">
   <PageHero hero={aboutPageContent.hero} compact />
 
-  <section class="section-frame grid gap-14 py-24 md:py-32 lg:grid-cols-[1fr_1fr]">
+  <!-- Core Approach & Principles -->
+  <section class="section-frame grid gap-14 py-24 md:py-32 lg:grid-cols-[1fr_1.1fr]">
     <SectionHeading
       eyebrow={aboutPageContent.approach.eyebrow}
       title={aboutPageContent.approach.title}
@@ -27,7 +30,136 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Engineering Competencies & Stack -->
+  <section class="border-t border-line bg-surface-muted py-24 md:py-32">
+    <div class="section-frame">
+      <SectionHeading
+        eyebrow={aboutPageContent.competencies.eyebrow}
+        title={aboutPageContent.competencies.title}
+        summary={aboutPageContent.competencies.summary}
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {aboutPageContent.competencies.items.map((competency) => (
+          <Card as="article" padding="lg" class="flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="inline-block size-2 rounded-full bg-accent" aria-hidden="true"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-accent">{competency.domain}</span>
+              </div>
+              <h3 class="mt-4 text-xl font-black tracking-tight text-ink">{competency.tagline}</h3>
+
+              <!-- Tooling Tags -->
+              <div class="mt-4 flex flex-wrap gap-2">
+                {competency.tools.map((tool) => (
+                  <Badge tone="neutral">{tool}</Badge>
+                ))}
+              </div>
+
+              <!-- Practices List -->
+              <ul class="mt-6 space-y-2.5 border-t border-line/60 pt-5 text-sm text-muted">
+                {competency.practices.map((practice) => (
+                  <li class="flex items-start gap-2.5">
+                    <span class="mt-1 text-accent font-bold" aria-hidden="true">&bull;</span>
+                    <span class="leading-relaxed">{practice}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Regional Infrastructure Mastery -->
+  <section class="section-frame py-24 md:py-32">
+    <SectionHeading
+      eyebrow={aboutPageContent.regional.eyebrow}
+      title={aboutPageContent.regional.title}
+      summary={aboutPageContent.regional.summary}
+    />
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {aboutPageContent.regional.pillars.map((pillar) => (
+        <Card as="article" padding="lg" class="flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-black tracking-tight text-ink">{pillar.title}</h3>
+            <p class="mt-3 text-sm leading-7 text-muted">{pillar.summary}</p>
+          </div>
+          <div class="mt-6 border-t border-line/60 pt-4">
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-accent">
+              <span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+              {pillar.highlight}
+            </span>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </section>
+
+  <!-- Operational SLAs & Commitments -->
   <section class="border-y border-line bg-surface-muted py-24 md:py-32">
+    <div class="section-frame">
+      <SectionHeading
+        eyebrow={aboutPageContent.commitments.eyebrow}
+        title={aboutPageContent.commitments.title}
+        summary={aboutPageContent.commitments.summary}
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {aboutPageContent.commitments.items.map((item) => (
+          <Card as="article" padding="lg" class="text-center">
+            <div class="font-display text-4xl font-black tracking-tight text-accent md:text-5xl">
+              {item.metric}
+            </div>
+            <h3 class="mt-4 text-base font-black tracking-tight text-ink">
+              {item.title}
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted">
+              {item.description}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership & Engagement Models -->
+  <section class="section-frame py-24 md:py-32">
+    <SectionHeading
+      eyebrow={aboutPageContent.engagement.eyebrow}
+      title={aboutPageContent.engagement.title}
+      summary={aboutPageContent.engagement.summary}
+    />
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {aboutPageContent.engagement.models.map((model) => (
+        <Card as="article" padding="lg" class="flex flex-col justify-between">
+          <div>
+            <Badge tone="accent">{model.badge}</Badge>
+            <h3 class="mt-4 text-xl font-black tracking-tight text-ink">{model.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{model.summary}</p>
+
+            <div class="mt-6 border-t border-line/60 pt-5">
+              <p class="text-xs font-bold uppercase tracking-wider text-ink">Key Deliverables:</p>
+              <ul class="mt-3 space-y-2 text-xs text-muted">
+                {model.deliverables.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent font-bold">&check;</span>
+                    <span class="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-8 rounded-lg bg-surface-muted p-4 text-xs leading-relaxed text-muted">
+            <strong class="font-bold text-ink">Best for: </strong>{model.bestFor}
+          </div>
+        </Card>
+      ))}
+    </div>
+  </section>
+
+  <!-- Focus Areas -->
+  <section class="border-t border-line bg-surface-muted py-24 md:py-32">
     <div class="section-frame">
       <SectionHeading
         eyebrow={aboutPageContent.focus.eyebrow}

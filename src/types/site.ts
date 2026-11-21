@@ -276,4 +276,82 @@ export interface CloudRoiContent {
   disclaimer: string;
 }
 
+export interface AboutPrinciple {
+  step: string;
+  title: string;
+  summary: string;
+}
+
+export interface AboutFocusArea {
+  title: string;
+  summary: string;
+}
+
+export interface AboutCompetency {
+  domain: string;
+  tagline: string;
+  tools: string[];
+  practices: string[];
+}
+
+export interface AboutRegionalPillar {
+  title: string;
+  summary: string;
+  highlight: string;
+}
+
+export interface AboutCommitment {
+  metric: string;
+  title: string;
+  description: string;
+}
+
+export interface AboutEngagementModel {
+  title: string;
+  badge: string;
+  summary: string;
+  deliverables: string[];
+  bestFor: string;
+}
+
+export interface AboutPageContent {
+  hero: HeroContent;
+  approach: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+  };
+  principles: AboutPrinciple[];
+  competencies: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+    items: AboutCompetency[];
+  };
+  regional: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+    pillars: AboutRegionalPillar[];
+  };
+  commitments: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+    items: AboutCommitment[];
+  };
+  engagement: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+    models: AboutEngagementModel[];
+  };
+  focus: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+    areas: AboutFocusArea[];
+  };
+}
+
 
