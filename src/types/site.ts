@@ -4,7 +4,8 @@ export type RoutePath =
   | '/industries'
   | '/about'
   | '/insights'
-  | '/contact';
+  | '/contact'
+  | '/404';
 
 export type ServiceRoutePath = `/services/${string}`;
 
@@ -212,4 +213,67 @@ export interface BlueprintContent {
   summary: string;
   stages: BlueprintStage[];
 }
+
+export interface NotFoundLink {
+  label: string;
+  href: RoutePath;
+  description: string;
+}
+
+export interface NotFoundPageContent {
+  eyebrow: string;
+  code: string;
+  title: string;
+  summary: string;
+  primaryAction: {
+    label: string;
+    href: RoutePath;
+  };
+  secondaryAction: {
+    label: string;
+    href: RoutePath;
+  };
+  suggestedHeading: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+  };
+  suggestedLinks: NotFoundLink[];
+}
+
+export interface RoiFrequencyOption {
+  id: string;
+  label: string;
+  cadence: string;
+  multiplier: number;
+}
+
+export interface CloudRoiContent {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  spendLabel: string;
+  spendMin: number;
+  spendMax: number;
+  spendStep: number;
+  spendDefault: number;
+  teamSizeLabel: string;
+  teamMin: number;
+  teamMax: number;
+  teamStep: number;
+  teamDefault: number;
+  frequencyLabel: string;
+  frequencies: RoiFrequencyOption[];
+  defaultFrequencyId: string;
+  resultsTitle: string;
+  annualSavingsLabel: string;
+  annualSavingsSubtext: string;
+  hoursReclaimedLabel: string;
+  hoursReclaimedSubtext: string;
+  velocityLabel: string;
+  velocitySubtext: string;
+  ctaText: string;
+  disclaimer: string;
+}
+
 

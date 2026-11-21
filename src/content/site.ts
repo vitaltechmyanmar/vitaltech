@@ -1,5 +1,6 @@
 import type {
   BlueprintContent,
+  CloudRoiContent,
   ContactChannel,
   ContactFormContent,
   HeroContent,
@@ -7,6 +8,7 @@ import type {
   Industry,
   Insight,
   NavigationItem,
+  NotFoundPageContent,
   PageMetadata,
   RoutePath,
   Service,
@@ -1106,6 +1108,11 @@ export const pageMetadata: Record<RoutePath, PageMetadata> = {
     description:
       'Contact Vital Tech Myanmar to discuss cloud managed services, CI/CD automation, infrastructure as code, artifact management, system integration, or DevOps consulting.',
   },
+  '/404': {
+    title: 'Page Not Found | Vital Tech Myanmar',
+    description:
+      'The page you are looking for cannot be found. Explore Vital Tech Myanmar cloud managed services, CI/CD pipelines, and DevOps infrastructure solutions.',
+  },
 };
 
 export const homeHero: HeroContent = {
@@ -1395,4 +1402,87 @@ export const blueprintContent: BlueprintContent = {
       outcome: 'Complete operational transparency with proactive incident response and guaranteed availability.',
     },
   ],
+};
+
+export const notFoundPageContent: NotFoundPageContent = {
+  eyebrow: '404 Error',
+  code: '404',
+  title: 'Page not found',
+  summary:
+    'The page you are looking for has been moved, removed, or may never have existed. Let us help you navigate back to our core engineering services.',
+  primaryAction: {
+    label: 'Return to Homepage',
+    href: '/',
+  },
+  secondaryAction: {
+    label: 'Contact Engineering Team',
+    href: '/contact',
+  },
+  suggestedHeading: {
+    eyebrow: 'Recommended Destinations',
+    title: 'Explore Vital Tech Core Capabilities',
+    summary:
+      'Direct access to our managed cloud offerings, industry playbooks, technical blueprints, and engineering insights.',
+  },
+  suggestedLinks: [
+    {
+      label: 'Cloud & DevOps Services',
+      href: '/services',
+      description:
+        'Cloud managed services, automated CI/CD pipelines, declarative IaC, and SRE observability routines.',
+    },
+    {
+      label: 'Industry Playbooks',
+      href: '/industries',
+      description:
+        'Tailored cloud architecture patterns for Financial Services, Digital Commerce, and Growing Enterprises.',
+    },
+    {
+      label: 'Technical Insights',
+      href: '/insights',
+      description:
+        'In-depth engineering perspectives on cloud operations, delivery security, and artifact governance.',
+    },
+    {
+      label: 'About Partnership',
+      href: '/about',
+      description:
+        'Our engineering principles, operating reality alignment, and practical technology roadmap approach.',
+    },
+  ],
+};
+
+export const cloudRoiContent: CloudRoiContent = {
+  eyebrow: 'Interactive ROI Estimator',
+  title: 'Calculate the business impact of engineering acceleration.',
+  summary:
+    'Estimate how proactive cloud operations and automated CI/CD pipelines eliminate cloud waste, accelerate release cycles, and reclaim engineering time for core product development.',
+  spendLabel: 'Current Monthly Cloud Spend (USD)',
+  spendMin: 1000,
+  spendMax: 50000,
+  spendStep: 500,
+  spendDefault: 10000,
+  teamSizeLabel: 'Engineering Team Size (Engineers)',
+  teamMin: 2,
+  teamMax: 60,
+  teamStep: 1,
+  teamDefault: 10,
+  frequencyLabel: 'Current Deployment Cadence',
+  frequencies: [
+    { id: 'monthly', label: 'Monthly (1x/mo)', cadence: 'Manual release gates with monthly change windows', multiplier: 1.0 },
+    { id: 'biweekly', label: 'Bi-Weekly (2x/mo)', cadence: 'Scheduled sprint releases with staging reviews', multiplier: 1.25 },
+    { id: 'weekly', label: 'Weekly (4x/mo)', cadence: 'Frequent releases with partial pipeline automation', multiplier: 1.5 },
+    { id: 'daily', label: 'Daily / On-Demand', cadence: 'Continuous integration with multi-environment promotion', multiplier: 1.75 },
+  ],
+  defaultFrequencyId: 'biweekly',
+  resultsTitle: 'Estimated Annual Operational & Cost Impact',
+  annualSavingsLabel: 'Estimated Annual Cloud Savings',
+  annualSavingsSubtext: 'Based on 22% waste reduction through rightsizing, idle resource cleanups, and reserved capacity planning.',
+  hoursReclaimedLabel: 'Reclaimed Developer Hours / Mo',
+  hoursReclaimedSubtext: 'Eliminating manual release checklists, ad-hoc server fixes, and uninstrumented alert troubleshooting.',
+  velocityLabel: 'Release Cycle Acceleration',
+  velocitySubtext: 'From manual handoffs to automated GitOps pipelines with instant verification gates.',
+  ctaText: 'Discuss Your Tailored Architecture',
+  disclaimer:
+    '* Projections are conservative estimates derived from AWS Well-Architected reviews and industry DevOps benchmarks across growing enterprise teams. Actual savings and acceleration vary based on infrastructure complexity and current automation maturity.',
 };

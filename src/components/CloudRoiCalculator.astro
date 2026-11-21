@@ -1,0 +1,251 @@
+---
+import Button from './ui/Button.astro';
+import Card from './ui/Card.astro';
+import SectionHeading from './SectionHeading.astro';
+import { cloudRoiContent } from '../content/site';
+---
+
+<section id="roi-calculator" class="border-y border-line bg-surface-muted py-24 md:py-32">
+  <div class="section-frame">
+    <SectionHeading
+      eyebrow={cloudRoiContent.eyebrow}
+      title={cloudRoiContent.title}
+      summary={cloudRoiContent.summary}
+    />
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-12 lg:items-start" data-roi-calculator>
+      <!-- Controls Form -->
+      <div class="lg:col-span-6">
+        <Card padding="lg" class="space-y-8 bg-surface">
+          <!-- Spend Control -->
+          <div>
+            <div class="flex items-center justify-between gap-4">
+              <label for="roi-spend-input" class="text-sm font-bold tracking-tight text-ink">
+                {cloudRoiContent.spendLabel}
+              </label>
+              <span id="roi-spend-display" class="font-display text-lg font-black text-accent">
+                ${cloudRoiContent.spendDefault.toLocaleString()} / mo
+              </span>
+            </div>
+            <div class="mt-4">
+              <input
+                type="range"
+                id="roi-spend-input"
+                name="spend"
+                min={cloudRoiContent.spendMin}
+                max={cloudRoiContent.spendMax}
+                step={cloudRoiContent.spendStep}
+                value={cloudRoiContent.spendDefault}
+                class="w-full accent-accent cursor-pointer"
+                aria-label={cloudRoiContent.spendLabel}
+                aria-valuemin={cloudRoiContent.spendMin}
+                aria-valuemax={cloudRoiContent.spendMax}
+                aria-valuenow={cloudRoiContent.spendDefault}
+              />
+            </div>
+            <div class="mt-2 flex justify-between text-xs text-muted">
+              <span>${cloudRoiContent.spendMin.toLocaleString()}</span>
+              <span>$25,000</span>
+              <span>${cloudRoiContent.spendMax.toLocaleString()}+</span>
+            </div>
+          </div>
+
+          <!-- Team Size Control -->
+          <div class="border-t border-line/60 pt-6">
+            <div class="flex items-center justify-between gap-4">
+              <label for="roi-team-input" class="text-sm font-bold tracking-tight text-ink">
+                {cloudRoiContent.teamSizeLabel}
+              </label>
+              <span id="roi-team-display" class="font-display text-lg font-black text-accent">
+                {cloudRoiContent.teamDefault} engineers
+              </span>
+            </div>
+            <div class="mt-4">
+              <input
+                type="range"
+                id="roi-team-input"
+                name="team"
+                min={cloudRoiContent.teamMin}
+                max={cloudRoiContent.teamMax}
+                step={cloudRoiContent.teamStep}
+                value={cloudRoiContent.teamDefault}
+                class="w-full accent-accent cursor-pointer"
+                aria-label={cloudRoiContent.teamSizeLabel}
+                aria-valuemin={cloudRoiContent.teamMin}
+                aria-valuemax={cloudRoiContent.teamMax}
+                aria-valuenow={cloudRoiContent.teamDefault}
+              />
+            </div>
+            <div class="mt-2 flex justify-between text-xs text-muted">
+              <span>{cloudRoiContent.teamMin} devs</span>
+              <span>30 devs</span>
+              <span>{cloudRoiContent.teamMax}+ devs</span>
+            </div>
+          </div>
+
+          <!-- Deployment Frequency -->
+          <div class="border-t border-line/60 pt-6">
+            <fieldset>
+              <legend class="text-sm font-bold tracking-tight text-ink">
+                {cloudRoiContent.frequencyLabel}
+              </legend>
+              <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {cloudRoiContent.frequencies.map((freq) => (
+                  <label
+                    class="relative flex cursor-pointer flex-col items-center justify-center rounded-lg border border-line bg-canvas p-3 text-center transition hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft has-[:checked]:text-accent"
+                  >
+                    <input
+                      type="radio"
+                      name="frequency"
+                      value={freq.id}
+                      data-multiplier={freq.multiplier}
+                      checked={freq.id === cloudRoiContent.defaultFrequencyId}
+                      class="sr-only"
+                    />
+                    <span class="text-xs font-bold leading-tight text-ink has-[:checked]:text-accent">
+                      {freq.label}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          </div>
+        </Card>
+      </div>
+
+      <!-- Projection Results -->
+      <div class="lg:col-span-6">
+        <div class="rounded-xl border border-accent/30 bg-surface p-7 shadow-card md:p-8" aria-live="polite">
+          <div class="flex items-center gap-2">
+            <span class="inline-block size-2 rounded-full bg-accent" aria-hidden="true"></span>
+            <span class="text-xs font-bold uppercase tracking-widest text-accent">
+              {cloudRoiContent.resultsTitle}
+            </span>
+          </div>
+
+          <div class="mt-8 space-y-6">
+            <!-- Annual Cloud Savings -->
+            <div class="rounded-lg border border-line bg-surface-muted p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-muted">
+                {cloudRoiContent.annualSavingsLabel}
+              </p>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span id="roi-annual-savings" class="font-display text-3xl font-black text-ink md:text-4xl">
+                  $26,400
+                </span>
+                <span class="text-xs font-medium text-muted">/ year</span>
+              </div>
+              <p class="mt-2 text-xs leading-relaxed text-muted">
+                {cloudRoiContent.annualSavingsSubtext}
+              </p>
+            </div>
+
+            <!-- Hours Reclaimed -->
+            <div class="rounded-lg border border-line bg-surface-muted p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-muted">
+                {cloudRoiContent.hoursReclaimedLabel}
+              </p>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span id="roi-hours-reclaimed" class="font-display text-3xl font-black text-ink md:text-4xl">
+                  150 hrs
+                </span>
+                <span class="text-xs font-medium text-muted">/ month</span>
+              </div>
+              <p class="mt-2 text-xs leading-relaxed text-muted">
+                {cloudRoiContent.hoursReclaimedSubtext}
+              </p>
+            </div>
+
+            <!-- Velocity Multiplier -->
+            <div class="rounded-lg border border-line bg-surface-muted p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-muted">
+                {cloudRoiContent.velocityLabel}
+              </p>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span id="roi-velocity" class="font-display text-3xl font-black text-ink md:text-4xl">
+                  3.8x faster
+                </span>
+                <span class="text-xs font-medium text-muted">release cycle</span>
+              </div>
+              <p class="mt-2 text-xs leading-relaxed text-muted">
+                {cloudRoiContent.velocitySubtext}
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 border-t border-line/60 pt-6">
+            <Button href="/contact" variant="primary" class="w-full text-center">
+              {cloudRoiContent.ctaText}
+            </Button>
+            <p class="mt-4 text-[0.7rem] leading-relaxed text-muted">
+              {cloudRoiContent.disclaimer}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupRoiCalculator() {
+    const root = document.querySelector('[data-roi-calculator]');
+    if (!root) return;
+
+    const spendInput = root.querySelector<HTMLInputElement>('#roi-spend-input');
+    const teamInput = root.querySelector<HTMLInputElement>('#roi-team-input');
+    const frequencyInputs = root.querySelectorAll<HTMLInputElement>('input[name="frequency"]');
+
+    const spendDisplay = root.querySelector('#roi-spend-display');
+    const teamDisplay = root.querySelector('#roi-team-display');
+    const annualSavingsDisplay = root.querySelector('#roi-annual-savings');
+    const hoursReclaimedDisplay = root.querySelector('#roi-hours-reclaimed');
+    const velocityDisplay = root.querySelector('#roi-velocity');
+
+    function calculate() {
+      const spend = Number(spendInput?.value || 10000);
+      const team = Number(teamInput?.value || 10);
+      
+      let freqMultiplier = 1.25;
+      frequencyInputs.forEach((input) => {
+        if (input.checked) {
+          freqMultiplier = parseFloat(input.dataset.multiplier || '1.25');
+        }
+      });
+
+      // Annual Cloud Savings: 22% of annual spend
+      const annualSpend = spend * 12;
+      const annualSavings = Math.round(annualSpend * 0.22);
+
+      // Reclaimed hours per developer: 12 base hours * multiplier * team size
+      const hoursPerDev = 12 * freqMultiplier;
+      const totalHours = Math.round(team * hoursPerDev);
+
+      // Release velocity factor
+      let velocityFactor = '3.5x';
+      if (freqMultiplier <= 1.0) velocityFactor = '2.5x';
+      else if (freqMultiplier <= 1.25) velocityFactor = '3.8x';
+      else if (freqMultiplier <= 1.5) velocityFactor = '4.5x';
+      else velocityFactor = '5.2x';
+
+      // Update UI displays
+      if (spendDisplay) spendDisplay.textContent = `$${spend.toLocaleString()} / mo`;
+      if (teamDisplay) teamDisplay.textContent = `${team} engineer${team === 1 ? '' : 's'}`;
+      if (annualSavingsDisplay) annualSavingsDisplay.textContent = `$${annualSavings.toLocaleString()}`;
+      if (hoursReclaimedDisplay) hoursReclaimedDisplay.textContent = `${totalHours.toLocaleString()} hrs`;
+      if (velocityDisplay) velocityDisplay.textContent = `${velocityFactor} faster`;
+
+      if (spendInput) spendInput.setAttribute('aria-valuenow', String(spend));
+      if (teamInput) teamInput.setAttribute('aria-valuenow', String(team));
+    }
+
+    spendInput?.addEventListener('input', calculate);
+    teamInput?.addEventListener('input', calculate);
+    frequencyInputs.forEach((input) => input.addEventListener('change', calculate));
+
+    calculate();
+  }
+
+  setupRoiCalculator();
+  document.addEventListener('astro:page-load', setupRoiCalculator);
+</script>
